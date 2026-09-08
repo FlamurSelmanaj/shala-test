@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .hero {
   position: relative;
   min-height: min(78vh, 720px);
@@ -5,22 +9,22 @@
   overflow: hidden;
 }
 
+.hero-track {
+  display: flex;
+  height: 100%;
+  min-height: min(78vh, 720px);
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+
 .hero-slide {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  flex: 0 0 100%;
   display: flex;
   align-items: flex-end;
   padding: 0 40px 96px;
   background-position: center;
   background-size: cover;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-  pointer-events: none;
-}
-
-.hero-slide.active {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .hero-slide::before {

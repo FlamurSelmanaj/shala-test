@@ -1,14 +1,63 @@
+:host {
+  display: block;
+}
+
 .category-section {
   padding: 0;
   background: var(--navy);
 }
 
-.category-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
+.category-track {
+  display: flex;
+  max-width: 1180px;
+  margin: 0 auto;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scrollbar-color: rgba(255, 255, 255, 0.55) var(--navy-dark);
 }
 
-.category-grid a {
+/* Classic horizontal scrollbar with left/right arrow buttons (Blink/WebKit) */
+.category-track::-webkit-scrollbar {
+  height: 16px;
+}
+
+.category-track::-webkit-scrollbar-track {
+  background: var(--navy-dark);
+}
+
+.category-track::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.45);
+  border: 4px solid var(--navy-dark);
+  border-radius: 8px;
+}
+
+.category-track::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.category-track::-webkit-scrollbar-button:horizontal:single-button {
+  width: 16px;
+  height: 16px;
+  background-color: var(--navy-dark);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 9px 9px;
+}
+
+.category-track::-webkit-scrollbar-button:horizontal:single-button:decrement {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M10 3 5 8l5 5' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.category-track::-webkit-scrollbar-button:horizontal:single-button:increment {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M6 3l5 5-5 5' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
+}
+
+.category-track::-webkit-scrollbar-button:horizontal:single-button:hover {
+  background-color: #002a63;
+}
+
+.category-item {
+  flex: 0 0 calc(100% / 6);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,26 +75,26 @@
   letter-spacing: 0.03em;
 }
 
-.category-grid img {
+.category-item img {
   width: 56px;
   height: 56px;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
 
-.category-grid a:hover {
+.category-item:hover {
   background: var(--navy-dark);
   color: var(--yellow);
 }
 
 @media (max-width: 1080px) {
-  .category-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .category-item {
+    flex-basis: calc(100% / 3);
   }
 }
 
 @media (max-width: 640px) {
-  .category-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .category-item {
+    flex-basis: calc(100% / 2);
   }
 }

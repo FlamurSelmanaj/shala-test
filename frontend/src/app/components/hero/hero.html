@@ -1,21 +1,22 @@
 <section class="hero" aria-label="Aktuelle Themen">
-  @for (slide of heroSlides; track slide.title; let i = $index) {
-    <article
-      class="hero-slide"
-      [class.active]="activeSlide() === i"
-      [style.background-image]="'url(' + slide.image + ')'"
-      [attr.aria-hidden]="activeSlide() === i ? null : true"
-    >
-      <div class="hero-copy">
-        <p class="hero-kicker">{{ slide.subtitle }}</p>
-        <h1>{{ slide.title }}</h1>
-        <a class="btn btn-primary" href="#">{{ slide.title }}</a>
-      </div>
-      @if (slide.badge) {
-        <img class="hero-badge" [src]="slide.badge" [alt]="slide.title" referrerpolicy="no-referrer" />
-      }
-    </article>
-  }
+  <div class="hero-track" [style.transform]="'translateX(-' + activeSlide() * 100 + '%)'">
+    @for (slide of heroSlides; track slide.title; let i = $index) {
+      <article
+        class="hero-slide"
+        [style.background-image]="'url(' + slide.image + ')'"
+        [attr.aria-hidden]="activeSlide() === i ? null : true"
+      >
+        <div class="hero-copy">
+          <p class="hero-kicker">{{ slide.subtitle }}</p>
+          <h1>{{ slide.title }}</h1>
+          <a class="btn btn-primary" href="#">{{ slide.title }}</a>
+        </div>
+        @if (slide.badge) {
+          <img class="hero-badge" [src]="slide.badge" [alt]="slide.title" referrerpolicy="no-referrer" />
+        }
+      </article>
+    }
+  </div>
 
   <button class="hero-nav prev" type="button" aria-label="Vorheriger Slide" (click)="prev()">‹</button>
   <button class="hero-nav next" type="button" aria-label="Nächster Slide" (click)="next()">›</button>
