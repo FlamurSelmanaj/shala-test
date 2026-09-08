@@ -1,0 +1,100 @@
+<section class="page-editor">
+  <a class="crumb" routerLink="/admin/pages">← All pages</a>
+
+  @if (notFound()) {
+    <p class="msg err">No page with id “{{ id() }}”.</p>
+  } @else {
+    <h2>{{ mode() === 'create' ? 'New page' : 'Edit “' + draft.slug + '”' }}</h2>
+
+    @if (message(); as m) {
+      <p class="msg" [class.err]="m.kind === 'err'">{{ m.text }}</p>
+    }
+
+    <form (ngSubmit)="save()">
+      @if (mode() === 'create') {
+        <label class="field">
+          <span>Start from template</span>
+          <select [(ngModel)]="templateId" name="tpl" (ngModelChange)="applyTemplate()">
+            @for (tpl of templates; track tpl.id) {
+              <option [value]="tpl.id">{{ tpl.label }}</option>
+            }
+          </select>
+        </label>
+      }
+
+      <label class="field">
+        <span>Slug</span>
+        <input
+          name="slug"
+          [(ngModel)]="draft.slug"
+          [readonly]="mode() === 'edit'"
+          placeholder="my-new-page"
+          autocomplete="off"
+        />
+      </label>
+      @if (mode() === 'create') {
+        <p class="preview">
+          URL <code>/{{ previewSlug() || '…' }}</code> · keys
+          <code>pages.{{ previewSlug() || '…' }}.title</code> / <code>.subtitle</code>
+        </p>
+      }
+
+      <label class="field">
+        <span>Hero image URL</span>
+        <input name="hero" [(ngModel)]="draft.heroImage" placeholder="https://…" autocomplete="off" />
+      </label>
+
+      <fieldset class="field">
+        <legend>Sections</legend>
+        <div class="catalog">
+          @for (s of sectionCatalog; track s) {
+            <label class="chk">
+              <input type="checkbox" [checked]="hasSection(s)" (change)="toggleSection(s)" />
+              {{ sectionLabels[s] }}
+            </label>
+          }
+        </div>
+        @if (draft.sections.length) {
+          <ol class="ordered">
+            @for (s of draft.sections; track $index) {
+              <li>
+                <span>{{ sectionLabels[s] }}</span>
+                <span class="ord-btns">
+                  <button type="button" (click)="moveSection($index, -1)" [disabled]="$first">↑</button>
+                  <button type="button" (click)="moveSection($index, 1)" [disabled]="$last">↓</button>
+                  <button type="button" (click)="toggleSection(s)" aria-label="Remove">✕</button>
+                </span>
+              </li>
+            }
+          </ol>
+        } @else {
+          <p class="preview">Hero only — no sections below it.</p>
+        }
+      </fieldset>
+
+      <fieldset class="field">
+        <legend>Title &amp; subtitle</legend>
+        @for (lang of languages(); track lang) {
+          <div class="tr-row">
+            <span class="tr-lang">{{ lang.toUpperCase() }}</span>
+            <input [name]="'t-' + lang" [(ngModel)]="draft.text[lang].title" placeholder="Title" autocomplete="off" />
+            <input [name]="'s-' + lang" [(ngModel)]="draft.text[lang].subtitle" placeholder="Subtitle" autocomplete="off" />
+          </div>
+        }
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" [disabled]="!apiOnline() || busy()">
+          {{ mode() === 'create' ? 'Create page' : 'Save changes' }}
+        </button>
+        @if (mode() === 'edit') {
+          <a class="btn btn-secondary" [routerLink]="['/', draft.slug]">View page ↗</a>
+          <button type="button" class="btn danger" [disabled]="!apiOnline() || busy()" (click)="remove()">
+            Delete
+          </button>
+        }
+        <button type="button" class="btn ghost" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  }
+</section>

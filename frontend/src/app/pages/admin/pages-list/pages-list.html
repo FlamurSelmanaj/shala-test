@@ -1,0 +1,22 @@
+<section class="pages-list">
+  <div class="pages-list-head">
+    <h2>Pages <span>({{ pages().length }})</span></h2>
+    <a class="btn btn-primary" routerLink="/admin/pages/new" [class.disabled]="!apiOnline()">
+      + New page
+    </a>
+  </div>
+
+  <ul>
+    @for (p of pages(); track p.id) {
+      <li>
+        <a [routerLink]="['/admin/pages', p.id]">
+          <strong>{{ t(p.titleKey) }}</strong>
+          <span class="meta">/{{ p.slug }} · {{ p.sections.length }} section(s)</span>
+          <span class="sections">{{ p.sections.join(' · ') || 'hero only' }}</span>
+        </a>
+      </li>
+    } @empty {
+      <li class="empty">No pages yet.</li>
+    }
+  </ul>
+</section>

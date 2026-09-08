@@ -4,7 +4,7 @@ import { Injectable, effect, inject, signal } from '@angular/core';
 import { ContentService } from '../content/content.service';
 import { LANGS, type Lang, type TranslationKey, isLang } from './lang';
 
-const STORAGE_KEY = 'kann-lang';
+const STORAGE_KEY = 'shalaj-lang';
 const DEFAULT_LANG: Lang = 'de';
 
 /**

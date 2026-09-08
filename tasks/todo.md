@@ -194,6 +194,164 @@ supersedes the i18n task above — the typed `dictionaries/*.ts` get folded into
 - Albanian strings are best-effort — worth a native-speaker review.
 - If `localdb.json` fails to load the site renders with blank text (EMPTY_DB), not a crash.
 
+### Follow-up: data-driven pages + /admin CRUD dashboard (2026-09-08)
+User: "make me a crud dashboard so i can update create translations for pages and
+maybe also add pages … find out how many pages are different or similar … template for each".
+Choices (AskUserQuestion): **full data-driven pages** (collapse the 6 into one generic
+component, route by `:slug`); dashboard at **/admin, unlisted**; edit **record fields +
+de/en/sq title & subtitle text**.
+
+**Analysis (in message):** all 6 data pages = `PageHero` + an ordered list from a
+9-component section catalog. 6/6 section lists unique; `welcome`/`service`/`career-cta`
+reused ×2. `home` (9 sections, no hero) + `not-found` are one-off shapes. → ONE template
+("hero + sections") + starting presets: Editorial, Catalog, Solutions, Service, Company,
+Recruiting, Blank.
+
+### Plan
+- **`public/localdb.json`** — promote `pages` from `content.pages` (object) to a
+  **top-level array** so json-server gives it full CRUD. Each record:
+  `{ id, slug, titleKey, subtitleKey, heroImage, sections: SectionKey[] }`. `id`==`slug`
+  (`inspiration`, `products`, `public-space`, `service`, `about`, `careers`). Add
+  `title.admin` to translations ×3. Remove `content.pages`.
+- **`content/localdb.model.ts`** — `PageRecord`, `SectionKey` (9-union) + `SECTION_KEYS`;
+  `LocalDb.pages: PageRecord[]`; drop `PageContent`/`PageName` + `content.pages`.
+- **`content/section-registry.ts`** — `SECTION_REGISTRY: Record<SectionKey, Type>` +
+  `SECTION_LABELS` (dashboard).
+- **`content/page-templates.ts`** — `PAGE_TEMPLATES` preset list (7 presets above).
+- **`content/page.guard.ts`** — `pageExists: CanMatchFn` → `inject(ContentService).pages()`
+  has that slug (data is loaded by the app initializer before any route matches).
+- **`pages/page/page.ts`** — generic `PageComponent`: `slug = input.required<string>()`
+  (via `withComponentInputBinding`), `record = computed(find by slug)`, renders
+  `<app-page-hero>` + `@for (s of record.sections) { <ng-container *ngComponentOutlet=...> }`.
+  Owns its `<title>` via an `effect` (sections take no inputs — all read services).
+- **`app.routes.ts`** — `['', 'admin', ':slug' (canMatch: [pageExists]), '**']`; delete
+  the 6 page routes.
+- **`app.config.ts`** — add `withComponentInputBinding()`.
+- **`content/content.service.ts`** — `pages` signal + `page(slug)`; `apiOnline` signal;
+  `createPage` / `updatePage(id,patch)` / `deletePage(id)` → `POST/PATCH/DELETE
+  http://localhost:3001/pages`; `updateTranslations(next)` → `PATCH /translations`;
+  `refresh()` re-GETs `/db` after every write.
+- **`pages/admin/admin.ts` + `.html` + `.scss`** — lazy `/admin`, `imports:[FormsModule]`.
+  Left: page list + "New page". Right: template `<select>` (create only), `slug`
+  (locked on edit), `heroImage`, section checkboxes with ↑/↓ reorder, DE/EN/SQ × title/
+  subtitle inputs. Save / Delete / Cancel. API-status pill; writes disabled when offline.
+- **Delete** `pages/{inspiration,products,public-space,service,about,careers}/` (12 files).
+
+### Done
+- **`public/localdb.json`** — `pages` moved to a **top-level array** (`id`==`slug`:
+  inspiration, products, public-space, service, about, careers), each
+  `{ id, slug, titleKey, subtitleKey, heroImage, sections[] }`; `content.pages` removed;
+  `title.admin` added ×3 (167 keys/lang).
+- **`content/localdb.model.ts`** — `PageRecord`, `SectionKey` union + `SECTION_KEYS` +
+  `SECTION_LABELS` (pure data); `LocalDb.pages: PageRecord[]`; dropped `PageContent`/`PageName`.
+- **`content/section-registry.ts`** — `SECTION_REGISTRY: Record<SectionKey, Type>` (component map only).
+- **`content/page-templates.ts`** — `PAGE_TEMPLATES` (Editorial/Catalog/Solutions/Service/
+  Company/Recruiting/Blank), derived from the 6-page analysis.
+- **`content/page.guard.ts`** — `pageExists: CanMatchFn` (slug in `ContentService.pages()`).
+- **`pages/page/page.ts`** — generic `PageComponent`: `slug = input.required` (via
+  `withComponentInputBinding`), `record = computed(find)`, renders `<app-page-hero>` +
+  `@for … *ngComponentOutlet`; owns its `<title>` via `effect`.
+- **`app.routes.ts`** — `['', 'admin', ':slug' (canMatch:[pageExists]), '**']`; 6 page routes deleted.
+- **`app.config.ts`** — `withComponentInputBinding()` added.
+- **`content/content.service.ts`** — `pages` signal + `page(slug)`; `apiOnline` signal (set on a
+  successful API load); `createPage` / `updatePage(id,patch)` / `deletePage(id)` →
+  `POST/PATCH/DELETE :3001/pages`; `updateTranslations(changes)` **merges over current then
+  PATCHes the full de/en/sq maps** (json-server PATCH shallow-merges — a partial body wipes a
+  whole language); `refresh()` re-GETs `/db` after each write.
+- **`pages/admin/` (`.ts`+`.html`+`.scss`)** — lazy `/admin`, `FormsModule`. Page list +
+  "New page"; editor: template `<select>` (create), slug (locked on edit) with URL/key preview,
+  hero image, 9-section checklist with ↑/↓ reorder, DE/EN/SQ × title/subtitle inputs, Save /
+  Delete / View page ↗ / Cancel. API-status pill; all writes disabled when offline.
+- **Deleted** the 6 `pages/{inspiration,products,public-space,service,about,careers}/` (18 files).
+
+### Verification
+- `npm run build` green, no `anyComponentStyle` warning. `main` 8.86 kB; new lazy chunks
+  `admin` (47.6 kB raw / 11 kB transfer — FormsModule, only on `/admin`) + `page` (3.0 kB).
+- Bundle greps: `canMatch`, `:slug`, `componentInputBinding` present; `admin` chunk carries the
+  dashboard UI; old `InspirationPage`/`CareersPage`/… classes gone.
+- **Live json-server (`npm run api`)** — end-to-end script: `GET /pages` (6, slug+sections),
+  `GET /pages/partners` after `POST`, `PATCH /pages/partners` (reorder), `updateTranslations`
+  full-merge PATCH (169/169/169, **untouched keys preserved**), then `DELETE` + restore →
+  back to 6 pages / 167 keys, DB byte-clean.
+- `dist/frontend/browser/localdb.json` fallback has the new shape.
+- Not run per CLAUDE.md: `ng serve`, `ng test`. json-server persists writes to
+  `public/localdb.json` on disk (expected — that file *is* the DB).
+
+### Incident
+- During an ad-hoc curl check I sent `PATCH /translations {"en":{oneKey}}` — json-server
+  shallow-merged it and **wiped `translations.en`** (167→1 keys) in `public/localdb.json`.
+  Restored from the session's English source; hardened `updateTranslations` to always send the
+  full merged maps. Lesson recorded.
+
+### Follow-up: nested admin routes (shell + children) (2026-09-08)
+User: "make seperate admin routes not in the same level as in other routes".
+Choices: **shell + child routes**; keep **/admin, unlisted**.
+
+Was: flat `{ path:'admin', loadComponent: AdminPage }` next to `''` / `:slug` / `**`,
+one split-pane screen. Now: a lazy admin feature subtree.
+
+### Plan
+- **`app.routes.ts`** — `admin` becomes `loadChildren: () => import('./pages/admin/admin.routes')`.
+- **`pages/admin/admin.routes.ts`** (`ADMIN_ROUTES`) — `AdminShell` at `''` with children:
+  `'' → redirectTo 'pages'`, `pages` (list), `pages/new` (editor, create), `pages/:id`
+  (editor, edit). `pages/new` **before** `pages/:id`. Per-child `title` keys.
+- **`pages/admin/admin-shell.{ts,html,scss}`** — `<router-outlet>` + admin header:
+  "Content admin", API-status pill (moved here), "Pages" nav link (`routerLinkActive`),
+  "← Back to site". Reads `ContentService.apiOnline` + `t`.
+- **`pages/admin/pages-list/pages-list.{ts,html,scss}`** — table of `content.pages()`,
+  each row `routerLink` → `/admin/pages/:id`; "+ New page" → `/admin/pages/new`.
+- **`pages/admin/page-editor/page-editor.{ts,html,scss}`** — one component for create +
+  edit. `id = input<string>()` (from `:id` via `withComponentInputBinding`); `mode =
+  computed(() => id() ? 'edit' : 'create')`. Seeds the draft from the record once per id
+  (guarded so a post-save refresh doesn't clobber edits). After create → `router.navigate
+  (['/admin/pages', slug])`; after delete → `/admin/pages`. Same form as before (template
+  select, slug, hero image, section checklist + ↑/↓, DE/EN/SQ title & subtitle). "Not
+  found" panel for a bad `:id`.
+- **`pages/admin/page-draft.ts`** — shared `Draft` type, `blankDraft()`, `slugify()`.
+- **`public/localdb.json`** — add `title.adminPages` / `title.adminPageNew` /
+  `title.adminPageEdit` ×3 langs (values keep the existing `| KANN` `title.*` convention).
+- **Delete** `pages/admin/admin.{ts,html,scss}`.
+
+### Done
+- **`app.routes.ts`** — `admin` is now `loadChildren: () => import('./pages/admin/admin.routes')`
+  (no `loadComponent`/`title` at this level). Sits between `''` and `:slug`.
+- **`pages/admin/admin.routes.ts`** — `ADMIN_ROUTES`: `AdminShell` at `''` →
+  children `'' → redirectTo 'pages'`, `pages`, `pages/new`, `pages/:id` (in that order —
+  `new` before `:id`). Per-child `title` keys.
+- **`admin-shell.{ts,html,scss}`** — header (title, "Pages" nav w/ `routerLinkActive`,
+  API-status pill, "← Back to site"), read-only banner when offline, `<router-outlet>`.
+- **`pages-list/`** — `content.pages()` as a linked list → `/admin/pages/:id`;
+  "+ New page" → `/admin/pages/new` (disabled visual when offline).
+- **`page-editor/`** — one component for create + edit. `id = input<string>()` (from
+  `:id`; absent on `/new`). `mode = computed(id ? 'edit' : 'create')`. Draft seeded from
+  the record once per id via a guarded `effect` (`seededKey`), so a post-save `/db`
+  refresh doesn't clobber edits. Create → `router.navigate(['/admin/pages', slug])`;
+  delete/cancel → `/admin/pages`. "Not found" panel for a bad `:id`. Same form as before.
+- **`page-draft.ts`** — shared `Draft` / `blankDraft()` / `slugify()`.
+- **`public/localdb.json`** — `title.adminPages` / `title.adminPageNew` /
+  `title.adminPageEdit` ×3 langs (matched the file's current `| Shalaj` branding —
+  the user has been rebranding `title.*` KANN→Shalaj).
+- **Deleted** `pages/admin/admin.{ts,html,scss}`.
+
+### Verification
+- `npm run build` green, no `anyComponentStyle` warning. Admin split into lazy chunks:
+  `admin-routes` 0.5 kB, `admin-shell` 2.8 kB, `pages-list` 2.8 kB, `page-editor` 44.9 kB
+  (10.6 kB transfer — FormsModule, now deferred until an editor route). Visiting
+  `/admin/pages` pulls ~6 kB vs the old single 47.6 kB admin chunk.
+- Bundle greps: `loadChildren` + `ADMIN_ROUTES` in the router; the admin-routes chunk
+  contains `pages/new`, `pages/:id`, `"pages"`, `redirectTo`, `pathMatch`, the admin
+  title keys; `AdminShell`/`AdminPagesList`/`AdminPageEditor` in their own chunks; old
+  `AdminPage` class gone. dist `localdb.json` = 172/172/172 keys, 7 pages (incl. the
+  user's `test-service` test page).
+- `ContentService` untouched — CRUD path verified last round.
+- Not run per CLAUDE.md: `ng serve`, `ng test`.
+
+### Note
+- The KANN→Shalaj rebrand the user is doing is still partial: `title.*` keys +
+  `page.ts`/`translation.service.ts` say "Shalaj", but body-text translations in
+  `localdb.json` (`"Willkommen bei KANN"`, `"KANN Baustoffwerke"`, footer, etc.) and the
+  live-site image URLs still say KANN. Out of scope here.
+
 ### Follow-up: serve via json-server (2026-09-08)
 User clarification: "using json-server". Choices (AskUserQuestion): json-server as a
 **frontend devDependency + `npm run api`**; **fall back to the bundled JSON** when it's down.

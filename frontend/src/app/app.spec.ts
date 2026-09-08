@@ -14,7 +14,7 @@ describe('App', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should render the KANN front page hero', async () => {
+  it('should render the Shalaj front page hero', async () => {
     const fixture = TestBed.createComponent(App);
     fixture.detectChanges();
     await fixture.whenStable();
@@ -22,7 +22,7 @@ describe('App', () => {
     expect(compiled.querySelector('.hero-slide.active h1')?.textContent).toContain(
       'Lieblingsplatz Jahreshighlights'
     );
-    expect(compiled.querySelector('.brand img')?.getAttribute('alt')).toContain('KANN');
+    expect(compiled.querySelector('.brand img')?.getAttribute('alt')).toContain('Shalaj');
   });
 
   it('should render all 12 product categories', async () => {

@@ -45,5 +45,33 @@
 - **Killing a stray process on Windows/Git Bash:** `pkill -f <name>` often silently fails
   to match Windows process command lines. Do NOT fall back to `taskkill //F //IM node.exe`
   — it kills *every* node process, including the user's backend/editor. Use
-  `taskkill //F //PID <pid>` with a PID from `netstat -ano | grep :<port>`, or run the
-  server with `run_in_background` so the harness owns its lifecycle.
+  `PID=$(netstat -ano | grep -E ":<port> .*LISTENING" | awk '{print $NF}' | head -1);
+  taskkill //F //PID "$PID"`, or run the server with `run_in_background` so the harness
+  owns its lifecycle.
+
+- **`PATCH /:resource` on json-server shallow-merges the top level.** For an object
+  resource like `translations` (`{de,en,sq}`), `PATCH /translations {"en": {...}}`
+  *replaces* the entire `en` map — a partial body silently destroys the rest, and
+  `--watch` writes the loss straight to `public/localdb.json` on disk. Always send the
+  FULL sub-objects. `ContentService.updateTranslations(changes)` now merges `changes`
+  over the current maps and PATCHes the complete `{de,en,sq}`. When testing json-server
+  mutations by hand, snapshot the db (or copy the file) first — writes are real and persisted.
+
+- **Admin is a separate route subtree** (`/admin`): `app.routes.ts` mounts it via
+  `loadChildren: () => import('./pages/admin/admin.routes')` (`ADMIN_ROUTES`), NOT a flat
+  `loadComponent`. `AdminShell` (own `<router-outlet>` + header/pill) wraps children
+  `pages` (list) / `pages/new` + `pages/:id` (one `AdminPageEditor`, `id = input<string>()`,
+  `mode = computed(id ? 'edit':'create')`). `pages/new` must be ordered before `pages/:id`.
+  Editor seeds its draft from the record once per id via a guarded `effect` so a post-save
+  refresh doesn't wipe edits. FormsModule lives only in `page-editor` so `/admin/pages`
+  (list) stays a ~6 kB load.
+
+- **Data-driven pages** (kann.de clone): the 6 nav pages are one shape — `<app-page-hero>`
+  + an ordered `sections: SectionKey[]` from a 9-component catalog. They're a single
+  generic `pages/page/page.ts` `PageComponent` routed by `:slug` (`canMatch: [pageExists]`
+  against `ContentService.pages()`; `withComponentInputBinding()` feeds the `slug` input).
+  Adding a page = a `POST /pages` row in json-server, no code. Section catalog:
+  `content/section-registry.ts` (component map) + `SECTION_LABELS` in `localdb.model.ts`
+  (keep the label map out of the registry so the admin chunk doesn't drag in all 9
+  section components). Presets live in `content/page-templates.ts`. The `/admin`
+  dashboard (unlisted lazy route) does the CRUD via `ContentService`.

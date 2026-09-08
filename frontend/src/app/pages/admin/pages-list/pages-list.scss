@@ -1,0 +1,71 @@
+:host {
+  display: block;
+}
+
+.pages-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.pages-list-head h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.pages-list-head h2 span {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.pages-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pages-list li + li {
+  border-top: 1px solid var(--line);
+}
+
+.pages-list li a {
+  display: grid;
+  gap: 3px;
+  padding: 14px 16px;
+  background: #fff;
+}
+
+.pages-list li a:hover {
+  background: var(--sand);
+}
+
+.pages-list li a strong {
+  font-size: 1rem;
+}
+
+.pages-list .meta {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.pages-list .sections {
+  font-size: 0.78rem;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pages-list .empty {
+  padding: 20px 16px;
+  color: var(--muted);
+}

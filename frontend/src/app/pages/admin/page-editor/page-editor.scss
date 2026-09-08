@@ -1,0 +1,165 @@
+:host {
+  display: block;
+}
+
+.page-editor {
+  max-width: 720px;
+}
+
+.crumb {
+  display: inline-block;
+  margin-bottom: 14px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--navy);
+}
+
+.page-editor h2 {
+  margin: 0 0 18px;
+  font-size: 1.3rem;
+}
+
+.msg {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: #e7f6ec;
+  color: #1c7a3c;
+  font-weight: 600;
+}
+
+.msg.err {
+  background: #fdecec;
+  color: #b3261e;
+}
+
+.field {
+  display: block;
+  margin-bottom: 18px;
+  border: 0;
+  padding: 0;
+}
+
+.field > span,
+.field legend {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.field input[readonly] {
+  background: var(--sand);
+  color: var(--muted);
+}
+
+.preview {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.preview code {
+  background: var(--sand);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 6px 14px;
+  margin-bottom: 12px;
+}
+
+.chk {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.88rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.ordered {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 4px;
+}
+
+.ordered li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ord-btns {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.ord-btns button {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--line);
+  background: var(--sand);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.ord-btns button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.tr-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tr-lang {
+  align-self: center;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--line);
+}
+
+.btn.danger {
+  background: #b3261e;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn.danger:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

@@ -44,19 +44,55 @@ export interface FooterColumn {
   linkKeys: TranslationKey[];
 }
 
-export interface PageContent {
+/** Reusable section components a page can stack below its hero. */
+export type SectionKey =
+  | 'hero'
+  | 'category-grid'
+  | 'welcome'
+  | 'product-news'
+  | 'process'
+  | 'resorb'
+  | 'service'
+  | 'magazine'
+  | 'career-cta';
+
+export const SECTION_KEYS: readonly SectionKey[] = [
+  'hero',
+  'category-grid',
+  'welcome',
+  'product-news',
+  'process',
+  'resorb',
+  'service',
+  'magazine',
+  'career-cta'
+] as const;
+
+/** Human-readable section names for the admin dashboard (pure data — no components). */
+export const SECTION_LABELS: Record<SectionKey, string> = {
+  hero: 'Hero slider',
+  'category-grid': 'Product category strip',
+  welcome: 'Welcome intro',
+  'product-news': 'Product news band',
+  process: 'Process cards',
+  resorb: 'ReSorb feature',
+  service: 'Service cards',
+  magazine: 'Magazine grid',
+  'career-cta': 'Careers CTA'
+};
+
+/**
+ * A routed content page: a hero (title/subtitle keys + image) plus an ordered
+ * list of section components. Served as a json-server collection (`/pages`).
+ */
+export interface PageRecord {
+  id: string;
+  slug: string;
   titleKey: TranslationKey;
   subtitleKey: TranslationKey;
   heroImage: string;
+  sections: SectionKey[];
 }
-
-export type PageName =
-  | 'inspiration'
-  | 'products'
-  | 'publicSpace'
-  | 'service'
-  | 'about'
-  | 'careers';
 
 export interface LocalDbContent {
   logo: string;
@@ -74,7 +110,6 @@ export interface LocalDbContent {
     resorb: string;
     career: string;
   };
-  pages: Record<PageName, PageContent>;
 }
 
 export interface LocalDb {
@@ -84,4 +119,5 @@ export interface LocalDb {
   };
   translations: Translations;
   content: LocalDbContent;
+  pages: PageRecord[];
 }

@@ -1,0 +1,25 @@
+<div class="admin-shell">
+  <header class="admin-top">
+    <div class="admin-title">
+      <h1>Content admin</h1>
+      <nav class="admin-nav">
+        <a routerLink="pages" routerLinkActive="active">Pages</a>
+      </nav>
+    </div>
+    <div class="admin-top-right">
+      <span class="pill" [class.on]="apiOnline()">
+        {{ apiOnline() ? 'json-server connected (:3001)' : 'json-server offline — run: npm run api' }}
+      </span>
+      <a class="back" routerLink="/">← Back to site</a>
+    </div>
+  </header>
+
+  @if (!apiOnline()) {
+    <p class="msg err">
+      Content is read-only. Start the mock API with <code>npm run api</code> in
+      <code>frontend/</code>, then reload.
+    </p>
+  }
+
+  <router-outlet />
+</div>
