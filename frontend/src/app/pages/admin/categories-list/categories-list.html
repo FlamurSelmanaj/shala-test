@@ -1,0 +1,29 @@
+<section class="list">
+  <header class="list-head">
+    <div>
+      <h2>Categories</h2>
+      <p>{{ rows().length }} categories · shown on the products page</p>
+    </div>
+    <a class="btn btn-primary" routerLink="/admin/categories/new" [class.disabled]="!apiOnline()">
+      + New category
+    </a>
+  </header>
+
+  <ul class="rows">
+    @for (row of rows(); track row.category.id) {
+      <li>
+        <a [routerLink]="['/admin/categories', row.category.id]">
+          <img class="ico" [src]="row.category.icon" alt="" referrerpolicy="no-referrer" />
+          <span class="row-main">
+            <strong>{{ text(row.category.name) }}</strong>
+            <small>/{{ row.category.slug }}</small>
+          </span>
+          <span class="pcount">{{ row.count }} product(s)</span>
+          <span class="chev" aria-hidden="true">›</span>
+        </a>
+      </li>
+    } @empty {
+      <li class="empty">No categories yet.</li>
+    }
+  </ul>
+</section>

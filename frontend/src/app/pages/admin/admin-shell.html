@@ -1,0 +1,41 @@
+<div class="admin-canvas">
+ <div class="admin-inner">
+  <header class="admin-bar">
+    <div class="admin-bar-left">
+      <span class="admin-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M4 7h16 M4 12h16 M4 17h10" stroke-linecap="round" />
+        </svg>
+      </span>
+      <div>
+        <p class="admin-kicker">Shalaj</p>
+        <h1>Content admin</h1>
+      </div>
+    </div>
+    <div class="admin-bar-right">
+      <span class="status" [class.on]="apiOnline()">
+        <span class="dot"></span>
+        {{ apiOnline() ? 'json-server connected (:3001)' : 'json-server offline — run: npm run api' }}
+      </span>
+      <a class="back" routerLink="/">← Back to site</a>
+    </div>
+  </header>
+
+  <nav class="admin-nav">
+    @for (item of nav; track item.path) {
+      <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
+    }
+  </nav>
+
+  @if (!apiOnline()) {
+    <p class="msg err">
+      Content is read-only. Start the mock API with <code>npm run api</code> in
+      <code>frontend/</code>, then reload.
+    </p>
+  }
+
+  <div class="admin-main">
+    <router-outlet />
+  </div>
+ </div>
+</div>

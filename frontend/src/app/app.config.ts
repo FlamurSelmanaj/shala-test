@@ -4,7 +4,12 @@ import {
   provideAppInitializer,
   provideBrowserGlobalErrorListeners
 } from '@angular/core';
-import { TitleStrategy, provideRouter, withInMemoryScrolling } from '@angular/router';
+import {
+  TitleStrategy,
+  provideRouter,
+  withComponentInputBinding,
+  withInMemoryScrolling
+} from '@angular/router';
 
 import { routes } from './app.routes';
 import { ContentService } from './content/content.service';
@@ -16,7 +21,8 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => inject(ContentService).load()),
     provideRouter(
       routes,
-      withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' })
+      withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' }),
+      withComponentInputBinding()
     ),
     { provide: TitleStrategy, useClass: TranslatedTitleStrategy }
   ]

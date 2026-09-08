@@ -2,9 +2,9 @@ import { DOCUMENT } from '@angular/common';
 import { Injectable, effect, inject, signal } from '@angular/core';
 
 import { ContentService } from '../content/content.service';
-import { LANGS, type Lang, type TranslationKey, isLang } from './lang';
+import { LANGS, type Lang, type LangText, type TranslationKey, isLang } from './lang';
 
-const STORAGE_KEY = 'kann-lang';
+const STORAGE_KEY = 'shalaj-lang';
 const DEFAULT_LANG: Lang = 'de';
 
 /**
@@ -50,6 +50,13 @@ export class TranslationService {
     const dictionaries = this.content.translations();
     return dictionaries[this.lang()]?.[key] ?? dictionaries[DEFAULT_LANG]?.[key] ?? key;
   };
+
+  /**
+   * Resolve an inline multilingual string (used for records whose text lives on
+   * the record itself — categories, products — rather than in the dictionaries).
+   */
+  readonly text = (value: Partial<LangText> | undefined): string =>
+    value?.[this.lang()] ?? value?.[DEFAULT_LANG] ?? '';
 
   private readStoredLang(): Lang {
     try {

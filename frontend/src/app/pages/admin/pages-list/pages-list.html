@@ -1,0 +1,28 @@
+<section class="list">
+  <header class="list-head">
+    <div>
+      <h2>Pages</h2>
+      <p>The site's pages are fixed — edit their hero and section content.</p>
+    </div>
+    <span class="count">{{ pages().length }}</span>
+  </header>
+
+  <ul class="rows">
+    @for (p of pages(); track p.id) {
+      <li>
+        <a [routerLink]="['/admin/pages', p.id]">
+          <span class="row-main">
+            <strong>{{ t(p.titleKey) }}</strong>
+            <small>/{{ p.slug }}</small>
+          </span>
+          <span class="row-sections">
+            @for (s of p.sections; track s) {
+              <span class="chip">{{ sectionLabels[s] }}</span>
+            }
+          </span>
+          <span class="chev" aria-hidden="true">›</span>
+        </a>
+      </li>
+    }
+  </ul>
+</section>

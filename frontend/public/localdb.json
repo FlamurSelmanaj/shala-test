@@ -1,6 +1,10 @@
 {
   "meta": {
-    "languages": ["de", "en", "sq"],
+    "languages": [
+      "de",
+      "en",
+      "sq"
+    ],
     "defaultLanguage": "de"
   },
   "translations": {
@@ -9,12 +13,12 @@
       "nav.products": "Alle Produkte",
       "nav.publicSpace": "Öffentlicher Raum",
       "nav.service": "Service",
-      "nav.about": "KANN",
+      "nav.about": "Shalaj",
       "nav.careers": "Karriere",
-      "header.brandAlt": "KANN Baustoffwerke",
-      "header.homeAria": "KANN Baustoffwerke Startseite",
-      "header.anniversaryAria": "99 Jahre KANN",
-      "header.anniversaryLabel": "Jahre KANN",
+      "header.brandAlt": "Shalaj Baustoffwerke",
+      "header.homeAria": "Shalaj Baustoffwerke Startseite",
+      "header.anniversaryAria": "99 Jahre Shalaj",
+      "header.anniversaryLabel": "Jahre Shalaj",
       "header.navAria": "Hauptnavigation",
       "header.quickAccessAria": "Schnellzugriff",
       "header.search": "Suche",
@@ -40,21 +44,9 @@
       "hero.s6.subtitle": "Authentisch gealtert für unverwechselbaren Charakter.",
       "categories.title": "Produktkategorien",
       "categories.trackAria": "Produktkategorien, horizontale Scrollleiste",
-      "categories.gestaltungspflaster": "Gestaltungspflaster",
-      "categories.oekopflaster": "Ökopflaster",
-      "categories.funktionspflaster": "Funktionspflaster",
-      "categories.betonTerrassenplatten": "Beton Terrassenplatten",
-      "categories.keramikTerrassenplatten": "Keramik Terrassenplatten",
-      "categories.blockstufen": "Blockstufen",
-      "categories.palisaden": "Palisaden",
-      "categories.mauerBoeschung": "Mauer- & Böschungssysteme",
-      "categories.bordRandsteine": "Bord- & Randsteine",
-      "categories.entwaesserung": "Entwässerungssysteme",
-      "categories.fertigteile": "Fertigteile",
-      "categories.reinigungZubehoer": "Reinigung & Zubehör",
-      "welcome.eyebrow": "KANN Baustoffwerke",
+      "welcome.eyebrow": "Shalaj Baustoffwerke",
       "welcome.title": "Viel Freude beim Entdecken neuer Lieblingsplätze",
-      "welcome.p1": "Willkommen bei KANN, Ihrer ersten Adresse für hochwertige Betonsteinprodukte. Bei allem, was wir aus dem vielseitigen Werkstoff Beton erschaffen, ist die Natur unser Vorbild und Antrieb. Dies zeigt sich nicht nur in einzigartigem Design, sondern auch in der unerschütterlichen Langlebigkeit und erstklassigen Qualität unserer Produkte.",
+      "welcome.p1": "Willkommen bei Shalaj, Ihrer ersten Adresse für hochwertige Betonsteinprodukte. Bei allem, was wir aus dem vielseitigen Werkstoff Beton erschaffen, ist die Natur unser Vorbild und Antrieb. Dies zeigt sich nicht nur in einzigartigem Design, sondern auch in der unerschütterlichen Langlebigkeit und erstklassigen Qualität unserer Produkte.",
       "welcome.p2": "Lassen Sie sich von der außergewöhnlichen Ästhetik und der herausragenden Funktionalität inspirieren, die Beton unter den geschickten Händen unserer erfahrenen Produktentwickler entfaltet. Folgen Sie uns in eine Welt voller Inspiration!",
       "news.imageAlt": "Produktneuheiten 2026",
       "news.eyebrow": "Neuheiten",
@@ -63,11 +55,11 @@
       "news.cta": "Jetzt entdecken",
       "process.eyebrow": "Prozess",
       "process.title": "Wir unterstützen Sie bei jedem Prozess",
-      "process.lead": "Ob privater oder öffentlicher Lieblingsplatz: KANN begleitet Sie von der ersten Inspiration bis zur fertigen Fläche. Entdecken Sie vielfältige Gestaltungsideen für Terrassen, Wege und Gärten – und erleben Sie, wie moderne Betonstein-Lösungen Außenbereiche in echte Wohlfühlorte verwandeln.",
+      "process.lead": "Ob privater oder öffentlicher Lieblingsplatz: Shalaj begleitet Sie von der ersten Inspiration bis zur fertigen Fläche. Entdecken Sie vielfältige Gestaltungsideen für Terrassen, Wege und Gärten – und erleben Sie, wie moderne Betonstein-Lösungen Außenbereiche in echte Wohlfühlorte verwandeln.",
       "process.more": "Mehr erfahren",
       "process.c1.title": "Inspiration für Ihre individuelle Außengestaltung",
       "process.c1.text": "„Einen Garten anzulegen heißt, an morgen zu glauben.“ Diesem Zitat von Audrey Hepburn schließen wir uns an – unser Ziel ist es, Sie bei der Gestaltung Ihres Außenbereichs mit hochwertigen Produkten zu unterstützen.",
-      "process.c2.title": "KANN Planungstools",
+      "process.c2.title": "Shalaj Planungstools",
       "process.c2.text": "Lassen Sie Ihrer Kreativität freien Lauf und planen Sie Ihren Außenbereich ganz einfach und bequem online mit unseren Planungstools.",
       "process.c3.title": "Öffentlicher Raum",
       "process.c3.text": "Ob Stadtplätze, Parks oder Verkehrsflächen – die Gestaltung öffentlicher Räume erfordert ein perfektes Zusammenspiel aus Ästhetik, Funktionalität und Langlebigkeit.",
@@ -79,7 +71,7 @@
       "service.eyebrow": "Service",
       "service.title": "Gut vorbereitet planen",
       "service.c1.title": "Händlersuche",
-      "service.c1.text": "Auch wenn fast jeder Baustoff-Fachhandel KANN-Produkte führt, verrät Ihnen unser Händlerfinder, welche Fachhändler sich in Ihrer Nähe befinden.",
+      "service.c1.text": "Auch wenn fast jeder Baustoff-Fachhandel Shalaj-Produkte führt, verrät Ihnen unser Händlerfinder, welche Fachhändler sich in Ihrer Nähe befinden.",
       "service.c1.link": "Händlersuche",
       "service.c2.title": "Info-Material",
       "service.c2.text": "Sie interessieren sich für unsere Broschüren und Kataloge? Einfach downloaden oder direkt nach Hause bestellen und Inspiration sammeln.",
@@ -87,7 +79,7 @@
       "service.c3.title": "Technische Hilfe",
       "service.c3.text": "Für einen perfekten Lieblingsplatz muss auch die Verarbeitung stimmen. Wir haben alles Wissenswerte für die einzelnen Einbauarbeiten aufbereitet.",
       "service.c3.link": "Technische Hilfe",
-      "magazine.eyebrow": "KANN-Magazin",
+      "magazine.eyebrow": "Shalaj-Magazin",
       "magazine.title": "Aktuelle Gartenthemen",
       "magazine.all": "Alle Artikel lesen",
       "magazine.more": "Mehr erfahren ›",
@@ -99,7 +91,7 @@
       "magazine.a3.title": "So schaffen Sie Ihren eigenen Mini-Wald",
       "career.eyebrow": "Karriere",
       "career.title": "Wir machen deinen Arbeitsplatz zum Lieblingsplatz",
-      "career.text": "KANN ist die Nr. 1 für Lieblingsplätze im Grünen. Über 900 MitarbeiterInnen an 20 Standorten sorgen für ein dynamisches Wachstum und schätzen den Teamspirit des erfolgreichen Familienunternehmens. Offene Kommunikation, flache Hierarchien, individuelle Karriereförderung und flexible Arbeitszeiten sind nur einige Highlights bei KANN.",
+      "career.text": "Shalaj ist die Nr. 1 für Lieblingsplätze im Grünen. Über 900 MitarbeiterInnen an 20 Standorten sorgen für ein dynamisches Wachstum und schätzen den Teamspirit des erfolgreichen Familienunternehmens. Offene Kommunikation, flache Hierarchien, individuelle Karriereförderung und flexible Arbeitszeiten sind nur einige Highlights bei Shalaj.",
       "career.cta": "Jetzt entdecken",
       "footer.inspiration.title": "Inspiration",
       "footer.inspiration.l1": "Stilwelten",
@@ -129,16 +121,16 @@
       "footer.service.l4": "Broschüren & Kataloge",
       "footer.service.l5": "Planungstools",
       "footer.service.l6": "Mustergärten",
-      "footer.service.l7": "KANN-Shop",
-      "footer.about.title": "KANN",
+      "footer.service.l7": "Shalaj-Shop",
+      "footer.about.title": "Shalaj",
       "footer.about.l1": "Klimalieblinge",
       "footer.about.l2": "Nachhaltigkeit",
       "footer.about.l3": "Karriere",
       "footer.about.l4": "Über uns",
       "footer.about.l5": "Presse",
       "footer.about.l6": "Kontakt",
-      "footer.careersColTitle": "Karriere bei KANN",
-      "footer.copyright": "© KANN GmbH Baustoffwerke",
+      "footer.careersColTitle": "Karriere bei Shalaj",
+      "footer.copyright": "© Shalaj GmbH Baustoffwerke",
       "footer.legalAria": "Rechtliches",
       "footer.legal.impressum": "Impressum",
       "footer.legal.verhaltenskodex": "Verhaltenskodex",
@@ -147,42 +139,48 @@
       "footer.legal.aeb": "AEB",
       "footer.legal.datenschutz": "Datenschutz",
       "footer.legal.hinweise": "Allgemeine Hinweise",
-      "pageHero.eyebrow": "KANN Baustoffwerke",
-      "pages.inspiration.title": "Inspiration",
+      "pageHero.eyebrow": "Shalaj Baustoffwerke",
+      "pages.inspiration.title": "Inspiration2",
       "pages.inspiration.subtitle": "Stilwelten, Naturgärten und urbane Lieblingsplätze – Ideen für Ihr nächstes Projekt.",
       "pages.products.title": "Alle Produkte",
-      "pages.products.subtitle": "Von Gestaltungspflaster bis Terrassenplatten – das komplette KANN Sortiment auf einen Blick.",
+      "pages.products.subtitle": "Von Gestaltungspflaster bis Terrassenplatten – das komplette Shalaj Sortiment auf einen Blick.",
       "pages.publicSpace.title": "Öffentlicher Raum",
       "pages.publicSpace.subtitle": "Projekte, individuelle Lösungen und klimaaktive Systeme für Städte und Kommunen.",
       "pages.service.title": "Service",
       "pages.service.subtitle": "Technische Hilfe, Planungstools, Händlersuche und Broschüren – gut vorbereitet ans Projekt.",
-      "pages.about.title": "KANN",
+      "pages.about.title": "Shalaj",
       "pages.about.subtitle": "Seit fast 100 Jahren Baustoffwerke aus Überzeugung – Nachhaltigkeit, Klimalieblinge und Menschen.",
       "pages.careers.title": "Karriere",
-      "pages.careers.subtitle": "Werde Teil von KANN – offene Stellen, Ausbildung und Einblicke in unsere Arbeitgebermarke.",
+      "pages.careers.subtitle": "Werde Teil von Shalaj – offene Stellen, Ausbildung und Einblicke in unsere Arbeitgebermarke.\n\ntest subtitle",
       "notFound.title": "Seite nicht gefunden",
       "notFound.text": "Die aufgerufene Seite existiert nicht oder wurde verschoben.",
       "notFound.home": "Zur Startseite",
-      "title.home": "KANN Baustoffwerke",
-      "title.inspiration": "Inspiration | KANN",
-      "title.products": "Alle Produkte | KANN",
-      "title.publicSpace": "Öffentlicher Raum | KANN",
-      "title.service": "Service | KANN",
-      "title.about": "KANN",
-      "title.careers": "Karriere | KANN",
-      "title.notFound": "Seite nicht gefunden | KANN"
+      "title.home": "Shalaj Baustoffwerke",
+      "title.inspiration": "Inspiration | Shalaj",
+      "title.products": "Alle Produkte | Shalaj",
+      "title.publicSpace": "Öffentlicher Raum | Shalaj",
+      "title.service": "Service | Shalaj",
+      "title.about": "Shalaj",
+      "title.careers": "Karriere | Shalaj",
+      "title.notFound": "Seite nicht gefunden | Shalaj",
+      "title.admin": "Inhalts-Dashboard | Shalaj",
+      "title.adminPages": "Seiten · Admin | Shalaj",
+      "title.adminPageNew": "Neue Seite · Admin | Shalaj",
+      "title.adminPageEdit": "Seite bearbeiten · Admin | Shalaj",
+      "title.adminCategories": "Kategorien · Admin | Shalaj",
+      "title.adminProducts": "Produkte · Admin | Shalaj"
     },
     "en": {
       "nav.inspiration": "Inspiration",
       "nav.products": "All products",
       "nav.publicSpace": "Public space",
       "nav.service": "Service",
-      "nav.about": "KANN",
+      "nav.about": "Shalaj",
       "nav.careers": "Careers",
-      "header.brandAlt": "KANN Baustoffwerke",
-      "header.homeAria": "KANN Baustoffwerke home page",
-      "header.anniversaryAria": "99 years of KANN",
-      "header.anniversaryLabel": "years KANN",
+      "header.brandAlt": "Shalaj Baustoffwerke",
+      "header.homeAria": "Shalaj Baustoffwerke home page",
+      "header.anniversaryAria": "99 years of Shalaj",
+      "header.anniversaryLabel": "years Shalaj",
       "header.navAria": "Main navigation",
       "header.quickAccessAria": "Quick access",
       "header.search": "Search",
@@ -208,21 +206,9 @@
       "hero.s6.subtitle": "Authentically aged for unmistakable character.",
       "categories.title": "Product categories",
       "categories.trackAria": "Product categories, horizontal scrollbar",
-      "categories.gestaltungspflaster": "Decorative paving",
-      "categories.oekopflaster": "Eco paving",
-      "categories.funktionspflaster": "Functional paving",
-      "categories.betonTerrassenplatten": "Concrete patio slabs",
-      "categories.keramikTerrassenplatten": "Ceramic patio slabs",
-      "categories.blockstufen": "Block steps",
-      "categories.palisaden": "Palisades",
-      "categories.mauerBoeschung": "Wall & embankment systems",
-      "categories.bordRandsteine": "Kerbs & edging stones",
-      "categories.entwaesserung": "Drainage systems",
-      "categories.fertigteile": "Precast elements",
-      "categories.reinigungZubehoer": "Cleaning & accessories",
-      "welcome.eyebrow": "KANN Baustoffwerke",
+      "welcome.eyebrow": "Shalaj Baustoffwerke",
       "welcome.title": "Enjoy discovering new favourite spots",
-      "welcome.p1": "Welcome to KANN, your first choice for premium concrete stone products. In everything we create from the versatile material concrete, nature is our model and our driving force. This shows not only in unique design, but also in the unshakeable durability and first-class quality of our products.",
+      "welcome.p1": "Welcome to Shalaj, your first choice for premium concrete stone products. In everything we create from the versatile material concrete, nature is our model and our driving force. This shows not only in unique design, but also in the unshakeable durability and first-class quality of our products.",
       "welcome.p2": "Let yourself be inspired by the exceptional aesthetics and outstanding functionality that concrete unfolds in the skilled hands of our experienced product developers. Follow us into a world full of inspiration!",
       "news.imageAlt": "Product highlights 2026",
       "news.eyebrow": "New arrivals",
@@ -231,11 +217,11 @@
       "news.cta": "Discover now",
       "process.eyebrow": "Process",
       "process.title": "We support you at every step",
-      "process.lead": "Whether a private or public favourite spot: KANN accompanies you from the first inspiration to the finished surface. Discover a wide range of design ideas for patios, paths and gardens – and see how modern concrete stone solutions turn outdoor areas into places you truly love.",
+      "process.lead": "Whether a private or public favourite spot: Shalaj accompanies you from the first inspiration to the finished surface. Discover a wide range of design ideas for patios, paths and gardens – and see how modern concrete stone solutions turn outdoor areas into places you truly love.",
       "process.more": "Learn more",
       "process.c1.title": "Inspiration for your individual outdoor design",
       "process.c1.text": "“To plant a garden is to believe in tomorrow.” We share this quote by Audrey Hepburn – our goal is to support you in designing your outdoor space with high-quality products.",
-      "process.c2.title": "KANN planning tools",
+      "process.c2.title": "Shalaj planning tools",
       "process.c2.text": "Give your creativity free rein and plan your outdoor space easily and conveniently online with our planning tools.",
       "process.c3.title": "Public space",
       "process.c3.text": "Whether town squares, parks or traffic areas – designing public spaces requires a perfect interplay of aesthetics, functionality and durability.",
@@ -247,7 +233,7 @@
       "service.eyebrow": "Service",
       "service.title": "Plan well prepared",
       "service.c1.title": "Dealer search",
-      "service.c1.text": "Even though almost every builders’ merchant stocks KANN products, our dealer finder shows you which specialist retailers are near you.",
+      "service.c1.text": "Even though almost every builders’ merchant stocks Shalaj products, our dealer finder shows you which specialist retailers are near you.",
       "service.c1.link": "Find a dealer",
       "service.c2.title": "Info material",
       "service.c2.text": "Interested in our brochures and catalogues? Simply download them or have them delivered to your home and gather inspiration.",
@@ -255,7 +241,7 @@
       "service.c3.title": "Technical support",
       "service.c3.text": "A perfect favourite spot also depends on correct installation. We have prepared everything worth knowing for the individual installation tasks.",
       "service.c3.link": "View technical support",
-      "magazine.eyebrow": "KANN Magazine",
+      "magazine.eyebrow": "Shalaj Magazine",
       "magazine.title": "Current garden topics",
       "magazine.all": "Read all articles",
       "magazine.more": "Learn more ›",
@@ -267,7 +253,7 @@
       "magazine.a3.title": "How to create your own mini forest",
       "career.eyebrow": "Careers",
       "career.title": "We turn your workplace into a favourite place",
-      "career.text": "KANN is the No. 1 for favourite spots in the green. More than 900 employees at 20 locations drive dynamic growth and value the team spirit of this successful family business. Open communication, flat hierarchies, individual career development and flexible working hours are just some of the highlights at KANN.",
+      "career.text": "Shalaj is the No. 1 for favourite spots in the green. More than 900 employees at 20 locations drive dynamic growth and value the team spirit of this successful family business. Open communication, flat hierarchies, individual career development and flexible working hours are just some of the highlights at Shalaj.",
       "career.cta": "Discover now",
       "footer.inspiration.title": "Inspiration",
       "footer.inspiration.l1": "Style worlds",
@@ -297,16 +283,16 @@
       "footer.service.l4": "Brochures & catalogues",
       "footer.service.l5": "Planning tools",
       "footer.service.l6": "Show gardens",
-      "footer.service.l7": "KANN Shop",
-      "footer.about.title": "KANN",
+      "footer.service.l7": "Shalaj Shop",
+      "footer.about.title": "Shalaj",
       "footer.about.l1": "Climate favourites",
       "footer.about.l2": "Sustainability",
       "footer.about.l3": "Careers",
       "footer.about.l4": "About us",
       "footer.about.l5": "Press",
       "footer.about.l6": "Contact",
-      "footer.careersColTitle": "Careers at KANN",
-      "footer.copyright": "© KANN GmbH Baustoffwerke",
+      "footer.careersColTitle": "Careers at Shalaj",
+      "footer.copyright": "© Shalaj GmbH Baustoffwerke",
       "footer.legalAria": "Legal",
       "footer.legal.impressum": "Imprint",
       "footer.legal.verhaltenskodex": "Code of conduct",
@@ -315,42 +301,48 @@
       "footer.legal.aeb": "Purchasing terms",
       "footer.legal.datenschutz": "Privacy",
       "footer.legal.hinweise": "General information",
-      "pageHero.eyebrow": "KANN Baustoffwerke",
+      "pageHero.eyebrow": "Shalaj Baustoffwerke",
       "pages.inspiration.title": "Inspiration",
       "pages.inspiration.subtitle": "Style worlds, natural gardens and urban favourite spots – ideas for your next project.",
       "pages.products.title": "All products",
-      "pages.products.subtitle": "From decorative paving to patio slabs – the complete KANN range at a glance.",
+      "pages.products.subtitle": "From decorative paving to patio slabs – the complete Shalaj range at a glance.",
       "pages.publicSpace.title": "Public space",
       "pages.publicSpace.subtitle": "Projects, individual solutions and climate-active systems for towns and municipalities.",
       "pages.service.title": "Service",
       "pages.service.subtitle": "Technical support, planning tools, dealer search and brochures – start your project well prepared.",
-      "pages.about.title": "KANN",
+      "pages.about.title": "Shalaj",
       "pages.about.subtitle": "Building materials made with conviction for almost 100 years – sustainability, climate favourites and people.",
       "pages.careers.title": "Careers",
-      "pages.careers.subtitle": "Become part of KANN – open positions, apprenticeships and insights into our employer brand.",
+      "pages.careers.subtitle": "Become part of Shalaj – open positions, apprenticeships and insights into our employer brand.\n\ntest subtitle",
       "notFound.title": "Page not found",
       "notFound.text": "The page you requested does not exist or has been moved.",
       "notFound.home": "Back to home",
-      "title.home": "KANN Baustoffwerke",
-      "title.inspiration": "Inspiration | KANN",
-      "title.products": "All products | KANN",
-      "title.publicSpace": "Public space | KANN",
-      "title.service": "Service | KANN",
-      "title.about": "KANN",
-      "title.careers": "Careers | KANN",
-      "title.notFound": "Page not found | KANN"
+      "title.home": "Shalaj Baustoffwerke",
+      "title.inspiration": "Inspiration | Shalaj",
+      "title.products": "All products | Shalaj",
+      "title.publicSpace": "Public space | Shalaj",
+      "title.service": "Service | Shalaj",
+      "title.about": "Shalaj",
+      "title.careers": "Careers | Shalaj",
+      "title.notFound": "Page not found | Shalaj",
+      "title.admin": "Content dashboard | Shalaj",
+      "title.adminPages": "Pages · Admin | Shalaj",
+      "title.adminPageNew": "New page · Admin | Shalaj",
+      "title.adminPageEdit": "Edit page · Admin | Shalaj",
+      "title.adminCategories": "Categories · Admin | Shalaj",
+      "title.adminProducts": "Products · Admin | Shalaj"
     },
     "sq": {
       "nav.inspiration": "Frymëzim",
       "nav.products": "Të gjitha produktet",
       "nav.publicSpace": "Hapësira publike",
       "nav.service": "Shërbimi",
-      "nav.about": "KANN",
+      "nav.about": "Shalaj",
       "nav.careers": "Karriera",
-      "header.brandAlt": "KANN Baustoffwerke",
-      "header.homeAria": "KANN Baustoffwerke faqja kryesore",
-      "header.anniversaryAria": "99 vjet KANN",
-      "header.anniversaryLabel": "vjet KANN",
+      "header.brandAlt": "Shalaj Baustoffwerke",
+      "header.homeAria": "Shalaj Baustoffwerke faqja kryesore",
+      "header.anniversaryAria": "99 vjet Shalaj",
+      "header.anniversaryLabel": "vjet Shalaj",
       "header.navAria": "Navigimi kryesor",
       "header.quickAccessAria": "Qasje e shpejtë",
       "header.search": "Kërko",
@@ -376,21 +368,9 @@
       "hero.s6.subtitle": "E vjetruar në mënyrë autentike për karakter të papërsëritshëm.",
       "categories.title": "Kategoritë e produkteve",
       "categories.trackAria": "Kategoritë e produkteve, shirit lëvizës horizontal",
-      "categories.gestaltungspflaster": "Pllakëzim dekorativ",
-      "categories.oekopflaster": "Pllakëzim ekologjik",
-      "categories.funktionspflaster": "Pllakëzim funksional",
-      "categories.betonTerrassenplatten": "Pllaka terrase prej betoni",
-      "categories.keramikTerrassenplatten": "Pllaka terrase prej qeramike",
-      "categories.blockstufen": "Shkallë blloku",
-      "categories.palisaden": "Palisada",
-      "categories.mauerBoeschung": "Sisteme muri dhe pjerrësie",
-      "categories.bordRandsteine": "Trotuare dhe gurë anësorë",
-      "categories.entwaesserung": "Sisteme kullimi",
-      "categories.fertigteile": "Elemente të parapërgatitura",
-      "categories.reinigungZubehoer": "Pastrim dhe aksesorë",
-      "welcome.eyebrow": "KANN Baustoffwerke",
+      "welcome.eyebrow": "Shalaj Baustoffwerke",
       "welcome.title": "Kënaquni duke zbuluar vende të reja të preferuara",
-      "welcome.p1": "Mirë se vini në KANN, adresa juaj e parë për produkte cilësore prej guri betoni. Në gjithçka që krijojmë nga materiali i gjithanshëm i betonit, natyra është modeli dhe shtysa jonë. Kjo shihet jo vetëm në dizajnin unik, por edhe në qëndrueshmërinë e palëkundur dhe cilësinë e klasit të parë të produkteve tona.",
+      "welcome.p1": "Mirë se vini në Shalaj, adresa juaj e parë për produkte cilësore prej guri betoni. Në gjithçka që krijojmë nga materiali i gjithanshëm i betonit, natyra është modeli dhe shtysa jonë. Kjo shihet jo vetëm në dizajnin unik, por edhe në qëndrueshmërinë e palëkundur dhe cilësinë e klasit të parë të produkteve tona.",
       "welcome.p2": "Lëreni veten të frymëzoheni nga estetika e jashtëzakonshme dhe funksionaliteti i shkëlqyer që betoni shpalos në duart e afta të zhvilluesve tanë me përvojë. Na ndiqni në një botë plot frymëzim!",
       "news.imageAlt": "Risitë e produkteve 2026",
       "news.eyebrow": "Risitë",
@@ -399,11 +379,11 @@
       "news.cta": "Zbuloni tani",
       "process.eyebrow": "Procesi",
       "process.title": "Ju mbështesim në çdo hap",
-      "process.lead": "Qoftë vend i preferuar privat apo publik: KANN ju shoqëron nga frymëzimi i parë deri te sipërfaqja e përfunduar. Zbuloni ide të shumëllojshme dizajni për terrasa, shtigje dhe kopshte – dhe shihni si zgjidhjet moderne prej guri betoni i kthejnë hapësirat e jashtme në vende ku ndiheni vërtet mirë.",
+      "process.lead": "Qoftë vend i preferuar privat apo publik: Shalaj ju shoqëron nga frymëzimi i parë deri te sipërfaqja e përfunduar. Zbuloni ide të shumëllojshme dizajni për terrasa, shtigje dhe kopshte – dhe shihni si zgjidhjet moderne prej guri betoni i kthejnë hapësirat e jashtme në vende ku ndiheni vërtet mirë.",
       "process.more": "Mëso më shumë",
       "process.c1.title": "Frymëzim për dizajnin tuaj individual të jashtëm",
       "process.c1.text": "„Të mbjellësh një kopsht do të thotë të besosh te e nesërmja.“ I bashkohemi këtij citati të Audrey Hepburn – qëllimi ynë është t’ju mbështesim në dizajnimin e hapësirës suaj të jashtme me produkte cilësore.",
-      "process.c2.title": "Mjetet e planifikimit KANN",
+      "process.c2.title": "Mjetet e planifikimit Shalaj",
       "process.c2.text": "Lëreni krijimtarinë tuaj të lirë dhe planifikoni hapësirën tuaj të jashtme lehtë dhe rehat online me mjetet tona të planifikimit.",
       "process.c3.title": "Hapësira publike",
       "process.c3.text": "Qofshin sheshe qyteti, parqe apo sipërfaqe qarkullimi – dizajnimi i hapësirave publike kërkon një ndërthurje të përsosur të estetikës, funksionalitetit dhe qëndrueshmërisë.",
@@ -415,7 +395,7 @@
       "service.eyebrow": "Shërbimi",
       "service.title": "Planifikoni të përgatitur mirë",
       "service.c1.title": "Kërko tregtarin",
-      "service.c1.text": "Edhe pse pothuajse çdo tregtar materialesh ndërtimi mban produktet KANN, gjetësi ynë i tregtarëve ju tregon cilët tregtarë të specializuar ndodhen pranë jush.",
+      "service.c1.text": "Edhe pse pothuajse çdo tregtar materialesh ndërtimi mban produktet Shalaj, gjetësi ynë i tregtarëve ju tregon cilët tregtarë të specializuar ndodhen pranë jush.",
       "service.c1.link": "Gjej një tregtar",
       "service.c2.title": "Materiale informative",
       "service.c2.text": "Ju interesojnë broshurat dhe katalogët tanë? Thjesht shkarkoni ose porositni drejt e në shtëpi dhe mblidhni frymëzim.",
@@ -423,7 +403,7 @@
       "service.c3.title": "Ndihmë teknike",
       "service.c3.text": "Një vend i përsosur i preferuar varet edhe nga vendosja e saktë. Kemi përgatitur gjithçka që vlen të dihet për punët e veçanta të instalimit.",
       "service.c3.link": "Shiko ndihmën teknike",
-      "magazine.eyebrow": "Revista KANN",
+      "magazine.eyebrow": "Revista Shalaj",
       "magazine.title": "Tema aktuale për kopshtin",
       "magazine.all": "Lexo të gjithë artikujt",
       "magazine.more": "Mëso më shumë ›",
@@ -435,7 +415,7 @@
       "magazine.a3.title": "Si të krijoni pyllin tuaj të vogël",
       "career.eyebrow": "Karriera",
       "career.title": "E kthejmë vendin tënd të punës në një vend të preferuar",
-      "career.text": "KANN është Nr. 1 për vende të preferuara në gjelbërim. Mbi 900 punonjës në 20 vendndodhje sigurojnë një rritje dinamike dhe vlerësojnë frymën ekipore të kësaj biznesi familjar të suksesshëm. Komunikimi i hapur, hierarkitë e sheshta, zhvillimi individual i karrierës dhe orari fleksibël i punës janë vetëm disa nga përparësitë te KANN.",
+      "career.text": "Shalaj është Nr. 1 për vende të preferuara në gjelbërim. Mbi 900 punonjës në 20 vendndodhje sigurojnë një rritje dinamike dhe vlerësojnë frymën ekipore të kësaj biznesi familjar të suksesshëm. Komunikimi i hapur, hierarkitë e sheshta, zhvillimi individual i karrierës dhe orari fleksibël i punës janë vetëm disa nga përparësitë te Shalaj.",
       "career.cta": "Zbuloni tani",
       "footer.inspiration.title": "Frymëzim",
       "footer.inspiration.l1": "Botë stilesh",
@@ -465,16 +445,16 @@
       "footer.service.l4": "Broshura dhe katalogë",
       "footer.service.l5": "Mjete planifikimi",
       "footer.service.l6": "Kopshte model",
-      "footer.service.l7": "Dyqani KANN",
-      "footer.about.title": "KANN",
+      "footer.service.l7": "Dyqani Shalaj",
+      "footer.about.title": "Shalaj",
       "footer.about.l1": "Të preferuarat klimatike",
       "footer.about.l2": "Qëndrueshmëria",
       "footer.about.l3": "Karriera",
       "footer.about.l4": "Rreth nesh",
       "footer.about.l5": "Shtypi",
       "footer.about.l6": "Kontakt",
-      "footer.careersColTitle": "Karriera te KANN",
-      "footer.copyright": "© KANN GmbH Baustoffwerke",
+      "footer.careersColTitle": "Karriera te Shalaj",
+      "footer.copyright": "© Shalaj GmbH Baustoffwerke",
       "footer.legalAria": "Ligjore",
       "footer.legal.impressum": "Impresum",
       "footer.legal.verhaltenskodex": "Kodi i sjelljes",
@@ -483,41 +463,65 @@
       "footer.legal.aeb": "Kushtet e blerjes",
       "footer.legal.datenschutz": "Privatësia",
       "footer.legal.hinweise": "Informacione të përgjithshme",
-      "pageHero.eyebrow": "KANN Baustoffwerke",
+      "pageHero.eyebrow": "Shalaj Baustoffwerke",
       "pages.inspiration.title": "Frymëzim",
       "pages.inspiration.subtitle": "Botë stilesh, kopshte natyrore dhe vende të preferuara urbane – ide për projektin tuaj të radhës.",
       "pages.products.title": "Të gjitha produktet",
-      "pages.products.subtitle": "Nga pllakëzimi dekorativ te pllakat e terrasës – i gjithë asortimenti KANN me një shikim.",
+      "pages.products.subtitle": "Nga pllakëzimi dekorativ te pllakat e terrasës – i gjithë asortimenti Shalaj me një shikim.",
       "pages.publicSpace.title": "Hapësira publike",
       "pages.publicSpace.subtitle": "Projekte, zgjidhje individuale dhe sisteme klimatikisht aktive për qytete dhe komuna.",
       "pages.service.title": "Shërbimi",
       "pages.service.subtitle": "Ndihmë teknike, mjete planifikimi, kërkim tregtari dhe broshura – nisni projektin të përgatitur mirë.",
-      "pages.about.title": "KANN",
+      "pages.about.title": "Shalaj",
       "pages.about.subtitle": "Prej gati 100 vjetësh materiale ndërtimi me bindje – qëndrueshmëri, të preferuarat klimatike dhe njerëz.",
       "pages.careers.title": "Karriera",
-      "pages.careers.subtitle": "Bëhu pjesë e KANN – vende të lira, praktika dhe njohje me markën tonë si punëdhënës.",
+      "pages.careers.subtitle": "Bëhu pjesë e Shalaj – vende të lira, praktika dhe njohje me markën tonë si punëdhënës.\n\ntest subtitle",
       "notFound.title": "Faqja nuk u gjet",
       "notFound.text": "Faqja që kërkuat nuk ekziston ose është zhvendosur.",
       "notFound.home": "Kthehu në faqen kryesore",
-      "title.home": "KANN Baustoffwerke",
-      "title.inspiration": "Frymëzim | KANN",
-      "title.products": "Të gjitha produktet | KANN",
-      "title.publicSpace": "Hapësira publike | KANN",
-      "title.service": "Shërbimi | KANN",
-      "title.about": "KANN",
-      "title.careers": "Karriera | KANN",
-      "title.notFound": "Faqja nuk u gjet | KANN"
+      "title.home": "Shalaj Baustoffwerke",
+      "title.inspiration": "Frymëzim | Shalaj",
+      "title.products": "Të gjitha produktet | Shalaj",
+      "title.publicSpace": "Hapësira publike | Shalaj",
+      "title.service": "Shërbimi | Shalaj",
+      "title.about": "Shalaj",
+      "title.careers": "Karriera | Shalaj",
+      "title.notFound": "Faqja nuk u gjet | Shalaj",
+      "title.admin": "Paneli i përmbajtjes | Shalaj",
+      "title.adminPages": "Faqet · Admin | Shalaj",
+      "title.adminPageNew": "Faqe e re · Admin | Shalaj",
+      "title.adminPageEdit": "Redakto faqen · Admin | Shalaj",
+      "title.adminCategories": "Kategoritë · Admin | Shalaj",
+      "title.adminProducts": "Produktet · Admin | Shalaj"
     }
   },
   "content": {
-    "logo": "https://www.kann.de/typo3conf/ext/kann_baustoffwerke_sitepackage/Resources/Public/Images/logo.svg",
+    "logo": "images/shala-logo.png",
     "nav": [
-      { "labelKey": "nav.inspiration", "path": "/inspiration" },
-      { "labelKey": "nav.products", "path": "/products" },
-      { "labelKey": "nav.publicSpace", "path": "/public-space" },
-      { "labelKey": "nav.service", "path": "/service" },
-      { "labelKey": "nav.about", "path": "/about" },
-      { "labelKey": "nav.careers", "path": "/careers" }
+      {
+        "labelKey": "nav.inspiration",
+        "path": "/inspiration"
+      },
+      {
+        "labelKey": "nav.products",
+        "path": "/products"
+      },
+      {
+        "labelKey": "nav.publicSpace",
+        "path": "/public-space"
+      },
+      {
+        "labelKey": "nav.service",
+        "path": "/service"
+      },
+      {
+        "labelKey": "nav.about",
+        "path": "/about"
+      },
+      {
+        "labelKey": "nav.careers",
+        "path": "/careers"
+      }
     ],
     "hero": [
       {
@@ -552,20 +556,6 @@
         "subtitleKey": "hero.s6.subtitle",
         "image": "https://www.kann.de/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg"
       }
-    ],
-    "categories": [
-      { "labelKey": "categories.gestaltungspflaster", "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_GESTALTUNGSPFLASTER.svg" },
-      { "labelKey": "categories.oekopflaster", "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_O___eKOGESTALTUNGSPFLASTER.svg" },
-      { "labelKey": "categories.funktionspflaster", "icon": "https://www.kann.de/fileadmin/user_upload/04_PRODUKT_ICONS_FUNKTIONSPFLASTER.svg" },
-      { "labelKey": "categories.betonTerrassenplatten", "icon": "https://www.kann.de/fileadmin/user_upload/terrassenplatten.svg" },
-      { "labelKey": "categories.keramikTerrassenplatten", "icon": "https://www.kann.de/fileadmin/user_upload/04_PRODUKT_ICONS_KERAMIKPLATTEN.svg" },
-      { "labelKey": "categories.blockstufen", "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_STUFEN.svg" },
-      { "labelKey": "categories.palisaden", "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_PALISADEN.svg" },
-      { "labelKey": "categories.mauerBoeschung", "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_MAUERN.svg" },
-      { "labelKey": "categories.bordRandsteine", "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Bord_Randsteine/KBW_Produkticons_Bord-u-Randsteine_negativ.svg" },
-      { "labelKey": "categories.entwaesserung", "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Entwaesserungartikel/KBW_Produkticons_Entwaesserungsartikel_negativ.svg" },
-      { "labelKey": "categories.fertigteile", "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Fertigteile/KBW_Produkticons_Fertigteile_negativ.svg" },
-      { "labelKey": "categories.reinigungZubehoer", "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_REINIGUNGSMITTEL.svg" }
     ],
     "processCards": [
       {
@@ -688,43 +678,366 @@
       "footer.legal.datenschutz",
       "footer.legal.hinweise"
     ],
-    "footerSocial": ["Facebook", "Instagram", "Pinterest"],
+    "footerSocial": [
+      "Facebook",
+      "Instagram",
+      "Pinterest"
+    ],
     "images": {
       "productNews": "https://www.kann.de/fileadmin/_processed_/a/6/csm_MultiTec-Aqua__40x20__Jura-1_5ffe39333c.jpg",
       "resorb": "https://www.kann.de/fileadmin/_processed_/5/b/csm_KBW_Steingrafiken_mitSticker_aufGrau_Resorb_1_32627ea3e7.jpg",
       "career": "https://www.kann.de/fileadmin/_processed_/c/8/csm_02_KREATION_ARBEITGEBERMARKE_BANNER_START_1900x990px_220204_d482f6d740.jpg"
-    },
-    "pages": {
-      "inspiration": {
-        "titleKey": "pages.inspiration.title",
-        "subtitleKey": "pages.inspiration.subtitle",
-        "heroImage": "https://www.kann.de/fileadmin/_processed_/0/d/csm_Stolberg_Vios_08_grauRET_5df309f21c.jpg"
-      },
-      "products": {
-        "titleKey": "pages.products.title",
-        "subtitleKey": "pages.products.subtitle",
-        "heroImage": "https://www.kann.de/fileadmin/_processed_/b/0/csm_Vios-Platten__greige__100x100__18__RET_9415a69c34.jpg"
-      },
-      "publicSpace": {
-        "titleKey": "pages.publicSpace.title",
-        "subtitleKey": "pages.publicSpace.subtitle",
-        "heroImage": "https://www.kann.de/fileadmin/_processed_/6/3/csm_Solarmodulhalter_Montage_KI-RET_d2bb95308f.jpg"
-      },
-      "service": {
-        "titleKey": "pages.service.title",
-        "subtitleKey": "pages.service.subtitle",
-        "heroImage": "https://www.kann.de/fileadmin/_processed_/f/a/csm_Pheos-Platten__60x40__anthrazit_plus-1_eaa6f88376.jpeg"
-      },
-      "about": {
-        "titleKey": "pages.about.title",
-        "subtitleKey": "pages.about.subtitle",
-        "heroImage": "https://www.kann.de/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg"
-      },
-      "careers": {
-        "titleKey": "pages.careers.title",
-        "subtitleKey": "pages.careers.subtitle",
-        "heroImage": "https://www.kann.de/fileadmin/_processed_/c/8/csm_02_KREATION_ARBEITGEBERMARKE_BANNER_START_1900x990px_220204_d482f6d740.jpg"
-      }
     }
-  }
+  },
+  "pages": [
+    {
+      "id": "inspiration",
+      "slug": "inspiration",
+      "titleKey": "pages.inspiration.title",
+      "subtitleKey": "pages.inspiration.subtitle",
+      "heroImage": "https://www.kann.de/fileadmin/_processed_/0/d/csm_Stolberg_Vios_08_grauRET_5df309f21c.jpg",
+      "sections": [
+        "welcome",
+        "magazine"
+      ]
+    },
+    {
+      "id": "products",
+      "slug": "products",
+      "titleKey": "pages.products.title",
+      "subtitleKey": "pages.products.subtitle",
+      "heroImage": "https://www.kann.de/fileadmin/_processed_/b/0/csm_Vios-Platten__greige__100x100__18__RET_9415a69c34.jpg",
+      "sections": [
+        "category-grid",
+        "product-catalog"
+      ]
+    },
+    {
+      "id": "public-space",
+      "slug": "public-space",
+      "titleKey": "pages.publicSpace.title",
+      "subtitleKey": "pages.publicSpace.subtitle",
+      "heroImage": "https://www.kann.de/fileadmin/_processed_/6/3/csm_Solarmodulhalter_Montage_KI-RET_d2bb95308f.jpg",
+      "sections": [
+        "resorb",
+        "service"
+      ]
+    },
+    {
+      "id": "service",
+      "slug": "service",
+      "titleKey": "pages.service.title",
+      "subtitleKey": "pages.service.subtitle",
+      "heroImage": "https://www.kann.de/fileadmin/_processed_/f/a/csm_Pheos-Platten__60x40__anthrazit_plus-1_eaa6f88376.jpeg",
+      "sections": [
+        "service",
+        "process"
+      ]
+    },
+    {
+      "id": "about",
+      "slug": "about",
+      "titleKey": "pages.about.title",
+      "subtitleKey": "pages.about.subtitle",
+      "heroImage": "https://www.kann.de/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg",
+      "sections": [
+        "welcome",
+        "career-cta"
+      ]
+    },
+    {
+      "id": "careers",
+      "slug": "careers",
+      "titleKey": "pages.careers.title",
+      "subtitleKey": "pages.careers.subtitle",
+      "heroImage": "https://www.kann.de/fileadmin/_processed_/c/8/csm_02_KREATION_ARBEITGEBERMARKE_BANNER_START_1900x990px_220204_d482f6d740.jpg",
+      "sections": [
+        "career-cta"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "gestaltungspflaster",
+      "slug": "gestaltungspflaster",
+      "name": {
+        "de": "Gestaltungspflaster",
+        "en": "Decorative paving",
+        "sq": "Pllakëzim dekorativ"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_GESTALTUNGSPFLASTER.svg"
+    },
+    {
+      "id": "oekopflaster",
+      "slug": "oekopflaster",
+      "name": {
+        "de": "Ökopflaster",
+        "en": "Eco paving",
+        "sq": "Pllakëzim ekologjik"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_O___eKOGESTALTUNGSPFLASTER.svg"
+    },
+    {
+      "id": "funktionspflaster",
+      "slug": "funktionspflaster",
+      "name": {
+        "de": "Funktionspflaster",
+        "en": "Functional paving",
+        "sq": "Pllakëzim funksional"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/04_PRODUKT_ICONS_FUNKTIONSPFLASTER.svg"
+    },
+    {
+      "id": "beton-terrassenplatten",
+      "slug": "beton-terrassenplatten",
+      "name": {
+        "de": "Beton Terrassenplatten",
+        "en": "Concrete patio slabs",
+        "sq": "Pllaka terrase prej betoni"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/terrassenplatten.svg"
+    },
+    {
+      "id": "keramik-terrassenplatten",
+      "slug": "keramik-terrassenplatten",
+      "name": {
+        "de": "Keramik Terrassenplatten",
+        "en": "Ceramic patio slabs",
+        "sq": "Pllaka terrase prej qeramike"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/04_PRODUKT_ICONS_KERAMIKPLATTEN.svg"
+    },
+    {
+      "id": "blockstufen",
+      "slug": "blockstufen",
+      "name": {
+        "de": "Blockstufen",
+        "en": "Block steps",
+        "sq": "Shkallë blloku"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_STUFEN.svg"
+    },
+    {
+      "id": "palisaden",
+      "slug": "palisaden",
+      "name": {
+        "de": "Palisaden",
+        "en": "Palisades",
+        "sq": "Palisada"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_PALISADEN.svg"
+    },
+    {
+      "id": "mauer-boeschung",
+      "slug": "mauer-boeschung",
+      "name": {
+        "de": "Mauer- & Böschungssysteme",
+        "en": "Wall & embankment systems",
+        "sq": "Sisteme muri dhe pjerrësie"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_MAUERN.svg"
+    },
+    {
+      "id": "bord-randsteine",
+      "slug": "bord-randsteine",
+      "name": {
+        "de": "Bord- & Randsteine",
+        "en": "Kerbs & edging stones",
+        "sq": "Trotuare dhe gurë anësorë"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Bord_Randsteine/KBW_Produkticons_Bord-u-Randsteine_negativ.svg"
+    },
+    {
+      "id": "entwaesserung",
+      "slug": "entwaesserung",
+      "name": {
+        "de": "Entwässerungssysteme",
+        "en": "Drainage systems",
+        "sq": "Sisteme kullimi"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Entwaesserungartikel/KBW_Produkticons_Entwaesserungsartikel_negativ.svg"
+    },
+    {
+      "id": "fertigteile",
+      "slug": "fertigteile",
+      "name": {
+        "de": "Fertigteile",
+        "en": "Precast elements",
+        "sq": "Elemente të parapërgatitura"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Fertigteile/KBW_Produkticons_Fertigteile_negativ.svg"
+    },
+    {
+      "id": "reinigung-zubehoer",
+      "slug": "reinigung-zubehoer",
+      "name": {
+        "de": "Reinigung & Zubehör",
+        "en": "Cleaning & accessories",
+        "sq": "Pastrim dhe aksesorë"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_REINIGUNGSMITTEL.svg"
+    },
+    {
+      "id": "category-e-re",
+      "slug": "category-e-re",
+      "name": {
+        "de": "Category e re",
+        "en": "Category e re",
+        "sq": "Category e re"
+      },
+      "icon": ""
+    }
+  ],
+  "products": [
+    {
+      "id": "vios-pflaster",
+      "categoryId": "gestaltungspflaster",
+      "name": {
+        "de": "Vios Pflaster",
+        "en": "Vios paving",
+        "sq": "Pllakëzim Vios"
+      },
+      "blurb": {
+        "de": "Zeitloses Gestaltungspflaster mit edler Oberfläche.",
+        "en": "Timeless design paving with a refined surface.",
+        "sq": "Pllakëzim dekorativ i përjetshëm me sipërfaqe fisnike."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/1/4/csm_Vios__40x20__anthrazit__Vios-Platten__100x100__grau-5_e180a784c7.jpeg"
+    },
+    {
+      "id": "zentano-antik",
+      "categoryId": "gestaltungspflaster",
+      "name": {
+        "de": "Zentano Antik",
+        "en": "Zentano Antik",
+        "sq": "Zentano antik"
+      },
+      "blurb": {
+        "de": "Authentisch gealtert für Höfe und Wege mit Charakter.",
+        "en": "Authentically aged for courtyards and paths with character.",
+        "sq": "E vjetruar autentikisht për oborre dhe shtigje me karakter."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg"
+    },
+    {
+      "id": "la-tierra",
+      "categoryId": "gestaltungspflaster",
+      "name": {
+        "de": "La Tierra",
+        "en": "La Tierra",
+        "sq": "La Tierra"
+      },
+      "blurb": {
+        "de": "Warme Erdtöne im wilden Verband.",
+        "en": "Warm earth tones in a random bond.",
+        "sq": "Nuanca të ngrohta toke në lidhje të lirë."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/0/9/csm_La_Tierra__wilder_Verband__Sunset__8__0dff78a3ca.jpeg"
+    },
+    {
+      "id": "vios-platten",
+      "categoryId": "beton-terrassenplatten",
+      "name": {
+        "de": "Vios Platten",
+        "en": "Vios slabs",
+        "sq": "Pllaka Vios"
+      },
+      "blurb": {
+        "de": "Großformatige Betonplatten für die moderne Terrasse.",
+        "en": "Large-format concrete slabs for the modern patio.",
+        "sq": "Pllaka betoni në format të madh për terrasën moderne."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/0/d/csm_Stolberg_Vios_08_grauRET_5df309f21c.jpg"
+    },
+    {
+      "id": "pheos-platten",
+      "categoryId": "beton-terrassenplatten",
+      "name": {
+        "de": "Pheos Platten",
+        "en": "Pheos slabs",
+        "sq": "Pllaka Pheos"
+      },
+      "blurb": {
+        "de": "Feine Ästhetik mit dezentem Glimmereffekt.",
+        "en": "Fine aesthetics with a subtle shimmer effect.",
+        "sq": "Estetikë e hollë me efekt të lehtë shkëlqimi."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/f/a/csm_Pheos-Platten__60x40__anthrazit_plus-1_eaa6f88376.jpeg"
+    },
+    {
+      "id": "cerapio",
+      "categoryId": "keramik-terrassenplatten",
+      "name": {
+        "de": "Cerapio",
+        "en": "Cerapio",
+        "sq": "Cerapio"
+      },
+      "blurb": {
+        "de": "Feinsteinzeug in Steinoptik – frostsicher und pflegeleicht.",
+        "en": "Porcelain stoneware in a stone look – frost-proof and low-maintenance.",
+        "sq": "Gres porcelanik në pamje guri – rezistent ndaj ngricës dhe i lehtë për mirëmbajtje."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/a/6/csm_MultiTec-Aqua__40x20__Jura-1_5ffe39333c.jpg"
+    },
+    {
+      "id": "ceragres",
+      "categoryId": "keramik-terrassenplatten",
+      "name": {
+        "de": "Ceragres",
+        "en": "Ceragres",
+        "sq": "Ceragres"
+      },
+      "blurb": {
+        "de": "Keramikplatten in Holz- und Betonoptik.",
+        "en": "Ceramic slabs in wood and concrete looks.",
+        "sq": "Pllaka qeramike në pamje druri dhe betoni."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/5/b/csm_KBW_Steingrafiken_mitSticker_aufGrau_Resorb_1_32627ea3e7.jpg"
+    },
+    {
+      "id": "rechteckpalisade",
+      "categoryId": "palisaden",
+      "name": {
+        "de": "Rechteckpalisade",
+        "en": "Rectangular palisade",
+        "sq": "Palisadë drejtkëndëshe"
+      },
+      "blurb": {
+        "de": "Klare Kanten für Beeteinfassungen und Stützmauern.",
+        "en": "Clean edges for bed borders and retaining walls.",
+        "sq": "Skaje të pastra për kufij shtretërish dhe mure mbajtëse."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg"
+    },
+    {
+      "id": "rundpalisade",
+      "categoryId": "palisaden",
+      "name": {
+        "de": "Rundpalisade",
+        "en": "Round palisade",
+        "sq": "Palisadë e rrumbullakët"
+      },
+      "blurb": {
+        "de": "Weiche Linien für organische Gartengestaltung.",
+        "en": "Soft lines for organic garden design.",
+        "sq": "Linja të buta për dizajn organik të kopshtit."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/0/9/csm_La_Tierra__wilder_Verband__Sunset__8__0dff78a3ca.jpeg"
+    },
+    {
+      "id": "kategori111",
+      "categoryId": "category-e-re",
+      "name": {
+        "de": "Kategori111",
+        "en": "Kategori111",
+        "sq": "Kategori111"
+      },
+      "blurb": {
+        "de": "Kategori111",
+        "en": "Kategori111",
+        "sq": "Kategori111"
+      },
+      "image": ""
+    }
+  ]
 }

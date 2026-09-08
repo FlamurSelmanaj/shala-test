@@ -1,0 +1,88 @@
+<section class="editor">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a routerLink="/admin/pages">Admin</a>
+    <span aria-hidden="true">/</span>
+    <a routerLink="/admin/pages">Pages</a>
+    <span aria-hidden="true">/</span>
+    <span class="here">{{ pageTitle() }}</span>
+  </nav>
+
+  @if (notFound()) {
+    <p class="msg err">No page with id “{{ id() }}”.</p>
+  } @else {
+    <header class="editor-head">
+      <div>
+        <h2>{{ pageTitle() }}</h2>
+        <p class="sub">Edit the hero and the static content of each section on this page.</p>
+      </div>
+      <div class="lang-tabs" role="tablist">
+        @for (lang of languages(); track lang) {
+          <button
+            type="button"
+            role="tab"
+            [class.on]="lang === activeLang()"
+            [attr.aria-selected]="lang === activeLang()"
+            (click)="activeLang.set(lang)"
+          >
+            {{ lang.toUpperCase() }}
+          </button>
+        }
+      </div>
+    </header>
+
+    @if (message(); as m) {
+      <p class="msg" [class.err]="m.kind === 'err'">{{ m.text }}</p>
+    }
+
+    <form (ngSubmit)="save()">
+      <div class="card">
+        <h3>Hero</h3>
+        <label class="field">
+          <span>Title ({{ activeLang().toUpperCase() }})</span>
+          <input name="hero-title" [(ngModel)]="draft.hero[activeLang()].title" autocomplete="off" />
+        </label>
+        <label class="field">
+          <span>Subtitle ({{ activeLang().toUpperCase() }})</span>
+          <textarea name="hero-sub" rows="2" [(ngModel)]="draft.hero[activeLang()].subtitle"></textarea>
+        </label>
+        <label class="field">
+          <span>Hero image URL</span>
+          <input name="hero-image" [(ngModel)]="draft.heroImage" placeholder="https://…" autocomplete="off" />
+        </label>
+        <div class="hero-preview" [class.empty]="!draft.heroImage">
+          @if (draft.heroImage) {
+            <img [src]="draft.heroImage" alt="" referrerpolicy="no-referrer" />
+          } @else {
+            <span>No hero image</span>
+          }
+        </div>
+      </div>
+
+      @for (group of sectionGroups(); track group.section) {
+        <div class="card">
+          <h3>{{ group.label }}</h3>
+          @for (key of group.keys; track key) {
+            <label class="field">
+              <span class="key">{{ key }}</span>
+              @if (isLong(key)) {
+                <textarea [name]="key" rows="3" [(ngModel)]="draft.sectionText[key][activeLang()]"></textarea>
+              } @else {
+                <input [name]="key" [(ngModel)]="draft.sectionText[key][activeLang()]" autocomplete="off" />
+              }
+            </label>
+          }
+        </div>
+      }
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" [disabled]="!apiOnline() || busy()">
+          Save changes
+        </button>
+        @if (record(); as r) {
+          <a class="btn btn-secondary" [routerLink]="['/', r.slug]">View page ↗</a>
+        }
+        <button type="button" class="btn ghost" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  }
+</section>

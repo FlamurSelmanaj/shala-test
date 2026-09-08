@@ -1,0 +1,85 @@
+<section class="editor">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a routerLink="/admin/products">Admin</a>
+    <span aria-hidden="true">/</span>
+    <a routerLink="/admin/products">Products</a>
+    <span aria-hidden="true">/</span>
+    <span class="here">{{ mode() === 'create' ? 'New product' : previewSlug() }}</span>
+  </nav>
+
+  @if (notFound()) {
+    <p class="msg err">No product with id “{{ id() }}”.</p>
+  } @else {
+    <h2>{{ mode() === 'create' ? 'New product' : 'Edit product' }}</h2>
+
+    @if (message(); as m) {
+      <p class="msg" [class.err]="m.kind === 'err'">{{ m.text }}</p>
+    }
+
+    <form (ngSubmit)="save()">
+      <div class="card">
+        <h3>Category</h3>
+        <label class="field">
+          <span>Belongs to</span>
+          <select name="category" [(ngModel)]="draft.categoryId">
+            <option value="" disabled>Choose a category…</option>
+            @for (c of categories(); track c.id) {
+              <option [value]="c.id">{{ text(c.name) }}</option>
+            }
+          </select>
+        </label>
+      </div>
+
+      <div class="card">
+        <h3>Name</h3>
+        @for (lang of languages(); track lang) {
+          <label class="field">
+            <span>{{ lang.toUpperCase() }}</span>
+            <input [name]="'name-' + lang" [(ngModel)]="draft.name[lang]" autocomplete="off" />
+          </label>
+        }
+        <p class="hint">
+          Slug: <code>{{ previewSlug() || '…' }}</code>
+          @if (mode() === 'create') { — derived from the German name }
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Blurb</h3>
+        @for (lang of languages(); track lang) {
+          <label class="field">
+            <span>{{ lang.toUpperCase() }}</span>
+            <textarea [name]="'blurb-' + lang" rows="2" [(ngModel)]="draft.blurb[lang]"></textarea>
+          </label>
+        }
+      </div>
+
+      <div class="card">
+        <h3>Image</h3>
+        <label class="field">
+          <span>Image URL</span>
+          <input name="image" [(ngModel)]="draft.image" placeholder="https://…" autocomplete="off" />
+        </label>
+        <div class="img-preview" [class.empty]="!draft.image">
+          @if (draft.image) {
+            <img [src]="draft.image" alt="" referrerpolicy="no-referrer" />
+          } @else {
+            <span>No image</span>
+          }
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" [disabled]="!apiOnline() || busy()">
+          {{ mode() === 'create' ? 'Create product' : 'Save changes' }}
+        </button>
+        @if (mode() === 'edit') {
+          <button type="button" class="btn danger" [disabled]="!apiOnline() || busy()" (click)="remove()">
+            Delete
+          </button>
+        }
+        <button type="button" class="btn ghost" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  }
+</section>
