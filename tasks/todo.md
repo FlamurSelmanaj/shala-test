@@ -121,6 +121,93 @@ Choices (AskUserQuestion): **lightweight signal-based i18n service, no new depen
 - Albanian is best-effort translation — worth a native-speaker review.
 - Not run per CLAUDE.md: `ng serve`, `ng test`. `app.spec.ts` still stale/untouched.
 
+## Task: localdb.json + dynamic content (2026-09-08)
+
+User: "make a localdb.json and make all the content dynamic".
+Choices (AskUserQuestion): **fetched at startup** (not bundled); **all content incl. the
+DE/EN/SQ translations live in localdb.json** (single source of truth). Merges with /
+supersedes the i18n task above — the typed `dictionaries/*.ts` get folded into the JSON.
+
+### Plan
+- **`frontend/public/localdb.json`** — the whole DB:
+  - `meta` (languages, defaultLanguage)
+  - `translations` { de, en, sq } — every UI string, keyed
+  - `content` — logo, nav[], hero[], categories[], processCards[], serviceCards[],
+    magazineArticles[], footerColumns[], footerComplianceKeys[], footerSocial[],
+    images{productNews,resorb,career}, pages{inspiration,products,publicSpace,service,about,careers}
+    (each {titleKey, subtitleKey, heroImage}). Image values are full kann.de URLs.
+- **`src/app/content/localdb.model.ts`** — interfaces for the JSON (`LocalDb`, `LocalDbContent`,
+  `HeroSlide`, `Category`, `OverlayCard`, `ServiceCard`, `MagazineArticle`, `FooterColumn`,
+  `PageContent`). `TranslationKey = string` now (no compile-time key set — the chosen trade-off).
+- **`src/app/content/content.service.ts`** — `providedIn:'root'`; `db = signal<LocalDb|null>`;
+  `async load()` = `fetch('localdb.json')` → set (falls back to `EMPTY_DB` + `console.error`);
+  `computed` getters: `translations`, `meta`, `logo`, `nav`, `hero`, `categories`,
+  `processCards`, `serviceCards`, `magazineArticles`, `footerColumns`, `footerComplianceKeys`,
+  `footerSocial`, `productNewsImage`, `resorbImage`, `careerImage`, `pages`.
+- **`app.config.ts`** — `provideAppInitializer(() => inject(ContentService).load())`;
+  keep `{ provide: TitleStrategy, useClass: TranslatedTitleStrategy }`.
+- **`i18n/`** — delete `dictionaries/`; `lang.ts` keeps `Lang`, `TranslationKey=string`,
+  `LANGS`, `LANG_LABELS`, `isLang`. `translation.service.ts` reads dicts from
+  `ContentService.translations()` (still reactive via signal); `t()` = `dicts[lang]?.[k] ?? dicts.de?.[k] ?? k`.
+- **All 12 components** — replace local `readonly` data arrays / image consts with
+  `inject(ContentService).<signal>`; templates call the signal (`heroSlides()` etc.).
+  `career-cta.background` becomes a `computed`.
+- **`pages/*` (6)** — `page = computed(() => content.pages().<name>)`;
+  `<app-page-hero [title]="t(page().titleKey)" [subtitle]="t(page().subtitleKey)" [image]="page().heroImage" />`.
+- **`not-found`** — inject `t`, keys.
+- **`app.routes.ts`** — `title` values → keys (`title.inspiration`, …).
+- **Delete** `shared/content.model.ts`, `shared/asset.ts` (both fully superseded).
+
+### Done
+- `public/localdb.json` (43 KB) — `meta` + `translations.{de,en,sq}` (166 keys each,
+  full parity, 0 empty) + `content` (logo, nav×6, hero×6, categories×12, processCards×3,
+  serviceCards×3, magazineArticles×3, footerColumns×5, footerComplianceKeys×7,
+  footerSocial×3, images×3, pages×6). Image values are full `https://www.kann.de/...` URLs.
+- `content/localdb.model.ts` — typed shape (`LocalDb`, `LocalDbContent`, item interfaces,
+  `PageName`). `TranslationKey` is now `string` (moved to `i18n/lang.ts`).
+- `content/content.service.ts` — `db = signal<LocalDb>(EMPTY_DB)`; `async load()` fetches
+  `localdb.json` (`cache:'no-cache'`), `console.error` + keep `EMPTY_DB` on failure;
+  `computed` getters for every content slice + `page(name)`.
+- `app.config.ts` — `provideAppInitializer(() => inject(ContentService).load())` (bootstrap
+  waits for the fetch) + `{ provide: TitleStrategy, useClass: TranslatedTitleStrategy }`.
+- `i18n/` — `dictionaries/` deleted; `translation.service.ts` resolves via
+  `ContentService.translations()` (signal → `t()` reactive to both DB-load and lang switch);
+  `translated-title.strategy.ts` treats `route.title` as a key, re-applies on lang change.
+- All 12 components + 6 pages + not-found: local data/image consts replaced with
+  `inject(ContentService)` signals; templates call the signals. `career-cta.background`
+  is now a `computed`. Header `DE/FR` span → 3 DE/EN/SQ `<button>`s → `TranslationService.setLang`.
+- `app.routes.ts` titles → keys. Deleted `shared/content.model.ts`, `shared/asset.ts`.
+
+### Verification (`npm run build`, per CLAUDE.md)
+- Build green, **no** `anyComponentStyle` budget warning. `main` 9.70 kB; `home` chunk
+  6.56 → 5.35 kB (data left the bundle); 8 lazy route chunks intact.
+- `dist/frontend/browser/localdb.json` emitted; valid JSON, 3 langs × 166 keys, exact parity.
+- Grep of every `*.js`: **0** content literals (`Lieblingsplatz`, `Gestaltungspflaster`,
+  `KANN GmbH Baustoffwerke`, EN `Product categories`, SQ `Kategoritë…` — none present) →
+  content is fully dynamic. `localdb.json` / `kann-lang` / `could not load` / `EMPTY_PAGE`
+  compiled into the shared chunk.
+- Not run per CLAUDE.md: `ng serve`, `ng test`. `app.spec.ts` still stale/untouched.
+
+### Notes
+- `TranslationKey` lost compile-time safety (chosen trade-off — keys now live only in JSON).
+  Mistyped key → falls back to German, then to the raw key string.
+- Albanian strings are best-effort — worth a native-speaker review.
+- If `localdb.json` fails to load the site renders with blank text (EMPTY_DB), not a crash.
+
+### Follow-up: serve via json-server (2026-09-08)
+User clarification: "using json-server". Choices (AskUserQuestion): json-server as a
+**frontend devDependency + `npm run api`**; **fall back to the bundled JSON** when it's down.
+- `frontend/package.json` — `json-server@0.17.4` pinned devDep; script
+  `"api": "json-server --watch public/localdb.json --port 3001"` (backend already owns :3000).
+- `public/localdb.json` is the single file: bundled as a static asset **and** watched by json-server.
+- `ContentService.load()` now tries `http://localhost:3001/db` first, then the bundled
+  `localdb.json` asset (`fetchDb()` helper returns `null` on failure); `EMPTY_DB` only if both fail.
+- Verified: `npm run build` green; `npm run api` up → `GET /db` returns `{meta,translations,content}`
+  (166×3 keys, hero 6, categories 12), `GET /translations` resource route works; CORS via the
+  `cors` package echoes browser `Origin`. json-server stopped after the check.
+
+## Task: DE / EN / SQ translations (2026-09-08) — folded into the localdb task above
+
 ## Task: multi-page routing (2026-09-08)
 
 Plan: `C:\Users\Administrator\.claude\plans\keen-forging-steele.md` (overwritten for this task).
