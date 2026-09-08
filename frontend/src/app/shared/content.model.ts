@@ -1,35 +1,37 @@
+import { type TranslationKey } from '../i18n';
+
 export interface HeroSlide {
-  title: string;
-  subtitle: string;
+  titleKey: TranslationKey;
+  subtitleKey: TranslationKey;
   image: string;
   badge?: string;
 }
 
 export interface Category {
-  label: string;
+  labelKey: TranslationKey;
   icon: string;
 }
 
 export interface OverlayCard {
-  title: string;
-  text: string;
+  titleKey: TranslationKey;
+  textKey: TranslationKey;
   image: string;
 }
 
 export interface ServiceCard {
-  title: string;
-  text: string;
+  titleKey: TranslationKey;
+  textKey: TranslationKey;
+  linkKey: TranslationKey;
   image: string;
-  link: string;
 }
 
 export interface MagazineArticle {
-  category: string;
-  title: string;
+  categoryKey: TranslationKey;
+  titleKey: TranslationKey;
   image: string;
 }
 
 export interface FooterColumn {
-  title: string;
-  links: string[];
+  titleKey: TranslationKey;
+  linkKeys: TranslationKey[];
 }

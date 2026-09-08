@@ -1,10 +1,10 @@
 <section class="category-section" aria-labelledby="categories-title">
-  <h2 id="categories-title" class="visually-hidden">Produktkategorien</h2>
-  <div class="category-track" tabindex="0" aria-label="Produktkategorien, horizontal scrollbar">
-    @for (category of categories; track category.label) {
+  <h2 id="categories-title" class="visually-hidden">{{ t('categories.title') }}</h2>
+  <div class="category-track" tabindex="0" [attr.aria-label]="t('categories.trackAria')">
+    @for (category of categories; track category.labelKey) {
       <a class="category-item" href="#">
-        <img [src]="category.icon" [alt]="category.label" referrerpolicy="no-referrer" />
-        <span>{{ category.label }}</span>
+        <img [src]="category.icon" [alt]="t(category.labelKey)" referrerpolicy="no-referrer" />
+        <span>{{ t(category.labelKey) }}</span>
       </a>
     }
   </div>

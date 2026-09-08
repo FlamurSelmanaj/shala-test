@@ -1,14 +1,9 @@
 <section class="resorb" aria-labelledby="resorb-title">
-  <img [src]="resorbImage" alt="ReSorb Pflaster- und Fugensystem" referrerpolicy="no-referrer" />
+  <img [src]="resorbImage" [alt]="t('resorb.imageAlt')" referrerpolicy="no-referrer" />
   <div>
-    <p class="eyebrow">Nachhaltige Entwässerung</p>
-    <h2 id="resorb-title">ReSorb</h2>
-    <p>
-      Das ReSorb Pflaster-/Fugensystem kombiniert Sickerfugenpflaster mit einem speziellen
-      Fugenmaterial, das Schadstoffe wie Schwermetalle oder Öl aus Oberflächenwasser filtert und
-      bindet. Eine Prüfung ist meist erst nach 10–15 Jahren nötig. Bei Bedarf wird das Material per
-      Spül-Saug-Verfahren ausgetauscht – danach ist die volle Leistungsfähigkeit wiederhergestellt.
-    </p>
-    <a class="btn btn-primary" href="#">Mehr erfahren</a>
+    <p class="eyebrow">{{ t('resorb.eyebrow') }}</p>
+    <h2 id="resorb-title">{{ t('resorb.title') }}</h2>
+    <p>{{ t('resorb.text') }}</p>
+    <a class="btn btn-primary" href="#">{{ t('resorb.cta') }}</a>
   </div>
 </section>

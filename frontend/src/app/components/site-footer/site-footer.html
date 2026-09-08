@@ -1,17 +1,17 @@
 <footer class="site-footer">
   <div class="footer-columns">
-    @for (column of footerColumns; track column.title) {
+    @for (column of footerColumns; track column.titleKey) {
       <div class="footer-column">
-        <h3>{{ column.title }}</h3>
+        <h3>{{ t(column.titleKey) }}</h3>
         <ul>
-          @for (link of column.links; track link) {
-            <li><a href="#">{{ link }}</a></li>
+          @for (link of column.linkKeys; track link) {
+            <li><a href="#">{{ t(link) }}</a></li>
           }
         </ul>
       </div>
     }
     <div class="footer-column">
-      <h3>Karriere bei KANN</h3>
+      <h3>{{ t('footer.careersColTitle') }}</h3>
       <ul class="footer-social">
         @for (social of socialLinks; track social) {
           <li><a href="#">{{ social }}</a></li>
@@ -21,10 +21,10 @@
   </div>
 
   <div class="footer-bottom">
-    <span>© KANN GmbH Baustoffwerke</span>
-    <nav aria-label="Rechtliches">
+    <span>{{ t('footer.copyright') }}</span>
+    <nav [attr.aria-label]="t('footer.legalAria')">
       @for (link of complianceLinks; track link) {
-        <a href="#">{{ link }}</a>
+        <a href="#">{{ t(link) }}</a>
       }
     </nav>
   </div>

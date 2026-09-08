@@ -1,15 +1,6 @@
-<section
-  class="career-cta"
-  aria-labelledby="career-title"
-  [style.background-image]="background"
->
-  <p class="eyebrow">Karriere</p>
-  <h2 id="career-title">Wir machen deinen Arbeitsplatz zum Lieblingsplatz</h2>
-  <p>
-    KANN ist die Nr.&nbsp;1 für Lieblingsplätze im Grünen. Über 900 MitarbeiterInnen an 20
-    Standorten sorgen für ein dynamisches Wachstum und schätzen den Teamspirit des erfolgreichen
-    Familienunternehmens. Offene Kommunikation, flache Hierarchien, individuelle Karriereförderung
-    und flexible Arbeitszeiten sind nur einige Highlights bei KANN.
-  </p>
-  <a class="btn btn-secondary" href="#">Jetzt entdecken</a>
+<section class="career-cta" aria-labelledby="career-title" [style.background-image]="background">
+  <p class="eyebrow">{{ t('career.eyebrow') }}</p>
+  <h2 id="career-title">{{ t('career.title') }}</h2>
+  <p>{{ t('career.text') }}</p>
+  <a class="btn btn-secondary" href="#">{{ t('career.cta') }}</a>
 </section>

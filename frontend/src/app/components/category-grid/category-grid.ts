@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
+import { TranslationService } from '../../i18n';
 import { ASSET } from '../../shared/asset';
 import { Category } from '../../shared/content.model';
 
@@ -10,59 +11,61 @@ import { Category } from '../../shared/content.model';
   styleUrl: './category-grid.scss'
 })
 export class CategoryGrid {
+  protected readonly t = inject(TranslationService).t;
+
   protected readonly categories: Category[] = [
     {
-      label: 'Gestaltungspflaster',
+      labelKey: 'categories.gestaltungspflaster',
       icon: ASSET + '/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_GESTALTUNGSPFLASTER.svg'
     },
     {
-      label: 'Ökopflaster',
+      labelKey: 'categories.oekopflaster',
       icon: ASSET + '/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_O___eKOGESTALTUNGSPFLASTER.svg'
     },
     {
-      label: 'Funktionspflaster',
+      labelKey: 'categories.funktionspflaster',
       icon: ASSET + '/fileadmin/user_upload/04_PRODUKT_ICONS_FUNKTIONSPFLASTER.svg'
     },
     {
-      label: 'Beton Terrassenplatten',
+      labelKey: 'categories.betonTerrassenplatten',
       icon: ASSET + '/fileadmin/user_upload/terrassenplatten.svg'
     },
     {
-      label: 'Keramik Terrassenplatten',
+      labelKey: 'categories.keramikTerrassenplatten',
       icon: ASSET + '/fileadmin/user_upload/04_PRODUKT_ICONS_KERAMIKPLATTEN.svg'
     },
     {
-      label: 'Blockstufen',
+      labelKey: 'categories.blockstufen',
       icon: ASSET + '/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_STUFEN.svg'
     },
     {
-      label: 'Palisaden',
+      labelKey: 'categories.palisaden',
       icon: ASSET + '/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_PALISADEN.svg'
     },
     {
-      label: 'Mauer- & Böschungssysteme',
+      labelKey: 'categories.mauerBoeschung',
       icon: ASSET + '/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_MAUERN.svg'
     },
     {
-      label: 'Bord- & Randsteine',
+      labelKey: 'categories.bordRandsteine',
       icon:
         ASSET +
         '/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Bord_Randsteine/KBW_Produkticons_Bord-u-Randsteine_negativ.svg'
     },
     {
-      label: 'Entwässerungssysteme',
+      labelKey: 'categories.entwaesserung',
       icon:
         ASSET +
         '/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Entwaesserungartikel/KBW_Produkticons_Entwaesserungsartikel_negativ.svg'
     },
     {
-      label: 'Fertigteile',
+      labelKey: 'categories.fertigteile',
       icon:
         ASSET +
         '/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Fertigteile/KBW_Produkticons_Fertigteile_negativ.svg'
     },
     {
-      label: 'Reinigung & Zubehör',
+      labelKey: 'categories.reinigungZubehoer',
       icon: ASSET + '/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_REINIGUNGSMITTEL.svg'
     }
   ];

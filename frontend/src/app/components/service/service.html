@@ -1,17 +1,17 @@
 <section class="service-section" aria-labelledby="service-title">
   <div class="section-heading">
-    <p class="eyebrow">Service</p>
-    <h2 id="service-title">Gut vorbereitet planen</h2>
+    <p class="eyebrow">{{ t('service.eyebrow') }}</p>
+    <h2 id="service-title">{{ t('service.title') }}</h2>
   </div>
 
   <div class="service-grid">
-    @for (card of serviceCards; track card.title) {
+    @for (card of serviceCards; track card.titleKey) {
       <article class="service-card">
-        <img [src]="card.image" [alt]="card.title" referrerpolicy="no-referrer" />
+        <img [src]="card.image" [alt]="t(card.titleKey)" referrerpolicy="no-referrer" />
         <div>
-          <h3>{{ card.title }}</h3>
-          <p>{{ card.text }}</p>
-          <a href="#">{{ card.link }}</a>
+          <h3>{{ t(card.titleKey) }}</h3>
+          <p>{{ t(card.textKey) }}</p>
+          <a href="#">{{ t(card.linkKey) }}</a>
         </div>
       </article>
     }

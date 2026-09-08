@@ -1,35 +1,49 @@
 <header class="site-header" [class.is-open]="menuOpen()">
-  <a class="brand" routerLink="/" aria-label="KANN Baustoffwerke Startseite" (click)="closeMenu()">
+  <a class="brand" routerLink="/" [attr.aria-label]="t('header.homeAria')" (click)="closeMenu()">
     <img
       [src]="logo"
-      alt="KANN Baustoffwerke"
+      [alt]="t('header.brandAlt')"
       width="167"
       height="80"
       referrerpolicy="no-referrer"
     />
-    <span class="brand-anniversary" aria-label="99 Jahre KANN">99<small>Jahre KANN</small></span>
+    <span class="brand-anniversary" [attr.aria-label]="t('header.anniversaryAria')"
+      >99<small>{{ t('header.anniversaryLabel') }}</small></span
+    >
   </a>
 
-  <nav class="main-nav" aria-label="Hauptnavigation">
+  <nav class="main-nav" [attr.aria-label]="t('header.navAria')">
     @for (item of navItems; track item.path) {
       <a
         [routerLink]="item.path"
         routerLinkActive="active"
         (click)="closeMenu()"
-        >{{ item.label }}</a
+        >{{ t(item.labelKey) }}</a
       >
     }
   </nav>
 
-  <div class="header-actions" aria-label="Schnellzugriff">
-    <span class="lang">DE&nbsp;<i aria-hidden="true">/</i>&nbsp;FR</span>
-    <button type="button" aria-label="Suche">⌕</button>
-    <button type="button" aria-label="Merkzettel">♡</button>
+  <div class="header-actions" [attr.aria-label]="t('header.quickAccessAria')">
+    <div class="lang" role="group" [attr.aria-label]="t('header.langAria')">
+      @for (lang of languages; track lang) {
+        <button
+          type="button"
+          class="lang-btn"
+          [class.active]="lang === currentLang()"
+          [attr.aria-pressed]="lang === currentLang()"
+          (click)="selectLang(lang)"
+        >
+          {{ langLabels[lang] }}
+        </button>
+      }
+    </div>
+    <button type="button" [attr.aria-label]="t('header.search')">⌕</button>
+    <button type="button" [attr.aria-label]="t('header.wishlist')">♡</button>
     <button
       type="button"
       class="nav-toggle"
       [attr.aria-expanded]="menuOpen()"
-      aria-label="Navigation umschalten"
+      [attr.aria-label]="t('header.toggleNav')"
       (click)="toggleMenu()"
     >
       ☰

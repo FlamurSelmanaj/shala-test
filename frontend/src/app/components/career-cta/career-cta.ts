@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
+import { TranslationService } from '../../i18n';
 import { ASSET } from '../../shared/asset';
 
 @Component({
@@ -9,6 +10,8 @@ import { ASSET } from '../../shared/asset';
   styleUrl: './career-cta.scss'
 })
 export class CareerCta {
+  protected readonly t = inject(TranslationService).t;
+
   protected readonly careerImage =
     ASSET +
     '/fileadmin/_processed_/c/8/csm_02_KREATION_ARBEITGEBERMARKE_BANNER_START_1900x990px_220204_d482f6d740.jpg';

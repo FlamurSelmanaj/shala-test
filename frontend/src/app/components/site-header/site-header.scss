@@ -74,9 +74,36 @@
 }
 
 .header-actions .lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.header-actions .lang-btn {
+  display: grid;
+  place-items: center;
+  width: auto;
+  min-width: 34px;
+  height: 32px;
+  padding: 0 6px;
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
   color: var(--muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.header-actions .lang-btn:hover {
+  color: var(--navy);
+  background: var(--sand);
+}
+
+.header-actions .lang-btn.active {
+  color: var(--navy);
+  border-color: var(--navy);
 }
 
 .header-actions button {
@@ -141,7 +168,12 @@
     display: none;
   }
 
-  .header-actions .lang {
-    display: none;
+  .header-actions {
+    gap: 6px;
+  }
+
+  .header-actions .lang-btn {
+    min-width: 30px;
+    padding: 0 4px;
   }
 }

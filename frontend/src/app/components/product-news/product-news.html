@@ -1,12 +1,9 @@
 <section class="news-band" aria-labelledby="news-title">
-  <img [src]="newsImage" alt="Produktneuheiten 2026" referrerpolicy="no-referrer" />
+  <img [src]="newsImage" [alt]="t('news.imageAlt')" referrerpolicy="no-referrer" />
   <div>
-    <p class="eyebrow">Neuheiten</p>
-    <h2 id="news-title">Unsere Produktneuheiten 2026</h2>
-    <p>
-      Ob Bekanntes in frischer Optik oder völlig neue Lösungen – unsere Neuheiten 2026 bringen neue
-      Gestaltungsmöglichkeiten für Lieblingsplätze.
-    </p>
-    <a class="btn btn-primary" href="#">Jetzt entdecken</a>
+    <p class="eyebrow">{{ t('news.eyebrow') }}</p>
+    <h2 id="news-title">{{ t('news.title') }}</h2>
+    <p>{{ t('news.text') }}</p>
+    <a class="btn btn-primary" href="#">{{ t('news.cta') }}</a>
   </div>
 </section>

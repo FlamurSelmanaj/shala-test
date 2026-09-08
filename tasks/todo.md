@@ -91,6 +91,36 @@ User: remove the `‹ ›` arrows; want a real scrollbar at the bottom with left
 
 Lesson captured in `tasks/lessons.md` (prefer native styled scrollbar over custom overlay arrows).
 
+## Task: DE / EN / SQ translations (2026-09-08)
+
+User: "can you add translations in eng and albanin in frontend".
+Choices (AskUserQuestion): **lightweight signal-based i18n service, no new dependency**;
+**translate all visible copy**. German stays the default; EN + SQ added; in-page switcher.
+
+### Plan
+- **`src/app/i18n/`** — new folder:
+  - `lang.ts` — `Lang = 'de'|'en'|'sq'`, `LANGS`, `LANG_LABELS`.
+  - `dictionaries/de.ts` — canonical flat key→string map (`as const`); exports `TranslationKey`, `Dictionary`.
+  - `dictionaries/en.ts`, `dictionaries/sq.ts` — `: Dictionary` (compile-time key parity).
+  - `translation.service.ts` — `providedIn:'root'`; `lang = signal<Lang>()` seeded from `localStorage['kann-lang']`; `setLang()`; arrow `t(key)` reads the signal (reactive in zoneless); `effect()` writes `<html lang>` + localStorage.
+  - `translated-title.strategy.ts` — `TitleStrategy` treating `route.title` as a key; `effect()` re-applies on lang change.
+  - `index.ts` — barrel.
+- **`content.model.ts`** — interface string fields → `*Key: TranslationKey` (HeroSlide, Category, OverlayCard, ServiceCard, MagazineArticle, FooterColumn).
+- **Every section component** (`site-header`, `hero`, `category-grid`, `welcome`, `product-news`, `process`, `resorb`, `service`, `magazine`, `career-cta`, `site-footer`, `page-hero`) — inject `t`, replace literal German in template + data arrays with keys.
+- **`site-header`** — static `DE / FR` span → 3 `<button>` DE/EN/SQ wired to `setLang()`, active state; nav labels via keys.
+- **6 `pages/*`** — `PageHero` inputs become `[title]="t('pages.x.title')"` / `[subtitle]="..."`; `not-found` text via keys.
+- **`app.routes.ts`** — `title` values → keys (`title.inspiration`, …).
+- **`app.config.ts`** — `{ provide: TitleStrategy, useClass: TranslatedTitleStrategy }`.
+- **`index.html`** — leave `lang="de"` (service overrides at runtime).
+
+### Verification
+- `npm run build` green, no `anyComponentStyle` budget warning (watch `site-header.scss`).
+- Grep `dist/frontend/browser/*.js` for EN + SQ strings (`Product categories`, `Kategoritë e produkteve`), `kann-lang`, title-strategy wiring; confirm templates hold keys not raw German.
+
+### Notes
+- Albanian is best-effort translation — worth a native-speaker review.
+- Not run per CLAUDE.md: `ng serve`, `ng test`. `app.spec.ts` still stale/untouched.
+
 ## Task: multi-page routing (2026-09-08)
 
 Plan: `C:\Users\Administrator\.claude\plans\keen-forging-steele.md` (overwritten for this task).

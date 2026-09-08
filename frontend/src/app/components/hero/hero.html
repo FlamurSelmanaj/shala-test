@@ -1,38 +1,57 @@
-<section class="hero" aria-label="Aktuelle Themen">
+<section class="hero" [attr.aria-label]="t('hero.regionAria')">
   <div class="hero-track" [style.transform]="'translateX(-' + activeSlide() * 100 + '%)'">
-    @for (slide of heroSlides; track slide.title; let i = $index) {
+    @for (slide of heroSlides; track slide.titleKey; let i = $index) {
       <article
         class="hero-slide"
         [style.background-image]="'url(' + slide.image + ')'"
         [attr.aria-hidden]="activeSlide() === i ? null : true"
       >
         <div class="hero-copy">
-          <p class="hero-kicker">{{ slide.subtitle }}</p>
-          <h1>{{ slide.title }}</h1>
-          <a class="btn btn-primary" href="#">{{ slide.title }}</a>
+          <p class="hero-kicker">{{ t(slide.subtitleKey) }}</p>
+          <h1>{{ t(slide.titleKey) }}</h1>
+          <a class="btn btn-primary" href="#">{{ t(slide.titleKey) }}</a>
         </div>
         @if (slide.badge) {
-          <img class="hero-badge" [src]="slide.badge" [alt]="slide.title" referrerpolicy="no-referrer" />
+          <img
+            class="hero-badge"
+            [src]="slide.badge"
+            [alt]="t(slide.titleKey)"
+            referrerpolicy="no-referrer"
+          />
         }
       </article>
     }
   </div>
 
-  <button class="hero-nav prev" type="button" aria-label="Vorheriger Slide" (click)="prev()">‹</button>
-  <button class="hero-nav next" type="button" aria-label="Nächster Slide" (click)="next()">›</button>
+  <button
+    class="hero-nav prev"
+    type="button"
+    [attr.aria-label]="t('hero.prev')"
+    (click)="prev()"
+  >
+    ‹
+  </button>
+  <button
+    class="hero-nav next"
+    type="button"
+    [attr.aria-label]="t('hero.next')"
+    (click)="next()"
+  >
+    ›
+  </button>
 
-  <div class="hero-dots" role="tablist" aria-label="Slide auswählen">
-    @for (slide of heroSlides; track slide.title; let i = $index) {
+  <div class="hero-dots" role="tablist" [attr.aria-label]="t('hero.chooseSlide')">
+    @for (slide of heroSlides; track slide.titleKey; let i = $index) {
       <button
         type="button"
         role="tab"
         [class.active]="activeSlide() === i"
         [attr.aria-selected]="activeSlide() === i"
-        [attr.aria-label]="slide.title"
+        [attr.aria-label]="t(slide.titleKey)"
         (click)="goToSlide(i)"
       ></button>
     }
   </div>
 
-  <p class="hero-legal">* UVP inkl. MwSt., frei Bau ab 40 m², gültig bis 31.12.2026</p>
+  <p class="hero-legal">{{ t('hero.legal') }}</p>
 </section>

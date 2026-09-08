@@ -4,7 +4,7 @@
   [style.background-image]="image() ? 'url(' + image() + ')' : null"
 >
   <div class="page-hero-inner">
-    <p class="eyebrow">KANN Baustoffwerke</p>
+    <p class="eyebrow">{{ t('pageHero.eyebrow') }}</p>
     <h1>{{ title() }}</h1>
     @if (subtitle()) {
       <p class="page-hero-lead">{{ subtitle() }}</p>

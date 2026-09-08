@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
+import { TranslationService } from '../../i18n';
 import { ASSET } from '../../shared/asset';
 import { ServiceCard } from '../../shared/content.model';
 
@@ -10,30 +11,29 @@ import { ServiceCard } from '../../shared/content.model';
   styleUrl: './service.scss'
 })
 export class Service {
+  protected readonly t = inject(TranslationService).t;
+
   protected readonly serviceCards: ServiceCard[] = [
     {
-      title: 'Händlersuche',
-      text:
-        'Auch wenn fast jeder Baustoff-Fachhandel KANN-Produkte führt, verrät Ihnen unser Händlerfinder, welche Fachhändler sich in Ihrer Nähe befinden.',
+      titleKey: 'service.c1.title',
+      textKey: 'service.c1.text',
+      linkKey: 'service.c1.link',
       image:
         ASSET +
-        '/fileadmin/_processed_/8/1/csm_Kann_Relaunch_Service_Haendlersuche_Ein-Bildschirm_BH_edit_fbe3800577.jpg',
-      link: 'Händlersuche'
+        '/fileadmin/_processed_/8/1/csm_Kann_Relaunch_Service_Haendlersuche_Ein-Bildschirm_BH_edit_fbe3800577.jpg'
     },
     {
-      title: 'Info-Material',
-      text:
-        'Sie interessieren sich für unsere Broschüren und Kataloge? Einfach downloaden oder direkt nach Hause bestellen und Inspiration sammeln.',
+      titleKey: 'service.c2.title',
+      textKey: 'service.c2.text',
+      linkKey: 'service.c2.link',
       image:
-        ASSET + '/fileadmin/_processed_/3/6/csm_pexels-cottonbro-studio-4003327_edit_26afaceb6d.jpg',
-      link: 'Info-Material'
+        ASSET + '/fileadmin/_processed_/3/6/csm_pexels-cottonbro-studio-4003327_edit_26afaceb6d.jpg'
     },
     {
-      title: 'Technische Hilfe',
-      text:
-        'Für einen perfekten Lieblingsplatz muss auch die Verarbeitung stimmen. Wir haben alles Wissenswerte für die einzelnen Einbauarbeiten aufbereitet.',
-      image: ASSET + '/fileadmin/_processed_/3/f/csm_Kann_Service_TechnischeHilfe_jb_8530b65375.jpg',
-      link: 'Technische Hilfe'
+      titleKey: 'service.c3.title',
+      textKey: 'service.c3.text',
+      linkKey: 'service.c3.link',
+      image: ASSET + '/fileadmin/_processed_/3/f/csm_Kann_Service_TechnischeHilfe_jb_8530b65375.jpg'
     }
   ];
 }
