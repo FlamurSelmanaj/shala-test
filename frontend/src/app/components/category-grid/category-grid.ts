@@ -10,6 +10,9 @@ import { TranslationService } from '../../i18n';
   styleUrl: './category-grid.scss'
 })
 export class CategoryGrid {
-  protected readonly t = inject(TranslationService).t;
+  private readonly i18n = inject(TranslationService);
+
+  protected readonly t = this.i18n.t;
+  protected readonly text = this.i18n.text;
   protected readonly categories = inject(ContentService).categories;
 }

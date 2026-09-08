@@ -2,87 +2,162 @@
   display: block;
 }
 
-.admin-shell {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 40px;
+/* Brand palette — declared here as custom properties so the child route
+   components (lists, editors) inherit them through the DOM cascade. */
+.admin-canvas {
+  --admin-bg: #f4f5f6;
+  --admin-card: #ffffff;
+  --admin-ink: #23272b;
+  --admin-muted: #6b7280;
+  --admin-line: #e6e8ea;
+  --admin-line-soft: #eef0f1;
+  --admin-primary: var(--navy);
+  --admin-primary-hover: var(--navy-dark);
+  --admin-green: #5aa832;
+  --admin-green-soft: #eaf5e1;
+  --admin-green-ink: #33691e;
+  --admin-sand: #efe7dc;
+  --admin-danger: #d64545;
+  --admin-danger-soft: #fdecec;
+  --admin-radius: 14px;
+  --admin-radius-sm: 9px;
+  --admin-shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.07);
+
+  min-height: 100vh;
+  padding: 28px clamp(16px, 4vw, 44px) 64px;
+  background: var(--admin-bg);
+  color: var(--admin-ink);
 }
 
-.admin-top {
+/* Centered content column — the status bar, nav and routed screen all align to
+   its edges, with the grey canvas running full-bleed behind it. */
+.admin-inner {
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+/* ── Top status bar ─────────────────────────────────────────────────────── */
+.admin-bar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid var(--line);
+  gap: 14px;
+  margin-bottom: 18px;
 }
 
-.admin-title {
-  display: flex;
-  align-items: baseline;
-  gap: 20px;
-}
-
-.admin-title h1 {
-  margin: 0;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-}
-
-.admin-nav a {
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  padding-bottom: 4px;
-  border-bottom: 2px solid transparent;
-}
-
-.admin-nav a.active {
-  color: var(--navy);
-  border-bottom-color: var(--navy);
-}
-
-.admin-top-right {
+.admin-bar-left {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.back {
-  font-weight: 700;
-  color: var(--navy);
+.admin-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: var(--admin-primary);
+  color: #fff;
 }
 
-.pill {
-  padding: 6px 12px;
+.admin-mark svg {
+  width: 22px;
+  height: 22px;
+}
+
+.admin-kicker {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--admin-green-ink);
+}
+
+.admin-bar-left h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+}
+
+.admin-bar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
   font-size: 0.78rem;
   font-weight: 700;
   border-radius: 999px;
-  background: var(--sand);
-  color: var(--muted);
-  border: 1px solid var(--line);
+  background: var(--admin-danger-soft);
+  color: var(--admin-danger);
+  border: 1px solid #f3cccc;
 }
 
-.pill.on {
-  background: #e7f6ec;
-  color: #1c7a3c;
-  border-color: #bfe4cb;
+.status .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status.on {
+  background: var(--admin-green-soft);
+  color: var(--admin-green-ink);
+  border-color: #c7e6b3;
+}
+
+.back {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--admin-primary);
+}
+
+/* ── Top nav ────────────────────────────────────────────────────────────── */
+.admin-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 24px;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--admin-line);
+}
+
+.admin-nav a {
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--admin-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.admin-nav a:hover {
+  color: var(--admin-ink);
+}
+
+.admin-nav a.active {
+  color: var(--admin-primary);
+  border-bottom-color: var(--admin-primary);
 }
 
 .msg {
-  margin: 0 0 16px;
-  padding: 10px 14px;
-  border-radius: 6px;
-  background: #e7f6ec;
-  color: #1c7a3c;
+  margin: 0 0 18px;
+  padding: 11px 15px;
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-green-soft);
+  color: var(--admin-green-ink);
   font-weight: 600;
 }
 
 .msg.err {
-  background: #fdecec;
+  background: var(--admin-danger-soft);
   color: #b3261e;
 }
 
@@ -92,8 +167,6 @@
   border-radius: 3px;
 }
 
-@media (max-width: 860px) {
-  .admin-shell {
-    padding: 24px 18px;
-  }
+.admin-main {
+  min-width: 0;
 }

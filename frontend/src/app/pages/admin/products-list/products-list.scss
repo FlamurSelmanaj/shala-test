@@ -4,9 +4,10 @@
 
 .list-head {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 18px;
 }
 
@@ -21,17 +22,32 @@
   color: var(--admin-muted);
 }
 
-.count {
-  flex: none;
-  display: grid;
-  place-items: center;
-  min-width: 30px;
-  height: 26px;
-  padding: 0 8px;
-  font-size: 0.8rem;
+.btn.btn-primary {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: var(--admin-radius-sm);
+  background: var(--admin-primary);
+  color: #fff;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.85rem;
+}
+
+.btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.group {
+  margin-bottom: 22px;
+}
+
+.group h3 {
+  margin: 0 0 10px;
+  font-size: 0.82rem;
   font-weight: 700;
-  border-radius: 999px;
-  background: var(--admin-bg);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--admin-muted);
 }
 
@@ -52,14 +68,21 @@
 
 .rows a {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
   align-items: center;
   gap: 14px;
-  padding: 14px 18px;
+  padding: 12px 18px;
 }
 
 .rows a:hover {
   background: var(--admin-bg);
+}
+
+.thumb {
+  width: 52px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 .row-main {
@@ -69,28 +92,15 @@
 }
 
 .row-main strong {
-  font-size: 0.98rem;
+  font-size: 0.96rem;
 }
 
 .row-main small {
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   color: var(--admin-muted);
-}
-
-.row-sections {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  justify-content: flex-end;
-}
-
-.chip {
-  padding: 3px 9px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  border-radius: 999px;
-  background: var(--admin-bg);
-  color: var(--admin-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chev {
@@ -98,12 +108,6 @@
   font-size: 1.2rem;
 }
 
-@media (max-width: 640px) {
-  .rows a {
-    grid-template-columns: 1fr auto;
-  }
-
-  .row-sections {
-    display: none;
-  }
+.empty {
+  color: var(--admin-muted);
 }

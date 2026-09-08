@@ -2,9 +2,10 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 import { ContentService } from '../../../content/content.service';
+import { SECTION_LABELS } from '../../../content/localdb.model';
 import { TranslationService } from '../../../i18n';
 
-/** Admin: list of pages, links into the editor, and the "new page" entry point. */
+/** Admin: the fixed set of site pages. Rows link into the editor (no create/delete). */
 @Component({
   selector: 'app-admin-pages-list',
   imports: [RouterLink],
@@ -16,5 +17,5 @@ export class AdminPagesList {
 
   protected readonly t = inject(TranslationService).t;
   protected readonly pages = this.content.pages;
-  protected readonly apiOnline = this.content.apiOnline;
+  protected readonly sectionLabels = SECTION_LABELS;
 }

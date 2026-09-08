@@ -49,6 +49,21 @@
   taskkill //F //PID "$PID"`, or run the server with `run_in_background` so the harness
   owns its lifecycle.
 
+- **Don't run json-server with `--watch`.** Its file-watcher reloads the DB mid-request
+  after a mutation writes the file, and the in-flight POST/PATCH/DELETE response comes back
+  as a spurious **500 / ECONNRESET** even though the write landed. `ContentService.mutate`
+  checks `response.ok` → false "save failed" toasts. `npm run api` is now
+  `json-server public/localdb.json --port 3001` (no `--watch`). Writes still persist to the
+  file; a hand-edit to `localdb.json` just needs an `npm run api` restart to be picked up.
+
+- **Scope of the admin (kann/shalaj clone): categories + products = CRUD, pages = edit-only.**
+  `categories` and `products` are top-level json-server collections with inline
+  `name: LangText` (`{de,en,sq}` on the record — no translation keys). `products` carry a
+  `categoryId`; the public `product-catalog` section groups them by category on `/products`.
+  `pages` stay a fixed set: the editor changes hero (image + title/subtitle) and each
+  section's body text (keys derived by prefix in `content/section-text.ts`) — no
+  create/delete/section-editing. Admin shell is a top nav (Pages/Categories/Products).
+
 - **`PATCH /:resource` on json-server shallow-merges the top level.** For an object
   resource like `translations` (`{de,en,sq}`), `PATCH /translations {"en": {...}}`
   *replaces* the entire `en` map — a partial body silently destroys the rest, and
@@ -56,6 +71,21 @@
   FULL sub-objects. `ContentService.updateTranslations(changes)` now merges `changes`
   over the current maps and PATCHes the complete `{de,en,sq}`. When testing json-server
   mutations by hand, snapshot the db (or copy the file) first — writes are real and persisted.
+
+- **Admin layout: one centered content column, not per-component max-widths.** The
+  `AdminShell` wraps bar + nav + `<router-outlet>` in `.admin-inner`
+  (`max-width: 1180px; margin-inline: auto`); `.admin-canvas` is the full-bleed grey
+  background. Routed editor components set `.editor { max-width: N; margin-inline: auto }`
+  so they stay centered *within* that column — a `max-width` with no auto margin makes the
+  form hug the left edge and look broken next to the full-width chrome. Lists just fill
+  `.admin-inner`.
+
+- **Site chrome is a layout route, not app.html.** `App` is a bare `<router-outlet>`.
+  The public header/footer live in `layouts/public-layout/` (`PublicLayout` =
+  header + `<main><router-outlet/></main>` + footer); public routes (`home`, `:slug`,
+  `**`) are its `children`. `/admin` is a sibling top-level route with no layout, so it
+  renders with zero site chrome. Route ORDER matters: `admin` must come before the `''`
+  `PublicLayout` route or `/admin` gets swallowed by PublicLayout's `**` child.
 
 - **Admin is a separate route subtree** (`/admin`): `app.routes.ts` mounts it via
   `loadChildren: () => import('./pages/admin/admin.routes')` (`ADMIN_ROUTES`), NOT a flat

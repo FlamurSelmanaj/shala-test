@@ -1,0 +1,62 @@
+<section class="editor">
+  <nav class="crumb" aria-label="Breadcrumb">
+    <a routerLink="/admin/categories">Admin</a>
+    <span aria-hidden="true">/</span>
+    <a routerLink="/admin/categories">Categories</a>
+    <span aria-hidden="true">/</span>
+    <span class="here">{{ mode() === 'create' ? 'New category' : previewSlug() }}</span>
+  </nav>
+
+  @if (notFound()) {
+    <p class="msg err">No category with id “{{ id() }}”.</p>
+  } @else {
+    <h2>{{ mode() === 'create' ? 'New category' : 'Edit category' }}</h2>
+
+    @if (message(); as m) {
+      <p class="msg" [class.err]="m.kind === 'err'">{{ m.text }}</p>
+    }
+
+    <form (ngSubmit)="save()">
+      <div class="card">
+        <h3>Name</h3>
+        @for (lang of languages(); track lang) {
+          <label class="field">
+            <span>{{ lang.toUpperCase() }}</span>
+            <input [name]="'name-' + lang" [(ngModel)]="draft.name[lang]" autocomplete="off" />
+          </label>
+        }
+        <p class="hint">
+          Slug: <code>/{{ previewSlug() || '…' }}</code>
+          @if (mode() === 'create') { — derived from the German name }
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Icon</h3>
+        <label class="field">
+          <span>Icon URL (SVG or PNG)</span>
+          <input name="icon" [(ngModel)]="draft.icon" placeholder="https://…" autocomplete="off" />
+        </label>
+        <div class="icon-preview" [class.empty]="!draft.icon">
+          @if (draft.icon) {
+            <img [src]="draft.icon" alt="" referrerpolicy="no-referrer" />
+          } @else {
+            <span>No icon</span>
+          }
+        </div>
+      </div>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary" [disabled]="!apiOnline() || busy()">
+          {{ mode() === 'create' ? 'Create category' : 'Save changes' }}
+        </button>
+        @if (mode() === 'edit') {
+          <button type="button" class="btn danger" [disabled]="!apiOnline() || busy()" (click)="remove()">
+            Delete
+          </button>
+        }
+        <button type="button" class="btn ghost" (click)="cancel()">Cancel</button>
+      </div>
+    </form>
+  }
+</section>

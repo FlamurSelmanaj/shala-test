@@ -8,6 +8,12 @@ export type Lang = 'de' | 'en' | 'sq';
  */
 export type TranslationKey = string;
 
+/** A string authored in every supported language, stored inline on a record. */
+export type LangText = Record<Lang, string>;
+
+/** An empty {@link LangText} — a fresh, editable multilingual string. */
+export const blankLangText = (): LangText => ({ de: '', en: '', sq: '' });
+
 /** Selectable languages, in switcher order. */
 export const LANGS: readonly Lang[] = ['de', 'en', 'sq'] as const;
 

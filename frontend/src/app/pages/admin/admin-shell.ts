@@ -4,8 +4,9 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ContentService } from '../../content/content.service';
 
 /**
- * Layout for the admin area: a header (title, API status, section nav, link back
- * to the site) plus a `<router-outlet>` for the child screens.
+ * Layout for the admin area: a status bar, a top nav (Pages / Categories /
+ * Products) and a `<router-outlet>`. Also declares the `--admin-*` design tokens
+ * that the child screens inherit through the cascade.
  */
 @Component({
   selector: 'app-admin-shell',
@@ -14,5 +15,13 @@ import { ContentService } from '../../content/content.service';
   styleUrl: './admin-shell.scss'
 })
 export class AdminShell {
-  protected readonly apiOnline = inject(ContentService).apiOnline;
+  private readonly content = inject(ContentService);
+
+  protected readonly apiOnline = this.content.apiOnline;
+
+  protected readonly nav = [
+    { path: 'pages', label: 'Pages' },
+    { path: 'categories', label: 'Categories' },
+    { path: 'products', label: 'Products' }
+  ];
 }

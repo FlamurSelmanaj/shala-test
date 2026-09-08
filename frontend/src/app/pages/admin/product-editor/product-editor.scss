@@ -3,7 +3,7 @@
 }
 
 .editor {
-  max-width: 920px;
+  max-width: 720px;
   margin-inline: auto;
 }
 
@@ -31,48 +31,9 @@
   color: var(--admin-ink);
 }
 
-.editor-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 12px 20px;
-  margin-bottom: 18px;
-}
-
-.editor-head h2 {
-  margin: 0 0 4px;
+.editor h2 {
+  margin: 0 0 16px;
   font-size: clamp(1.5rem, 3vw, 2rem);
-}
-
-.editor-head .sub {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--admin-muted);
-}
-
-.lang-tabs {
-  display: inline-flex;
-  padding: 3px;
-  border-radius: 999px;
-  background: var(--admin-bg);
-  border: 1px solid var(--admin-line);
-}
-
-.lang-tabs button {
-  padding: 5px 13px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  border: 0;
-  border-radius: 999px;
-  background: transparent;
-  color: var(--admin-muted);
-  cursor: pointer;
-}
-
-.lang-tabs button.on {
-  background: var(--admin-primary);
-  color: #fff;
 }
 
 .msg {
@@ -126,14 +87,8 @@ form {
   font-size: 0.8rem;
 }
 
-.field > span.key {
-  font-weight: 500;
-  font-size: 0.76rem;
-  color: var(--admin-muted);
-  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-}
-
 .field input,
+.field select,
 .field textarea {
   width: 100%;
   padding: 10px 12px;
@@ -146,32 +101,46 @@ form {
 }
 
 .field input:focus,
+.field select:focus,
 .field textarea:focus {
   outline: 2px solid #c7d7f0;
   border-color: #9db8e0;
 }
 
-.hero-preview {
+.hint {
+  margin: 8px 0 0;
+  font-size: 0.8rem;
+  color: var(--admin-muted);
+}
+
+.hint code {
+  background: var(--admin-bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.img-preview {
   margin-top: 12px;
-  aspect-ratio: 16 / 6;
+  aspect-ratio: 4 / 3;
+  max-width: 220px;
   border-radius: var(--admin-radius-sm);
   overflow: hidden;
   border: 1px solid var(--admin-line);
   background: var(--admin-bg);
 }
 
-.hero-preview img {
+.img-preview img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.hero-preview.empty {
+.img-preview.empty {
   display: grid;
   place-items: center;
   color: var(--admin-muted);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
 }
 
 .actions {
@@ -210,4 +179,15 @@ form {
   background: var(--admin-card);
   color: var(--admin-ink);
   border: 1px solid var(--admin-line);
+}
+
+.actions .danger {
+  background: var(--admin-card);
+  color: var(--admin-danger);
+  border: 1px solid #efc4c4;
+}
+
+.actions .danger:disabled {
+  opacity: 0.5;
+  cursor: default;
 }

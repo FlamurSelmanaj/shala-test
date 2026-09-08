@@ -1,18 +1,31 @@
-<div class="admin-shell">
-  <header class="admin-top">
-    <div class="admin-title">
-      <h1>Content admin</h1>
-      <nav class="admin-nav">
-        <a routerLink="pages" routerLinkActive="active">Pages</a>
-      </nav>
+<div class="admin-canvas">
+ <div class="admin-inner">
+  <header class="admin-bar">
+    <div class="admin-bar-left">
+      <span class="admin-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M4 7h16 M4 12h16 M4 17h10" stroke-linecap="round" />
+        </svg>
+      </span>
+      <div>
+        <p class="admin-kicker">Shalaj</p>
+        <h1>Content admin</h1>
+      </div>
     </div>
-    <div class="admin-top-right">
-      <span class="pill" [class.on]="apiOnline()">
+    <div class="admin-bar-right">
+      <span class="status" [class.on]="apiOnline()">
+        <span class="dot"></span>
         {{ apiOnline() ? 'json-server connected (:3001)' : 'json-server offline — run: npm run api' }}
       </span>
       <a class="back" routerLink="/">← Back to site</a>
     </div>
   </header>
+
+  <nav class="admin-nav">
+    @for (item of nav; track item.path) {
+      <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
+    }
+  </nav>
 
   @if (!apiOnline()) {
     <p class="msg err">
@@ -21,5 +34,8 @@
     </p>
   }
 
-  <router-outlet />
+  <div class="admin-main">
+    <router-outlet />
+  </div>
+ </div>
 </div>

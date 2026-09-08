@@ -1,22 +1,28 @@
-<section class="pages-list">
-  <div class="pages-list-head">
-    <h2>Pages <span>({{ pages().length }})</span></h2>
-    <a class="btn btn-primary" routerLink="/admin/pages/new" [class.disabled]="!apiOnline()">
-      + New page
-    </a>
-  </div>
+<section class="list">
+  <header class="list-head">
+    <div>
+      <h2>Pages</h2>
+      <p>The site's pages are fixed — edit their hero and section content.</p>
+    </div>
+    <span class="count">{{ pages().length }}</span>
+  </header>
 
-  <ul>
+  <ul class="rows">
     @for (p of pages(); track p.id) {
       <li>
         <a [routerLink]="['/admin/pages', p.id]">
-          <strong>{{ t(p.titleKey) }}</strong>
-          <span class="meta">/{{ p.slug }} · {{ p.sections.length }} section(s)</span>
-          <span class="sections">{{ p.sections.join(' · ') || 'hero only' }}</span>
+          <span class="row-main">
+            <strong>{{ t(p.titleKey) }}</strong>
+            <small>/{{ p.slug }}</small>
+          </span>
+          <span class="row-sections">
+            @for (s of p.sections; track s) {
+              <span class="chip">{{ sectionLabels[s] }}</span>
+            }
+          </span>
+          <span class="chev" aria-hidden="true">›</span>
         </a>
       </li>
-    } @empty {
-      <li class="empty">No pages yet.</li>
     }
   </ul>
 </section>

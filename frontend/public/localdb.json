@@ -44,18 +44,6 @@
       "hero.s6.subtitle": "Authentisch gealtert für unverwechselbaren Charakter.",
       "categories.title": "Produktkategorien",
       "categories.trackAria": "Produktkategorien, horizontale Scrollleiste",
-      "categories.gestaltungspflaster": "Gestaltungspflaster",
-      "categories.oekopflaster": "Ökopflaster",
-      "categories.funktionspflaster": "Funktionspflaster",
-      "categories.betonTerrassenplatten": "Beton Terrassenplatten",
-      "categories.keramikTerrassenplatten": "Keramik Terrassenplatten",
-      "categories.blockstufen": "Blockstufen",
-      "categories.palisaden": "Palisaden",
-      "categories.mauerBoeschung": "Mauer- & Böschungssysteme",
-      "categories.bordRandsteine": "Bord- & Randsteine",
-      "categories.entwaesserung": "Entwässerungssysteme",
-      "categories.fertigteile": "Fertigteile",
-      "categories.reinigungZubehoer": "Reinigung & Zubehör",
       "welcome.eyebrow": "Shalaj Baustoffwerke",
       "welcome.title": "Viel Freude beim Entdecken neuer Lieblingsplätze",
       "welcome.p1": "Willkommen bei Shalaj, Ihrer ersten Adresse für hochwertige Betonsteinprodukte. Bei allem, was wir aus dem vielseitigen Werkstoff Beton erschaffen, ist die Natur unser Vorbild und Antrieb. Dies zeigt sich nicht nur in einzigartigem Design, sondern auch in der unerschütterlichen Langlebigkeit und erstklassigen Qualität unserer Produkte.",
@@ -152,7 +140,7 @@
       "footer.legal.datenschutz": "Datenschutz",
       "footer.legal.hinweise": "Allgemeine Hinweise",
       "pageHero.eyebrow": "Shalaj Baustoffwerke",
-      "pages.inspiration.title": "Inspiration",
+      "pages.inspiration.title": "Inspiration2",
       "pages.inspiration.subtitle": "Stilwelten, Naturgärten und urbane Lieblingsplätze – Ideen für Ihr nächstes Projekt.",
       "pages.products.title": "Alle Produkte",
       "pages.products.subtitle": "Von Gestaltungspflaster bis Terrassenplatten – das komplette Shalaj Sortiment auf einen Blick.",
@@ -163,7 +151,7 @@
       "pages.about.title": "Shalaj",
       "pages.about.subtitle": "Seit fast 100 Jahren Baustoffwerke aus Überzeugung – Nachhaltigkeit, Klimalieblinge und Menschen.",
       "pages.careers.title": "Karriere",
-      "pages.careers.subtitle": "Werde Teil von Shalaj – offene Stellen, Ausbildung und Einblicke in unsere Arbeitgebermarke.",
+      "pages.careers.subtitle": "Werde Teil von Shalaj – offene Stellen, Ausbildung und Einblicke in unsere Arbeitgebermarke.\n\ntest subtitle",
       "notFound.title": "Seite nicht gefunden",
       "notFound.text": "Die aufgerufene Seite existiert nicht oder wurde verschoben.",
       "notFound.home": "Zur Startseite",
@@ -179,8 +167,8 @@
       "title.adminPages": "Seiten · Admin | Shalaj",
       "title.adminPageNew": "Neue Seite · Admin | Shalaj",
       "title.adminPageEdit": "Seite bearbeiten · Admin | Shalaj",
-      "pages.test-service.title": "test",
-      "pages.test-service.subtitle": "test"
+      "title.adminCategories": "Kategorien · Admin | Shalaj",
+      "title.adminProducts": "Produkte · Admin | Shalaj"
     },
     "en": {
       "nav.inspiration": "Inspiration",
@@ -218,18 +206,6 @@
       "hero.s6.subtitle": "Authentically aged for unmistakable character.",
       "categories.title": "Product categories",
       "categories.trackAria": "Product categories, horizontal scrollbar",
-      "categories.gestaltungspflaster": "Decorative paving",
-      "categories.oekopflaster": "Eco paving",
-      "categories.funktionspflaster": "Functional paving",
-      "categories.betonTerrassenplatten": "Concrete patio slabs",
-      "categories.keramikTerrassenplatten": "Ceramic patio slabs",
-      "categories.blockstufen": "Block steps",
-      "categories.palisaden": "Palisades",
-      "categories.mauerBoeschung": "Wall & embankment systems",
-      "categories.bordRandsteine": "Kerbs & edging stones",
-      "categories.entwaesserung": "Drainage systems",
-      "categories.fertigteile": "Precast elements",
-      "categories.reinigungZubehoer": "Cleaning & accessories",
       "welcome.eyebrow": "Shalaj Baustoffwerke",
       "welcome.title": "Enjoy discovering new favourite spots",
       "welcome.p1": "Welcome to Shalaj, your first choice for premium concrete stone products. In everything we create from the versatile material concrete, nature is our model and our driving force. This shows not only in unique design, but also in the unshakeable durability and first-class quality of our products.",
@@ -337,7 +313,7 @@
       "pages.about.title": "Shalaj",
       "pages.about.subtitle": "Building materials made with conviction for almost 100 years – sustainability, climate favourites and people.",
       "pages.careers.title": "Careers",
-      "pages.careers.subtitle": "Become part of Shalaj – open positions, apprenticeships and insights into our employer brand.",
+      "pages.careers.subtitle": "Become part of Shalaj – open positions, apprenticeships and insights into our employer brand.\n\ntest subtitle",
       "notFound.title": "Page not found",
       "notFound.text": "The page you requested does not exist or has been moved.",
       "notFound.home": "Back to home",
@@ -353,8 +329,8 @@
       "title.adminPages": "Pages · Admin | Shalaj",
       "title.adminPageNew": "New page · Admin | Shalaj",
       "title.adminPageEdit": "Edit page · Admin | Shalaj",
-      "pages.test-service.title": "test",
-      "pages.test-service.subtitle": "test"
+      "title.adminCategories": "Categories · Admin | Shalaj",
+      "title.adminProducts": "Products · Admin | Shalaj"
     },
     "sq": {
       "nav.inspiration": "Frymëzim",
@@ -392,18 +368,6 @@
       "hero.s6.subtitle": "E vjetruar në mënyrë autentike për karakter të papërsëritshëm.",
       "categories.title": "Kategoritë e produkteve",
       "categories.trackAria": "Kategoritë e produkteve, shirit lëvizës horizontal",
-      "categories.gestaltungspflaster": "Pllakëzim dekorativ",
-      "categories.oekopflaster": "Pllakëzim ekologjik",
-      "categories.funktionspflaster": "Pllakëzim funksional",
-      "categories.betonTerrassenplatten": "Pllaka terrase prej betoni",
-      "categories.keramikTerrassenplatten": "Pllaka terrase prej qeramike",
-      "categories.blockstufen": "Shkallë blloku",
-      "categories.palisaden": "Palisada",
-      "categories.mauerBoeschung": "Sisteme muri dhe pjerrësie",
-      "categories.bordRandsteine": "Trotuare dhe gurë anësorë",
-      "categories.entwaesserung": "Sisteme kullimi",
-      "categories.fertigteile": "Elemente të parapërgatitura",
-      "categories.reinigungZubehoer": "Pastrim dhe aksesorë",
       "welcome.eyebrow": "Shalaj Baustoffwerke",
       "welcome.title": "Kënaquni duke zbuluar vende të reja të preferuara",
       "welcome.p1": "Mirë se vini në Shalaj, adresa juaj e parë për produkte cilësore prej guri betoni. Në gjithçka që krijojmë nga materiali i gjithanshëm i betonit, natyra është modeli dhe shtysa jonë. Kjo shihet jo vetëm në dizajnin unik, por edhe në qëndrueshmërinë e palëkundur dhe cilësinë e klasit të parë të produkteve tona.",
@@ -511,7 +475,7 @@
       "pages.about.title": "Shalaj",
       "pages.about.subtitle": "Prej gati 100 vjetësh materiale ndërtimi me bindje – qëndrueshmëri, të preferuarat klimatike dhe njerëz.",
       "pages.careers.title": "Karriera",
-      "pages.careers.subtitle": "Bëhu pjesë e Shalaj – vende të lira, praktika dhe njohje me markën tonë si punëdhënës.",
+      "pages.careers.subtitle": "Bëhu pjesë e Shalaj – vende të lira, praktika dhe njohje me markën tonë si punëdhënës.\n\ntest subtitle",
       "notFound.title": "Faqja nuk u gjet",
       "notFound.text": "Faqja që kërkuat nuk ekziston ose është zhvendosur.",
       "notFound.home": "Kthehu në faqen kryesore",
@@ -527,8 +491,8 @@
       "title.adminPages": "Faqet · Admin | Shalaj",
       "title.adminPageNew": "Faqe e re · Admin | Shalaj",
       "title.adminPageEdit": "Redakto faqen · Admin | Shalaj",
-      "pages.test-service.title": "test",
-      "pages.test-service.subtitle": "test"
+      "title.adminCategories": "Kategoritë · Admin | Shalaj",
+      "title.adminProducts": "Produktet · Admin | Shalaj"
     }
   },
   "content": {
@@ -591,56 +555,6 @@
         "titleKey": "hero.s6.title",
         "subtitleKey": "hero.s6.subtitle",
         "image": "https://www.kann.de/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg"
-      }
-    ],
-    "categories": [
-      {
-        "labelKey": "categories.gestaltungspflaster",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_GESTALTUNGSPFLASTER.svg"
-      },
-      {
-        "labelKey": "categories.oekopflaster",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_O___eKOGESTALTUNGSPFLASTER.svg"
-      },
-      {
-        "labelKey": "categories.funktionspflaster",
-        "icon": "https://www.kann.de/fileadmin/user_upload/04_PRODUKT_ICONS_FUNKTIONSPFLASTER.svg"
-      },
-      {
-        "labelKey": "categories.betonTerrassenplatten",
-        "icon": "https://www.kann.de/fileadmin/user_upload/terrassenplatten.svg"
-      },
-      {
-        "labelKey": "categories.keramikTerrassenplatten",
-        "icon": "https://www.kann.de/fileadmin/user_upload/04_PRODUKT_ICONS_KERAMIKPLATTEN.svg"
-      },
-      {
-        "labelKey": "categories.blockstufen",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_STUFEN.svg"
-      },
-      {
-        "labelKey": "categories.palisaden",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_PALISADEN.svg"
-      },
-      {
-        "labelKey": "categories.mauerBoeschung",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_MAUERN.svg"
-      },
-      {
-        "labelKey": "categories.bordRandsteine",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Bord_Randsteine/KBW_Produkticons_Bord-u-Randsteine_negativ.svg"
-      },
-      {
-        "labelKey": "categories.entwaesserung",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Entwaesserungartikel/KBW_Produkticons_Entwaesserungsartikel_negativ.svg"
-      },
-      {
-        "labelKey": "categories.fertigteile",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Fertigteile/KBW_Produkticons_Fertigteile_negativ.svg"
-      },
-      {
-        "labelKey": "categories.reinigungZubehoer",
-        "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_REINIGUNGSMITTEL.svg"
       }
     ],
     "processCards": [
@@ -795,7 +709,7 @@
       "heroImage": "https://www.kann.de/fileadmin/_processed_/b/0/csm_Vios-Platten__greige__100x100__18__RET_9415a69c34.jpg",
       "sections": [
         "category-grid",
-        "product-news"
+        "product-catalog"
       ]
     },
     {
@@ -840,17 +754,290 @@
       "sections": [
         "career-cta"
       ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "gestaltungspflaster",
+      "slug": "gestaltungspflaster",
+      "name": {
+        "de": "Gestaltungspflaster",
+        "en": "Decorative paving",
+        "sq": "Pllakëzim dekorativ"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_GESTALTUNGSPFLASTER.svg"
     },
     {
-      "id": "test-service",
-      "slug": "test-service",
-      "titleKey": "pages.test-service.title",
-      "subtitleKey": "pages.test-service.subtitle",
-      "heroImage": "",
-      "sections": [
-        "service",
-        "process"
-      ]
+      "id": "oekopflaster",
+      "slug": "oekopflaster",
+      "name": {
+        "de": "Ökopflaster",
+        "en": "Eco paving",
+        "sq": "Pllakëzim ekologjik"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_O___eKOGESTALTUNGSPFLASTER.svg"
+    },
+    {
+      "id": "funktionspflaster",
+      "slug": "funktionspflaster",
+      "name": {
+        "de": "Funktionspflaster",
+        "en": "Functional paving",
+        "sq": "Pllakëzim funksional"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/04_PRODUKT_ICONS_FUNKTIONSPFLASTER.svg"
+    },
+    {
+      "id": "beton-terrassenplatten",
+      "slug": "beton-terrassenplatten",
+      "name": {
+        "de": "Beton Terrassenplatten",
+        "en": "Concrete patio slabs",
+        "sq": "Pllaka terrase prej betoni"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/terrassenplatten.svg"
+    },
+    {
+      "id": "keramik-terrassenplatten",
+      "slug": "keramik-terrassenplatten",
+      "name": {
+        "de": "Keramik Terrassenplatten",
+        "en": "Ceramic patio slabs",
+        "sq": "Pllaka terrase prej qeramike"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/04_PRODUKT_ICONS_KERAMIKPLATTEN.svg"
+    },
+    {
+      "id": "blockstufen",
+      "slug": "blockstufen",
+      "name": {
+        "de": "Blockstufen",
+        "en": "Block steps",
+        "sq": "Shkallë blloku"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_STUFEN.svg"
+    },
+    {
+      "id": "palisaden",
+      "slug": "palisaden",
+      "name": {
+        "de": "Palisaden",
+        "en": "Palisades",
+        "sq": "Palisada"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_PALISADEN.svg"
+    },
+    {
+      "id": "mauer-boeschung",
+      "slug": "mauer-boeschung",
+      "name": {
+        "de": "Mauer- & Böschungssysteme",
+        "en": "Wall & embankment systems",
+        "sq": "Sisteme muri dhe pjerrësie"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_MAUERN.svg"
+    },
+    {
+      "id": "bord-randsteine",
+      "slug": "bord-randsteine",
+      "name": {
+        "de": "Bord- & Randsteine",
+        "en": "Kerbs & edging stones",
+        "sq": "Trotuare dhe gurë anësorë"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Bord_Randsteine/KBW_Produkticons_Bord-u-Randsteine_negativ.svg"
+    },
+    {
+      "id": "entwaesserung",
+      "slug": "entwaesserung",
+      "name": {
+        "de": "Entwässerungssysteme",
+        "en": "Drainage systems",
+        "sq": "Sisteme kullimi"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Entwaesserungartikel/KBW_Produkticons_Entwaesserungsartikel_negativ.svg"
+    },
+    {
+      "id": "fertigteile",
+      "slug": "fertigteile",
+      "name": {
+        "de": "Fertigteile",
+        "en": "Precast elements",
+        "sq": "Elemente të parapërgatitura"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Produktkategorie_Icons_Headerbilder/Fertigteile/KBW_Produkticons_Fertigteile_negativ.svg"
+    },
+    {
+      "id": "reinigung-zubehoer",
+      "slug": "reinigung-zubehoer",
+      "name": {
+        "de": "Reinigung & Zubehör",
+        "en": "Cleaning & accessories",
+        "sq": "Pastrim dhe aksesorë"
+      },
+      "icon": "https://www.kann.de/fileadmin/user_upload/Icons/04_PRODUKT_ICONS_REINIGUNGSMITTEL.svg"
+    },
+    {
+      "id": "category-e-re",
+      "slug": "category-e-re",
+      "name": {
+        "de": "Category e re",
+        "en": "Category e re",
+        "sq": "Category e re"
+      },
+      "icon": ""
+    }
+  ],
+  "products": [
+    {
+      "id": "vios-pflaster",
+      "categoryId": "gestaltungspflaster",
+      "name": {
+        "de": "Vios Pflaster",
+        "en": "Vios paving",
+        "sq": "Pllakëzim Vios"
+      },
+      "blurb": {
+        "de": "Zeitloses Gestaltungspflaster mit edler Oberfläche.",
+        "en": "Timeless design paving with a refined surface.",
+        "sq": "Pllakëzim dekorativ i përjetshëm me sipërfaqe fisnike."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/1/4/csm_Vios__40x20__anthrazit__Vios-Platten__100x100__grau-5_e180a784c7.jpeg"
+    },
+    {
+      "id": "zentano-antik",
+      "categoryId": "gestaltungspflaster",
+      "name": {
+        "de": "Zentano Antik",
+        "en": "Zentano Antik",
+        "sq": "Zentano antik"
+      },
+      "blurb": {
+        "de": "Authentisch gealtert für Höfe und Wege mit Charakter.",
+        "en": "Authentically aged for courtyards and paths with character.",
+        "sq": "E vjetruar autentikisht për oborre dhe shtigje me karakter."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg"
+    },
+    {
+      "id": "la-tierra",
+      "categoryId": "gestaltungspflaster",
+      "name": {
+        "de": "La Tierra",
+        "en": "La Tierra",
+        "sq": "La Tierra"
+      },
+      "blurb": {
+        "de": "Warme Erdtöne im wilden Verband.",
+        "en": "Warm earth tones in a random bond.",
+        "sq": "Nuanca të ngrohta toke në lidhje të lirë."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/0/9/csm_La_Tierra__wilder_Verband__Sunset__8__0dff78a3ca.jpeg"
+    },
+    {
+      "id": "vios-platten",
+      "categoryId": "beton-terrassenplatten",
+      "name": {
+        "de": "Vios Platten",
+        "en": "Vios slabs",
+        "sq": "Pllaka Vios"
+      },
+      "blurb": {
+        "de": "Großformatige Betonplatten für die moderne Terrasse.",
+        "en": "Large-format concrete slabs for the modern patio.",
+        "sq": "Pllaka betoni në format të madh për terrasën moderne."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/0/d/csm_Stolberg_Vios_08_grauRET_5df309f21c.jpg"
+    },
+    {
+      "id": "pheos-platten",
+      "categoryId": "beton-terrassenplatten",
+      "name": {
+        "de": "Pheos Platten",
+        "en": "Pheos slabs",
+        "sq": "Pllaka Pheos"
+      },
+      "blurb": {
+        "de": "Feine Ästhetik mit dezentem Glimmereffekt.",
+        "en": "Fine aesthetics with a subtle shimmer effect.",
+        "sq": "Estetikë e hollë me efekt të lehtë shkëlqimi."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/f/a/csm_Pheos-Platten__60x40__anthrazit_plus-1_eaa6f88376.jpeg"
+    },
+    {
+      "id": "cerapio",
+      "categoryId": "keramik-terrassenplatten",
+      "name": {
+        "de": "Cerapio",
+        "en": "Cerapio",
+        "sq": "Cerapio"
+      },
+      "blurb": {
+        "de": "Feinsteinzeug in Steinoptik – frostsicher und pflegeleicht.",
+        "en": "Porcelain stoneware in a stone look – frost-proof and low-maintenance.",
+        "sq": "Gres porcelanik në pamje guri – rezistent ndaj ngricës dhe i lehtë për mirëmbajtje."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/a/6/csm_MultiTec-Aqua__40x20__Jura-1_5ffe39333c.jpg"
+    },
+    {
+      "id": "ceragres",
+      "categoryId": "keramik-terrassenplatten",
+      "name": {
+        "de": "Ceragres",
+        "en": "Ceragres",
+        "sq": "Ceragres"
+      },
+      "blurb": {
+        "de": "Keramikplatten in Holz- und Betonoptik.",
+        "en": "Ceramic slabs in wood and concrete looks.",
+        "sq": "Pllaka qeramike në pamje druri dhe betoni."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/5/b/csm_KBW_Steingrafiken_mitSticker_aufGrau_Resorb_1_32627ea3e7.jpg"
+    },
+    {
+      "id": "rechteckpalisade",
+      "categoryId": "palisaden",
+      "name": {
+        "de": "Rechteckpalisade",
+        "en": "Rectangular palisade",
+        "sq": "Palisadë drejtkëndëshe"
+      },
+      "blurb": {
+        "de": "Klare Kanten für Beeteinfassungen und Stützmauern.",
+        "en": "Clean edges for bed borders and retaining walls.",
+        "sq": "Skaje të pastra për kufij shtretërish dhe mure mbajtëse."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg"
+    },
+    {
+      "id": "rundpalisade",
+      "categoryId": "palisaden",
+      "name": {
+        "de": "Rundpalisade",
+        "en": "Round palisade",
+        "sq": "Palisadë e rrumbullakët"
+      },
+      "blurb": {
+        "de": "Weiche Linien für organische Gartengestaltung.",
+        "en": "Soft lines for organic garden design.",
+        "sq": "Linja të buta për dizajn organik të kopshtit."
+      },
+      "image": "https://www.kann.de/fileadmin/_processed_/0/9/csm_La_Tierra__wilder_Verband__Sunset__8__0dff78a3ca.jpeg"
+    },
+    {
+      "id": "kategori111",
+      "categoryId": "category-e-re",
+      "name": {
+        "de": "Kategori111",
+        "en": "Kategori111",
+        "sq": "Kategori111"
+      },
+      "blurb": {
+        "de": "Kategori111",
+        "en": "Kategori111",
+        "sq": "Kategori111"
+      },
+      "image": ""
     }
   ]
 }

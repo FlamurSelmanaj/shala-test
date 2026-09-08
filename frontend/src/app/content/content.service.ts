@@ -2,9 +2,11 @@ import { Injectable, computed, signal } from '@angular/core';
 
 import { type Lang } from '../i18n/lang';
 import {
+  type Category,
   type LocalDb,
   type LocalDbContent,
   type PageRecord,
+  type Product,
   type Translations
 } from './localdb.model';
 
@@ -17,7 +19,6 @@ const EMPTY_CONTENT: LocalDbContent = {
   logo: '',
   nav: [],
   hero: [],
-  categories: [],
   processCards: [],
   serviceCards: [],
   magazineArticles: [],
@@ -33,17 +34,19 @@ const EMPTY_DB: LocalDb = {
   meta: { languages: ['de', 'en', 'sq'], defaultLanguage: 'de' },
   translations: EMPTY_TRANSLATIONS,
   content: EMPTY_CONTENT,
-  pages: []
+  pages: [],
+  categories: [],
+  products: []
 };
 
 /**
  * Loads the content DB once at app startup (see `provideAppInitializer` in
- * `app.config.ts`) and exposes it as signals. Everything the site renders — text,
- * images, nav, footer, pages — comes from here.
+ * `app.config.ts`) and exposes it as signals.
  *
- * The `pages` collection is CRUD-backed by json-server; `createPage` / `updatePage`
- * / `deletePage` / `updateTranslations` mutate `:3001` and then re-pull the whole
- * DB so the live site reflects the change immediately.
+ * Scope of what the admin dashboard can change:
+ *  - **categories** / **products** — full CRUD (json-server collections).
+ *  - **pages** — edit only (hero fields + section body text); no create/delete.
+ * Every mutation re-pulls `/db` so the live site reflects it immediately.
  */
 @Injectable({ providedIn: 'root' })
 export class ContentService {
@@ -92,7 +95,6 @@ export class ContentService {
   readonly logo = computed(() => this.content().logo);
   readonly nav = computed(() => this.content().nav);
   readonly hero = computed(() => this.content().hero);
-  readonly categories = computed(() => this.content().categories);
   readonly processCards = computed(() => this.content().processCards);
   readonly serviceCards = computed(() => this.content().serviceCards);
   readonly magazineArticles = computed(() => this.content().magazineArticles);
@@ -102,33 +104,38 @@ export class ContentService {
   readonly productNewsImage = computed(() => this.content().images.productNews);
   readonly resorbImage = computed(() => this.content().images.resorb);
   readonly careerImage = computed(() => this.content().images.career);
+
   readonly pages = computed(() => this.db().pages);
+  readonly categories = computed(() => this.db().categories);
+  readonly products = computed(() => this.db().products);
 
   page(slug: string): PageRecord | undefined {
     return this.db().pages.find((entry) => entry.slug === slug);
   }
 
-  // ── Pages CRUD (json-server) ──────────────────────────────────────────────
-
-  async createPage(record: PageRecord): Promise<void> {
-    await this.mutate('POST', '/pages', record);
-    await this.refresh();
+  category(id: string): Category | undefined {
+    return this.db().categories.find((entry) => entry.id === id);
   }
+
+  product(id: string): Product | undefined {
+    return this.db().products.find((entry) => entry.id === id);
+  }
+
+  productsByCategory(categoryId: string): Product[] {
+    return this.db().products.filter((entry) => entry.categoryId === categoryId);
+  }
+
+  // ── Pages: edit-only ─────────────────────────────────────────────────────
 
   async updatePage(id: string, patch: Partial<PageRecord>): Promise<void> {
     await this.mutate('PATCH', `/pages/${encodeURIComponent(id)}`, patch);
     await this.refresh();
   }
 
-  async deletePage(id: string): Promise<void> {
-    await this.mutate('DELETE', `/pages/${encodeURIComponent(id)}`);
-    await this.refresh();
-  }
-
   /**
    * Merge translation entries per language and persist. Pass only the changed
-   * keys — json-server PATCH shallow-merges the top level, so this method rebuilds
-   * the full `de`/`en`/`sq` maps first to avoid clobbering the rest.
+   * keys — json-server PATCH shallow-merges the top level, so this rebuilds the
+   * full `de`/`en`/`sq` maps first to avoid clobbering the rest.
    */
   async updateTranslations(changes: Partial<Record<Lang, Record<string, string>>>): Promise<void> {
     const current = this.db().translations;
@@ -141,7 +148,51 @@ export class ContentService {
     await this.refresh();
   }
 
-  private async mutate(method: 'POST' | 'PATCH' | 'DELETE', path: string, body?: unknown): Promise<void> {
+  // ── Categories CRUD ─────────────────────────────────────────────────────
+
+  async createCategory(record: Category): Promise<void> {
+    await this.mutate('POST', '/categories', record);
+    await this.refresh();
+  }
+
+  async updateCategory(id: string, patch: Partial<Category>): Promise<void> {
+    await this.mutate('PATCH', `/categories/${encodeURIComponent(id)}`, patch);
+    await this.refresh();
+  }
+
+  /** Deletes the category and cascades to every product that belonged to it. */
+  async deleteCategory(id: string): Promise<void> {
+    for (const product of this.productsByCategory(id)) {
+      await this.mutate('DELETE', `/products/${encodeURIComponent(product.id)}`);
+    }
+    await this.mutate('DELETE', `/categories/${encodeURIComponent(id)}`);
+    await this.refresh();
+  }
+
+  // ── Products CRUD ──────────────────────────────────────────────────────
+
+  async createProduct(record: Product): Promise<void> {
+    await this.mutate('POST', '/products', record);
+    await this.refresh();
+  }
+
+  async updateProduct(id: string, patch: Partial<Product>): Promise<void> {
+    await this.mutate('PATCH', `/products/${encodeURIComponent(id)}`, patch);
+    await this.refresh();
+  }
+
+  async deleteProduct(id: string): Promise<void> {
+    await this.mutate('DELETE', `/products/${encodeURIComponent(id)}`);
+    await this.refresh();
+  }
+
+  // ── Internals ─────────────────────────────────────────────────────────
+
+  private async mutate(
+    method: 'POST' | 'PATCH' | 'DELETE',
+    path: string,
+    body?: unknown
+  ): Promise<void> {
     const response = await fetch(`${API_BASE}${path}`, {
       method,
       headers: body === undefined ? undefined : { 'Content-Type': 'application/json' },

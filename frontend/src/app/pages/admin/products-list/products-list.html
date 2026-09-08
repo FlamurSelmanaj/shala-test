@@ -1,0 +1,33 @@
+<section class="list">
+  <header class="list-head">
+    <div>
+      <h2>Products</h2>
+      <p>{{ total() }} products across {{ groups().length }} categories</p>
+    </div>
+    <a class="btn btn-primary" routerLink="/admin/products/new" [class.disabled]="!apiOnline()">
+      + New product
+    </a>
+  </header>
+
+  @for (group of groups(); track group.categoryId) {
+    <div class="group">
+      <h3>{{ group.categoryName }}</h3>
+      <ul class="rows">
+        @for (product of group.products; track product.id) {
+          <li>
+            <a [routerLink]="['/admin/products', product.id]">
+              <img class="thumb" [src]="product.image" alt="" referrerpolicy="no-referrer" />
+              <span class="row-main">
+                <strong>{{ text(product.name) }}</strong>
+                <small>{{ text(product.blurb) }}</small>
+              </span>
+              <span class="chev" aria-hidden="true">›</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  } @empty {
+    <p class="empty">No products yet. Add one with “New product”.</p>
+  }
+</section>

@@ -1,4 +1,4 @@
-import { type Lang, type TranslationKey } from '../i18n/lang';
+import { type Lang, type LangText, type TranslationKey } from '../i18n/lang';
 
 /** Per-language map of translation key -> resolved string. */
 export type Translations = Record<Lang, Record<string, string>>;
@@ -15,9 +15,27 @@ export interface HeroSlide {
   badge?: string;
 }
 
+/**
+ * A product category. Managed via the admin dashboard, so its label is stored
+ * inline per-language rather than through the translation dictionaries.
+ * json-server collection: `/categories`.
+ */
 export interface Category {
-  labelKey: TranslationKey;
+  id: string;
+  slug: string;
+  name: LangText;
   icon: string;
+}
+
+/**
+ * A product, belonging to one {@link Category}. json-server collection: `/products`.
+ */
+export interface Product {
+  id: string;
+  categoryId: string;
+  name: LangText;
+  blurb: LangText;
+  image: string;
 }
 
 export interface OverlayCard {
@@ -50,6 +68,7 @@ export type SectionKey =
   | 'category-grid'
   | 'welcome'
   | 'product-news'
+  | 'product-catalog'
   | 'process'
   | 'resorb'
   | 'service'
@@ -61,6 +80,7 @@ export const SECTION_KEYS: readonly SectionKey[] = [
   'category-grid',
   'welcome',
   'product-news',
+  'product-catalog',
   'process',
   'resorb',
   'service',
@@ -74,6 +94,7 @@ export const SECTION_LABELS: Record<SectionKey, string> = {
   'category-grid': 'Product category strip',
   welcome: 'Welcome intro',
   'product-news': 'Product news band',
+  'product-catalog': 'Product catalogue',
   process: 'Process cards',
   resorb: 'ReSorb feature',
   service: 'Service cards',
@@ -98,7 +119,6 @@ export interface LocalDbContent {
   logo: string;
   nav: NavItem[];
   hero: HeroSlide[];
-  categories: Category[];
   processCards: OverlayCard[];
   serviceCards: ServiceCard[];
   magazineArticles: MagazineArticle[];
@@ -120,4 +140,6 @@ export interface LocalDb {
   translations: Translations;
   content: LocalDbContent;
   pages: PageRecord[];
+  categories: Category[];
+  products: Product[];
 }

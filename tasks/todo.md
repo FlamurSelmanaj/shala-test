@@ -283,6 +283,166 @@ Recruiting, Blank.
   Restored from the session's English source; hardened `updateTranslations` to always send the
   full merged maps. Lesson recorded.
 
+### Fix: admin layout not centered / not filling the page (2026-09-09)
+User: "fix styles for admin the width is not filling the page and content is not centered".
+Cause: `.admin-canvas` had no content column — the status bar / nav spanned full-bleed
+while the routed editors set `max-width` with **no `margin: 0 auto`**, so forms hugged the
+left edge and looked tiny next to the full-width chrome.
+Fix:
+- `admin-shell` — wrapped bar + nav + `<router-outlet>` in `.admin-inner`
+  (`max-width: 1180px; margin-inline: auto`). Grey `.admin-canvas` stays full-bleed behind it.
+- `page-editor` `.editor` 780 → **920px + margin-inline:auto**; `category-editor` /
+  `product-editor` `.editor` 640 → **720px + margin-inline:auto**. Lists already fill the
+  column.
+Now: bar, nav, lists and centered edit forms all align to one 1180px centered column.
+`npm run build` green; bundle greps confirm `.admin-inner{max-width:1180px;margin-inline:auto}`
+and the editor `.editor{max-width:920/720px;margin-inline:auto}`. Visual check is the user's
+(no `ng serve` per CLAUDE.md).
+
+### Re-scope: not a full CMS — categories + products CRUD, pages edit-only (2026-09-08)
+User: "this won't be a full cmd we will only add new categories and products and other
+pages will only have editable static content".
+Choices (AskUserQuestion): **products belong to categories**; **labels stored inline
+per-language** (`name: {de,en,sq}`, no translation keys); **pages editable content = hero +
+section body text** (no add/delete pages, no section/template editing).
+
+### Data model (localdb.json)
+- **`categories`** → promote from `content.categories` to a **top-level array** (json-server
+  CRUD). Each: `{ id, slug, name: {de,en,sq}, icon }`. Migrate the 12 existing (pull labels
+  out of `translations.categories.*` into inline `name`). Delete the 12 `categories.<x>`
+  translation keys; keep `categories.title` / `categories.trackAria` (UI chrome).
+- **`products`** → NEW top-level array. Each: `{ id, categoryId, name: {de,en,sq},
+  blurb: {de,en,sq}, image }`. Seed ~8–10 across a few categories.
+- **`pages`** — unchanged shape (`sections[]` stays on the record, needed by
+  `PageComponent`); UI no longer creates/deletes/edits sections. Remove the throwaway
+  `test-service` page + its 2 translation keys.
+- New route-title keys ×3: `title.adminCategories`, `title.adminProducts`,
+  `title.adminCategoryEdit`, `title.adminProductEdit`.
+
+### Angular
+- **`i18n/lang.ts`** — add `LangText = Record<Lang,string>`.
+  **`i18n/translation.service.ts`** — add `text = (m) => m?.[lang()] ?? m?.de ?? ''`.
+- **`content/localdb.model.ts`** — `LangText`; new `Category {id,slug,name,icon}` +
+  `Product {id,categoryId,name,blurb,image}`; `LocalDb.categories/products`; drop
+  `content.categories`; add `'product-catalog'` to `SectionKey`/`SECTION_KEYS`.
+- **`content/content.service.ts`** — `categories`/`products` from top level;
+  `productsByCategory(id)`; `create/update/deleteCategory`, `create/update/deleteProduct`
+  (+ cascade delete of a category's products); drop `createPage`/`deletePage`; keep
+  `updatePage` + `updateTranslations`.
+- **`content/section-text-keys.ts`** (NEW) — `SECTION_TEXT_KEYS: Record<SectionKey,
+  {key,label}[]>` listing the editable translation keys per section, for the page editor.
+- **`components/category-grid/`** — `text(category.name)` instead of `t(labelKey)`.
+- **`components/product-catalog/`** (NEW) — groups `products()` by category, renders
+  heading + card grid. Registered as section `product-catalog`; add it to the
+  `products` page record's `sections`.
+- Delete `content/page-templates.ts` (dead once templates go).
+
+### Admin
+- **`admin-shell`** — reshape from the page-centric sidebar to a top nav
+  (Pages / Categories / Products) + API pill + back link + `<router-outlet>`.  ⚠ touches
+  the user's customized shell — see check-in.
+- **`admin.routes.ts`** — `pages` (list) + `pages/:id` (editor, no `/new`);
+  `categories` + `categories/new` + `categories/:id`;
+  `products` + `products/new` + `products/:id`.
+- **`page-editor`** — strip template/slug/sections/auto-order/create/delete; keep card
+  layout + lang tabs + hero image/preview + title/subtitle; ADD a "Section content" block
+  that renders `SECTION_TEXT_KEYS[section]` × 3 languages for each section on the page,
+  saved via `updateTranslations`.
+- **`pages-list`** — fixed list (no "New page"), rows → `pages/:id`.
+- **`categories-list` + `category-editor`** (NEW) — table (name, icon, product count) +
+  form (name ×3, icon+preview, slug auto/locked). Create / Save / Delete(cascade).
+- **`products-list` + `product-editor`** (NEW) — list grouped/filtered by category +
+  form (category select, name ×3, blurb ×3, image+preview). Create / Save / Delete.
+- **`admin/lang-text.ts`** (NEW) — `blankLangText()`, `slugify()` (moved from `page-draft.ts`).
+
+### Done
+- **`localdb.json`** — `categories` promoted to top-level array `{id, slug, name:{de,en,sq},
+  icon}` (12, inline names pulled from the dropped `categories.*` keys). New `products`
+  top-level array `{id, categoryId, name, blurb, image}` (9 seeded). `content.categories`
+  removed. `test-service` page + keys removed. `products` page `sections` →
+  `['category-grid','product-catalog']`. +6 admin title keys, −12 category keys, −2
+  test-service → **160 keys/lang** (full parity).
+- **i18n** — `LangText` + `blankLangText()` in `lang.ts`; `TranslationService.text(LangText)`.
+- **model** — `Category`/`Product` types; `LocalDb.categories/products`; `'product-catalog'`
+  section key + label.
+- **`content.service.ts`** — `categories`/`products` from top level + `category()`/`product()`
+  /`productsByCategory()`; `create/update/deleteCategory` (delete cascades products),
+  `create/update/deleteProduct`; `createPage`/`deletePage` removed; `updatePage` +
+  `updateTranslations` kept.
+- **`section-text.ts`** — `sectionTextKeys(section, allKeys)` derives a section's editable
+  keys from prefix (`welcome.`, `process.`, …), minus a11y-only keys.
+- **`category-grid`** — renders `text(category.name)`.
+- **`product-catalog`** (NEW section component) — products grouped by category; on `/products`.
+- **Admin** — shell reshaped to top nav (Pages / Categories / Products) + `<router-outlet>`
+  (kept the `--admin-*` token layer). Routes: `pages` + `pages/:id` (no `/new`); `categories`
+  + `categories/new` + `categories/:id`; `products` + `products/new` + `products/:id`.
+  - `page-editor` — stripped slug/sections/templates/create/delete; now hero (image + title/
+    subtitle ×3 via lang tabs) + a card per section listing its editable translation keys ×3.
+  - `pages-list` — fixed list, no "New".
+  - `categories-list` + `category-editor` (name ×3, icon+preview, slug auto/locked, cascade delete).
+  - `products-list` (grouped by category) + `product-editor` (category select, name ×3, blurb ×3,
+    image+preview).
+  - `admin-util.ts` (slugify); deleted `page-draft.ts`, `page-templates.ts`.
+- **`package.json`** — `api` script drops `--watch` (see incident).
+
+### Verification
+- `npm run build` green, no `anyComponentStyle` warning. `main` 1.19 kB; admin splits into
+  10 small lazy chunks (shell 4.8, 3 lists ~3–4, 3 editors 9–12, routes 1.2); FormsModule
+  shared, only pulled by an editor. `page` chunk 5.99 kB (now incl. ProductCatalog).
+- Live json-server (`npm run api`, no `--watch`): `POST/PATCH/DELETE /categories` +
+  `/products` → 201/200; category delete cascades its products; `PATCH /pages/about`
+  (heroImage) + full-merge `PATCH /translations` → 200; DB restored to 12/9/6 · 160 keys.
+- Bundle greps: admin-routes chunk carries all 8 paths + `redirectTo`/`pathMatch` + the
+  admin title keys; `product-catalog` compiled; dist `localdb.json` fallback has the new
+  shape (categories inline, products present, `content.categories` gone).
+- Not run per CLAUDE.md: `ng serve`, `ng test`.
+
+### Incident
+- json-server `--watch` returns a spurious **500 / ECONNRESET** on the mutation response
+  when its file-watcher reloads mid-request (the write still lands). `ContentService.mutate`
+  checks `response.ok`, so that surfaced as a false "save failed". Fix: `api` script no
+  longer passes `--watch` — mutations still persist to `public/localdb.json`; hand-edits to
+  that file just need an `npm run api` restart. Re-verified: all writes clean without it.
+
+### Follow-up: no site header/footer on /admin (2026-09-08)
+User: "remove header and footer into admin pages". `app.html` currently wraps every
+route (incl. `/admin`) in `<app-site-header>` / `<app-site-footer>`. Admin now has its
+own full shell (status bar + sidebar), so the public chrome is doubled up on `/admin/*`.
+
+### Plan (layout route — no URL string-matching in `App`)
+- **`layouts/public-layout/public-layout.{ts,html,scss}`** — new `PublicLayout`:
+  `imports: [SiteHeader, RouterOutlet, SiteFooter]`, template = header + `<main><router-outlet/></main>`
+  + footer (the current `app.html`). `:host{display:block;min-height:100vh}`.
+- **`app.ts`** — `imports: [RouterOutlet]` only (drop SiteHeader/SiteFooter).
+- **`app.html`** — just `<router-outlet />`.
+- **`app.routes.ts`** — reorder + nest:
+  - `{ path: 'admin', loadChildren: ADMIN_ROUTES }` (FIRST, so `/admin` isn't caught by
+    the public `**`).
+  - `{ path: '', loadComponent: PublicLayout, children: [ home (''), ':slug'
+    (canMatch pageExists), '**' → NotFoundPage ] }`.
+  - 404 stays inside `PublicLayout` → keeps the site chrome (only admin loses it).
+- `app.spec.ts` stays stale/untouched (CLAUDE.md).
+
+### Done
+- `layouts/public-layout/public-layout.{ts,html,scss}` — `PublicLayout` holds the
+  `<app-site-header>` + `<main><router-outlet/></main>` + `<app-site-footer>` (the old
+  `app.html`). `:host{min-height:100vh}`.
+- `app.ts` → `imports: [RouterOutlet]`; `app.html` → `<router-outlet />` only.
+- `app.routes.ts` — `admin` (loadChildren) FIRST, then `''` → `PublicLayout` with children
+  `home` / `:slug` (canMatch `pageExists`) / `**` (NotFoundPage). 404 keeps site chrome.
+- Only 4 files touched + 3 new; the user's custom admin shell/editor untouched.
+
+### Verification
+- `npm run build` green, no budget warning. `main` 9 kB → **1.19 kB** (root is now a bare
+  outlet). New `public-layout` lazy chunk (8.2 kB / 2.15 kB transfer) carries
+  `SiteHeader`+`SiteFooter`.
+- Bundle greps: `<app-site-header>`/`<app-site-footer>` live **only** in the `public-layout`
+  chunk; the 4 admin chunks (`admin-shell`, `pages-list`, `page-editor`, `admin-routes`)
+  contain neither → `/admin/*` renders with no site chrome. Route nesting confirmed
+  (`admin` loadChildren + `public-layout` children).
+- Not run per CLAUDE.md: `ng serve`, `ng test`. `app.spec.ts` now further stale (references
+  `App` composing sections) — untouched per the rule.
+
 ### Follow-up: nested admin routes (shell + children) (2026-09-08)
 User: "make seperate admin routes not in the same level as in other routes".
 Choices: **shell + child routes**; keep **/admin, unlisted**.
