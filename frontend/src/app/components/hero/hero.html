@@ -1,0 +1,37 @@
+<section class="hero" aria-label="Aktuelle Themen">
+  @for (slide of heroSlides; track slide.title; let i = $index) {
+    <article
+      class="hero-slide"
+      [class.active]="activeSlide() === i"
+      [style.background-image]="'url(' + slide.image + ')'"
+      [attr.aria-hidden]="activeSlide() === i ? null : true"
+    >
+      <div class="hero-copy">
+        <p class="hero-kicker">{{ slide.subtitle }}</p>
+        <h1>{{ slide.title }}</h1>
+        <a class="btn btn-primary" href="#">{{ slide.title }}</a>
+      </div>
+      @if (slide.badge) {
+        <img class="hero-badge" [src]="slide.badge" [alt]="slide.title" referrerpolicy="no-referrer" />
+      }
+    </article>
+  }
+
+  <button class="hero-nav prev" type="button" aria-label="Vorheriger Slide" (click)="prev()">‹</button>
+  <button class="hero-nav next" type="button" aria-label="Nächster Slide" (click)="next()">›</button>
+
+  <div class="hero-dots" role="tablist" aria-label="Slide auswählen">
+    @for (slide of heroSlides; track slide.title; let i = $index) {
+      <button
+        type="button"
+        role="tab"
+        [class.active]="activeSlide() === i"
+        [attr.aria-selected]="activeSlide() === i"
+        [attr.aria-label]="slide.title"
+        (click)="goToSlide(i)"
+      ></button>
+    }
+  </div>
+
+  <p class="hero-legal">* UVP inkl. MwSt., frei Bau ab 40 m², gültig bis 31.12.2026</p>
+</section>

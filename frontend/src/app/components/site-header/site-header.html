@@ -1,0 +1,33 @@
+<header class="site-header" [class.is-open]="menuOpen()">
+  <a class="brand" href="#" aria-label="KANN Baustoffwerke Startseite">
+    <img
+      [src]="logo"
+      alt="KANN Baustoffwerke"
+      width="167"
+      height="80"
+      referrerpolicy="no-referrer"
+    />
+    <span class="brand-anniversary" aria-label="99 Jahre KANN">99<small>Jahre KANN</small></span>
+  </a>
+
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    @for (item of navItems; track item) {
+      <a href="#">{{ item }}</a>
+    }
+  </nav>
+
+  <div class="header-actions" aria-label="Schnellzugriff">
+    <span class="lang">DE&nbsp;<i aria-hidden="true">/</i>&nbsp;FR</span>
+    <button type="button" aria-label="Suche">⌕</button>
+    <button type="button" aria-label="Merkzettel">♡</button>
+    <button
+      type="button"
+      class="nav-toggle"
+      [attr.aria-expanded]="menuOpen()"
+      aria-label="Navigation umschalten"
+      (click)="toggleMenu()"
+    >
+      ☰
+    </button>
+  </div>
+</header>

@@ -1,0 +1,19 @@
+<section class="service-section" aria-labelledby="service-title">
+  <div class="section-heading">
+    <p class="eyebrow">Service</p>
+    <h2 id="service-title">Gut vorbereitet planen</h2>
+  </div>
+
+  <div class="service-grid">
+    @for (card of serviceCards; track card.title) {
+      <article class="service-card">
+        <img [src]="card.image" [alt]="card.title" referrerpolicy="no-referrer" />
+        <div>
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.text }}</p>
+          <a href="#">{{ card.link }}</a>
+        </div>
+      </article>
+    }
+  </div>
+</section>

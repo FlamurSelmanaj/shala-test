@@ -1,0 +1,24 @@
+.welcome {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 96px 40px;
+  text-align: center;
+}
+
+.welcome p:last-child,
+.welcome p:nth-of-type(2) {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.welcome p + p {
+  margin-top: 18px;
+}
+
+@media (max-width: 640px) {
+  .welcome {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

@@ -1,0 +1,11 @@
+<section class="category-section" aria-labelledby="categories-title">
+  <h2 id="categories-title" class="visually-hidden">Produktkategorien</h2>
+  <div class="category-grid">
+    @for (category of categories; track category.label) {
+      <a href="#">
+        <img [src]="category.icon" [alt]="category.label" referrerpolicy="no-referrer" />
+        <span>{{ category.label }}</span>
+      </a>
+    }
+  </div>
+</section>

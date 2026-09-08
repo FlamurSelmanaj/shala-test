@@ -1,0 +1,23 @@
+<section class="process" aria-labelledby="process-title">
+  <div class="section-heading">
+    <p class="eyebrow">Prozess</p>
+    <h2 id="process-title">Wir unterstützen Sie bei jedem Prozess</h2>
+  </div>
+  <p class="process-lead">
+    Ob privater oder öffentlicher Lieblingsplatz: KANN begleitet Sie von der ersten Inspiration bis
+    zur fertigen Fläche. Entdecken Sie vielfältige Gestaltungsideen für Terrassen, Wege und Gärten –
+    und erleben Sie, wie moderne Betonstein-Lösungen Außenbereiche in echte Wohlfühlorte verwandeln.
+  </p>
+
+  <div class="overlay-cards">
+    @for (card of overlayCards; track card.title) {
+      <article class="overlay-card" [style.background-image]="'url(' + card.image + ')'">
+        <div class="overlay-card-body">
+          <h3>{{ card.title }}</h3>
+          <p>{{ card.text }}</p>
+          <a href="#">Mehr erfahren</a>
+        </div>
+      </article>
+    }
+  </div>
+</section>
