@@ -1,0 +1,1 @@
+var e={hero:"Hero slider","category-grid":"Product category strip",welcome:"Welcome intro","product-news":"Product news band","product-catalog":"Product catalogue",process:"Process cards",resorb:"ReSorb feature",service:"Service cards",magazine:"Magazine grid","career-cta":"Careers CTA"};export{e as a};
