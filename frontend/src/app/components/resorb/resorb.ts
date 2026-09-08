@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 
+import { ContentService } from '../../content/content.service';
 import { TranslationService } from '../../i18n';
-import { ASSET } from '../../shared/asset';
 
 @Component({
   selector: 'app-resorb',
@@ -11,8 +11,5 @@ import { ASSET } from '../../shared/asset';
 })
 export class Resorb {
   protected readonly t = inject(TranslationService).t;
-
-  protected readonly resorbImage =
-    ASSET +
-    '/fileadmin/_processed_/5/b/csm_KBW_Steingrafiken_mitSticker_aufGrau_Resorb_1_32627ea3e7.jpg';
+  protected readonly resorbImage = inject(ContentService).resorbImage;
 }

@@ -1,6 +1,13 @@
 /** Supported UI languages. German is the default; English and Albanian are additions. */
 export type Lang = 'de' | 'en' | 'sq';
 
+/**
+ * A translation key, e.g. `'nav.inspiration'`. The set of valid keys now lives in
+ * `localdb.json` (single source of truth), so this is a plain string alias rather
+ * than a compile-time union.
+ */
+export type TranslationKey = string;
+
 /** Selectable languages, in switcher order. */
 export const LANGS: readonly Lang[] = ['de', 'en', 'sq'] as const;
 

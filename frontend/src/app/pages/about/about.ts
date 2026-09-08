@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 
 import { CareerCta } from '../../components/career-cta/career-cta';
 import { Welcome } from '../../components/welcome/welcome';
-import { ASSET } from '../../shared/asset';
+import { ContentService } from '../../content/content.service';
+import { TranslationService } from '../../i18n';
 import { PageHero } from '../../shared/page-hero/page-hero';
 
 @Component({
@@ -12,7 +13,8 @@ import { PageHero } from '../../shared/page-hero/page-hero';
   styleUrl: './about.scss'
 })
 export class AboutPage {
-  protected readonly heroImage =
-    ASSET +
-    '/fileadmin/_processed_/1/0/csm_Zentano_Antik__36x12x8__Moonlightschwarz_bb531d96ca.jpg';
+  private readonly content = inject(ContentService);
+
+  protected readonly t = inject(TranslationService).t;
+  protected readonly page = computed(() => this.content.page('about'));
 }

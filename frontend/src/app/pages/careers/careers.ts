@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 
 import { CareerCta } from '../../components/career-cta/career-cta';
-import { ASSET } from '../../shared/asset';
+import { ContentService } from '../../content/content.service';
+import { TranslationService } from '../../i18n';
 import { PageHero } from '../../shared/page-hero/page-hero';
 
 @Component({
@@ -11,7 +12,8 @@ import { PageHero } from '../../shared/page-hero/page-hero';
   styleUrl: './careers.scss'
 })
 export class CareersPage {
-  protected readonly heroImage =
-    ASSET +
-    '/fileadmin/_processed_/c/8/csm_02_KREATION_ARBEITGEBERMARKE_BANNER_START_1900x990px_220204_d482f6d740.jpg';
+  private readonly content = inject(ContentService);
+
+  protected readonly t = inject(TranslationService).t;
+  protected readonly page = computed(() => this.content.page('careers'));
 }

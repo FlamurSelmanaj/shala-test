@@ -6,7 +6,7 @@
   </div>
 
   <div class="magazine-grid">
-    @for (article of magazineArticles; track article.titleKey) {
+    @for (article of magazineArticles(); track article.titleKey) {
       <a class="magazine-card" href="#">
         <img [src]="article.image" [alt]="t(article.titleKey)" referrerpolicy="no-referrer" />
         <span class="magazine-tag">{{ t(article.categoryKey) }}</span>

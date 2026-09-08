@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 
 import { Magazine } from '../../components/magazine/magazine';
 import { Welcome } from '../../components/welcome/welcome';
-import { ASSET } from '../../shared/asset';
+import { ContentService } from '../../content/content.service';
+import { TranslationService } from '../../i18n';
 import { PageHero } from '../../shared/page-hero/page-hero';
 
 @Component({
@@ -12,6 +13,8 @@ import { PageHero } from '../../shared/page-hero/page-hero';
   styleUrl: './inspiration.scss'
 })
 export class InspirationPage {
-  protected readonly heroImage =
-    ASSET + '/fileadmin/_processed_/0/d/csm_Stolberg_Vios_08_grauRET_5df309f21c.jpg';
+  private readonly content = inject(ContentService);
+
+  protected readonly t = inject(TranslationService).t;
+  protected readonly page = computed(() => this.content.page('inspiration'));
 }

@@ -1,23 +1,22 @@
 import { DOCUMENT } from '@angular/common';
 import { Injectable, effect, inject, signal } from '@angular/core';
 
-import { de, type Dictionary, type TranslationKey } from './dictionaries/de';
-import { en } from './dictionaries/en';
-import { sq } from './dictionaries/sq';
-import { LANGS, type Lang, isLang } from './lang';
+import { ContentService } from '../content/content.service';
+import { LANGS, type Lang, type TranslationKey, isLang } from './lang';
 
-const DICTIONARIES: Record<Lang, Dictionary> = { de, en, sq };
 const STORAGE_KEY = 'kann-lang';
 const DEFAULT_LANG: Lang = 'de';
 
 /**
  * Runtime i18n. Holds the active language in a signal and resolves keys against
- * the matching dictionary, so any template that calls `t(...)` re-renders on
- * language change (zoneless-friendly — no pipe, no zone.js needed).
+ * the dictionaries loaded from `localdb.json` (via {@link ContentService}). Any
+ * template that calls `t(...)` re-renders on language change or once the DB
+ * arrives — no pipe, no zone.js needed.
  */
 @Injectable({ providedIn: 'root' })
 export class TranslationService {
   private readonly document = inject(DOCUMENT);
+  private readonly content = inject(ContentService);
 
   /** Active language. */
   readonly lang = signal<Lang>(this.readStoredLang());
@@ -43,11 +42,14 @@ export class TranslationService {
   }
 
   /**
-   * Resolve a translation key for the active language. Bound as a field so it can
-   * be handed straight to a template (`protected readonly t = i18n.t`).
+   * Resolve a translation key for the active language, falling back to German and
+   * then to the raw key. Bound as a field so it can be handed straight to a
+   * template (`protected readonly t = inject(TranslationService).t`).
    */
-  readonly t = (key: TranslationKey): string =>
-    DICTIONARIES[this.lang()][key] ?? de[key] ?? key;
+  readonly t = (key: TranslationKey): string => {
+    const dictionaries = this.content.translations();
+    return dictionaries[this.lang()]?.[key] ?? dictionaries[DEFAULT_LANG]?.[key] ?? key;
+  };
 
   private readStoredLang(): Lang {
     try {

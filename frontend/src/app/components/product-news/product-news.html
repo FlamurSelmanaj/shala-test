@@ -1,5 +1,5 @@
 <section class="news-band" aria-labelledby="news-title">
-  <img [src]="newsImage" [alt]="t('news.imageAlt')" referrerpolicy="no-referrer" />
+  <img [src]="newsImage()" [alt]="t('news.imageAlt')" referrerpolicy="no-referrer" />
   <div>
     <p class="eyebrow">{{ t('news.eyebrow') }}</p>
     <h2 id="news-title">{{ t('news.title') }}</h2>

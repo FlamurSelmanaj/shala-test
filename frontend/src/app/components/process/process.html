@@ -6,7 +6,7 @@
   <p class="process-lead">{{ t('process.lead') }}</p>
 
   <div class="overlay-cards">
-    @for (card of overlayCards; track card.titleKey) {
+    @for (card of cards(); track card.titleKey) {
       <article class="overlay-card" [style.background-image]="'url(' + card.image + ')'">
         <div class="overlay-card-body">
           <h3>{{ t(card.titleKey) }}</h3>

@@ -5,7 +5,7 @@
   </div>
 
   <div class="service-grid">
-    @for (card of serviceCards; track card.titleKey) {
+    @for (card of serviceCards(); track card.titleKey) {
       <article class="service-card">
         <img [src]="card.image" [alt]="t(card.titleKey)" referrerpolicy="no-referrer" />
         <div>

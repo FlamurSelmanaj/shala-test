@@ -1,6 +1,6 @@
 <section class="hero" [attr.aria-label]="t('hero.regionAria')">
   <div class="hero-track" [style.transform]="'translateX(-' + activeSlide() * 100 + '%)'">
-    @for (slide of heroSlides; track slide.titleKey; let i = $index) {
+    @for (slide of heroSlides(); track slide.titleKey; let i = $index) {
       <article
         class="hero-slide"
         [style.background-image]="'url(' + slide.image + ')'"
@@ -23,25 +23,15 @@
     }
   </div>
 
-  <button
-    class="hero-nav prev"
-    type="button"
-    [attr.aria-label]="t('hero.prev')"
-    (click)="prev()"
-  >
+  <button class="hero-nav prev" type="button" [attr.aria-label]="t('hero.prev')" (click)="prev()">
     ‹
   </button>
-  <button
-    class="hero-nav next"
-    type="button"
-    [attr.aria-label]="t('hero.next')"
-    (click)="next()"
-  >
+  <button class="hero-nav next" type="button" [attr.aria-label]="t('hero.next')" (click)="next()">
     ›
   </button>
 
   <div class="hero-dots" role="tablist" [attr.aria-label]="t('hero.chooseSlide')">
-    @for (slide of heroSlides; track slide.titleKey; let i = $index) {
+    @for (slide of heroSlides(); track slide.titleKey; let i = $index) {
       <button
         type="button"
         role="tab"

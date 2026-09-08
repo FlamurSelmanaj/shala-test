@@ -1,6 +1,6 @@
 <footer class="site-footer">
   <div class="footer-columns">
-    @for (column of footerColumns; track column.titleKey) {
+    @for (column of footerColumns(); track column.titleKey) {
       <div class="footer-column">
         <h3>{{ t(column.titleKey) }}</h3>
         <ul>
@@ -13,7 +13,7 @@
     <div class="footer-column">
       <h3>{{ t('footer.careersColTitle') }}</h3>
       <ul class="footer-social">
-        @for (social of socialLinks; track social) {
+        @for (social of socialLinks(); track social) {
           <li><a href="#">{{ social }}</a></li>
         }
       </ul>
@@ -23,7 +23,7 @@
   <div class="footer-bottom">
     <span>{{ t('footer.copyright') }}</span>
     <nav [attr.aria-label]="t('footer.legalAria')">
-      @for (link of complianceLinks; track link) {
+      @for (link of complianceLinks(); track link) {
         <a href="#">{{ t(link) }}</a>
       }
     </nav>

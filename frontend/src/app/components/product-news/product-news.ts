@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 
+import { ContentService } from '../../content/content.service';
 import { TranslationService } from '../../i18n';
-import { ASSET } from '../../shared/asset';
 
 @Component({
   selector: 'app-product-news',
@@ -11,7 +11,5 @@ import { ASSET } from '../../shared/asset';
 })
 export class ProductNews {
   protected readonly t = inject(TranslationService).t;
-
-  protected readonly newsImage =
-    ASSET + '/fileadmin/_processed_/a/6/csm_MultiTec-Aqua__40x20__Jura-1_5ffe39333c.jpg';
+  protected readonly newsImage = inject(ContentService).productNewsImage;
 }

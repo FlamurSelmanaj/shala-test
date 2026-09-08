@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 
 import { Process } from '../../components/process/process';
 import { Service } from '../../components/service/service';
-import { ASSET } from '../../shared/asset';
+import { ContentService } from '../../content/content.service';
+import { TranslationService } from '../../i18n';
 import { PageHero } from '../../shared/page-hero/page-hero';
 
 @Component({
@@ -12,6 +13,8 @@ import { PageHero } from '../../shared/page-hero/page-hero';
   styleUrl: './service.scss'
 })
 export class ServicePage {
-  protected readonly heroImage =
-    ASSET + '/fileadmin/_processed_/f/a/csm_Pheos-Platten__60x40__anthrazit_plus-1_eaa6f88376.jpeg';
+  private readonly content = inject(ContentService);
+
+  protected readonly t = inject(TranslationService).t;
+  protected readonly page = computed(() => this.content.page('service'));
 }
