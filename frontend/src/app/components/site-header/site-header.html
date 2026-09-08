@@ -1,5 +1,5 @@
 <header class="site-header" [class.is-open]="menuOpen()">
-  <a class="brand" href="#" aria-label="KANN Baustoffwerke Startseite">
+  <a class="brand" routerLink="/" aria-label="KANN Baustoffwerke Startseite" (click)="closeMenu()">
     <img
       [src]="logo"
       alt="KANN Baustoffwerke"
@@ -11,8 +11,13 @@
   </a>
 
   <nav class="main-nav" aria-label="Hauptnavigation">
-    @for (item of navItems; track item) {
-      <a href="#">{{ item }}</a>
+    @for (item of navItems; track item.path) {
+      <a
+        [routerLink]="item.path"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+        >{{ item.label }}</a
+      >
     }
   </nav>
 

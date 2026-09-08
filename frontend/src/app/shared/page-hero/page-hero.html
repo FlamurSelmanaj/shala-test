@@ -1,0 +1,13 @@
+<section
+  class="page-hero"
+  [class.has-image]="!!image()"
+  [style.background-image]="image() ? 'url(' + image() + ')' : null"
+>
+  <div class="page-hero-inner">
+    <p class="eyebrow">KANN Baustoffwerke</p>
+    <h1>{{ title() }}</h1>
+    @if (subtitle()) {
+      <p class="page-hero-lead">{{ subtitle() }}</p>
+    }
+  </div>
+</section>

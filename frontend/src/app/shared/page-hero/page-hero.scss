@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.page-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(320px, 42vh, 460px);
+  padding: 0 40px 56px;
+  background-color: var(--navy);
+  background-position: center;
+  background-size: cover;
+  color: #fff;
+}
+
+.page-hero.has-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 20, 56, 0.82), rgba(0, 20, 56, 0.35) 70%),
+    linear-gradient(0deg, rgba(0, 20, 56, 0.75), transparent 60%);
+}
+
+.page-hero-inner {
+  position: relative;
+  max-width: 720px;
+}
+
+.page-hero .eyebrow {
+  color: var(--yellow);
+}
+
+.page-hero h1 {
+  color: #fff;
+}
+
+.page-hero-lead {
+  margin: 14px 0 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 640px) {
+  .page-hero {
+    padding: 0 18px 40px;
+  }
+}

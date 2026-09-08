@@ -91,6 +91,33 @@ User: remove the `‹ ›` arrows; want a real scrollbar at the bottom with left
 
 Lesson captured in `tasks/lessons.md` (prefer native styled scrollbar over custom overlay arrows).
 
+## Task: multi-page routing (2026-09-08)
+
+Plan: `C:\Users\Administrator\.claude\plans\keen-forging-steele.md` (overwritten for this task).
+User choices: light pages (banner + reused sections), 6 nav pages + 404, English slugs.
+
+### Done
+- **Shell** — `app.ts` now imports `[SiteHeader, RouterOutlet, SiteFooter]` only; `app.html` = header + `<main><router-outlet/></main>` + footer. The 9 home sections moved to `pages/home/`.
+- **`shared/page-hero/`** — reusable banner. Signal inputs `title` (required) / `subtitle` / `image`; navy bg + gradient overlay when an image is set; `.eyebrow` recoloured to yellow on the dark bg.
+- **`pages/`** — 8 standalone route components (`.ts`+`.html`+`.scss`, selector `app-<name>-page`, `:host{display:block}`):
+  - `home` = the 9 existing sections verbatim.
+  - `inspiration` = PageHero + Welcome + Magazine
+  - `products` = PageHero + CategoryGrid + ProductNews
+  - `public-space` = PageHero + Resorb + Service
+  - `service` = PageHero + Service + Process
+  - `about` (nav label "KANN") = PageHero + Welcome + CareerCta
+  - `careers` = PageHero + CareerCta
+  - `not-found` (`**`) = 404 block + `routerLink="/"` button (global `.btn`).
+  - Each page's `heroImage` reuses an already-hotlinked kann.de asset via `shared/asset.ts` `ASSET`.
+- **`app.routes.ts`** — 8 lazy `loadComponent` routes, each with a `title` (Angular default `TitleStrategy` applies it).
+- **`app.config.ts`** — `provideRouter(routes, withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' }))`.
+- **`site-header`** — `navItems` now `{label,path}[]`; imports `RouterLink`/`RouterLinkActive`; brand + nav use `routerLink`, nav has `routerLinkActive="active"` and `(click)="closeMenu()"`; `.main-nav a.active` style added. Footer links left as `href="#"` (out of scope).
+
+### Verification (`npm run build`, per CLAUDE.md — no `ng serve` / `ng test`)
+- Build green, **no** `anyComponentStyle` budget warning.
+- Code-splitting confirmed: `main` 9.43 kB (was 235 kB — framework + pages are now lazy/shared chunks). 8 lazy route chunks emitted (`home`, `inspiration`, `products`, `public-space`, `service`, `about`, `careers`, `not-found`).
+- Bundle greps: `router-outlet`, `page-hero`, `RouterLinkActive`, `scrollPositionRestoration`/`anchorScrolling` present; route paths `inspiration` / `products` / `public-space` / `careers` / `about` each ×3; route titles (`Alle Produkte | KANN`, `Karriere | KANN`); home still composes (`Lieblingsplatz Jahreshighlights` in the `home` chunk).
+
 ### Flag
-- `src/app/app.spec.ts` is now **stale** — its 4th assertion casts `App` to `{ activeSlide, next }`, which moved to `Hero`. Left untouched per CLAUDE.md ("do not touch/run/fix frontend tests"). `ng build` uses `tsconfig.app.json` (excludes `*.spec.ts`) so the build stays green. Recommend redistributing the spec to `hero.spec.ts` / `category-grid.spec.ts` when the test rule is lifted.
+- `src/app/app.spec.ts` is now **stale** — it references `App` composing the section components directly (they moved to `pages/home/`) and casts `App` to `{ activeSlide, next }` (now on `Hero`). Left untouched per CLAUDE.md ("do not touch/run/fix frontend tests"). `ng build` uses `tsconfig.app.json` (excludes `*.spec.ts`) so the build stays green. Recommend redistributing specs to `pages/home` + `hero` / `category-grid` when the test rule is lifted.
 

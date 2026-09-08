@@ -62,6 +62,11 @@
   border-bottom-color: var(--yellow);
 }
 
+.main-nav a.active {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+
 .header-actions {
   display: inline-flex;
   align-items: center;
