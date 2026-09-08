@@ -6,13 +6,6 @@ backend/.env.*
 backend/logs/
 backend/*.log
 
-# Frontend
-shala-frontend/node_modules/
-shala-frontend/dist/
-shala-frontend/.angular/
-shala-frontend/.env
-shala-frontend/.env.*
-shala-frontend/coverage/
 
 # General
 node_modules/
@@ -25,3 +18,48 @@ yarn-debug.log*
 yarn-error.log*
 coverage/
 *.log
+
+#frontend
+
+# Compiled output
+frontend/dist
+frontend/tmp
+frontend/out-tsc
+frontend/bazel-out
+
+# Node
+frontend/node_modules
+frontend/npm-debug.log
+frontend/yarn-error.log
+
+# IDEs and editors
+frontend/.idea/
+frontend/.project
+frontend/.classpath
+frontend/.c9/
+*.launch
+frontend/.settings/
+frontend/*.sublime-workspace
+
+# Visual Studio Code
+/frontend/.vscode/
+frontend/!.vscode/settings.json
+frontend/!.vscode/tasks.json
+frontend/!.vscode/launch.json
+frontend/!.vscode/extensions.json
+frontend/!.vscode/mcp.json
+frontend/.history/
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
