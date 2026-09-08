@@ -886,6 +886,16 @@
         "sq": "Category e re"
       },
       "icon": ""
+    },
+    {
+      "id": "test1234",
+      "slug": "test1234",
+      "name": {
+        "de": "test1234",
+        "en": "test1234",
+        "sq": "test1234"
+      },
+      "icon": ""
     }
   ],
   "products": [
