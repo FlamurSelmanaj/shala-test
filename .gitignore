@@ -5,6 +5,8 @@ backend/.env
 backend/.env.*
 backend/logs/
 backend/*.log
+backend/uploads/*
+!backend/uploads/.gitkeep
 
 
 # General
@@ -67,3 +69,6 @@ Thumbs.db
 
 #claude
 # tasks/*
+
+# Env template must stay tracked despite the .env/.env.* ignore rules above
+!backend/.env.example
