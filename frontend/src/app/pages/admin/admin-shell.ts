@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
+import { AuthService } from '../../auth/auth.service';
 import { ContentService } from '../../content/content.service';
 
 /**
@@ -16,6 +17,8 @@ import { ContentService } from '../../content/content.service';
 })
 export class AdminShell {
   private readonly content = inject(ContentService);
+  private readonly auth = inject(AuthService);
+  private readonly router = inject(Router);
 
   protected readonly apiOnline = this.content.apiOnline;
 
@@ -24,4 +27,9 @@ export class AdminShell {
     { path: 'categories', label: 'Categories' },
     { path: 'products', label: 'Products' }
   ];
+
+  logout(): void {
+    this.auth.logout();
+    this.router.navigate(['/admin/login']);
+  }
 }

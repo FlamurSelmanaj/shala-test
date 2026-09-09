@@ -2,7 +2,13 @@
   <h2 id="categories-title" class="visually-hidden">{{ t('categories.title') }}</h2>
   <div class="category-track" tabindex="0" [attr.aria-label]="t('categories.trackAria')">
     @for (category of categories(); track category.id) {
-      <a class="category-item" href="#">
+      <a
+        class="category-item"
+        [class.active]="category.slug === selectedSlug()"
+        routerLink="/products"
+        [queryParams]="queryParamsFor(category.slug)"
+        fragment="catalog-title"
+      >
         <img [src]="category.icon" [alt]="text(category.name)" referrerpolicy="no-referrer" />
         <span>{{ text(category.name) }}</span>
       </a>

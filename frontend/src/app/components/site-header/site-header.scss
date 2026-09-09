@@ -108,7 +108,7 @@
   background: var(--yellow);
 }
 
-.nav-toggle {
+.header-actions .nav-toggle {
   display: none;
 }
 
@@ -135,7 +135,7 @@
     border-bottom: 1px solid var(--line);
   }
 
-  .nav-toggle {
+  .header-actions .nav-toggle {
     display: grid;
   }
 }
