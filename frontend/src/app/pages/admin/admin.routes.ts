@@ -1,14 +1,22 @@
 import { Routes } from '@angular/router';
 
+import { authGuard } from '../../auth/auth.guard';
+
 /**
- * Admin feature routes, mounted lazily at `/admin` (see `app.routes.ts`). The
- * `AdminShell` provides a top nav + `<router-outlet>` for three sections:
- * Pages (edit-only) and Categories / Products (full CRUD).
+ * Admin feature routes, mounted lazily at `/admin` (see `app.routes.ts`).
+ * `login` is unguarded; the `AdminShell` (top nav + `<router-outlet>` for
+ * Pages/Categories/Products) requires a valid session via `authGuard`.
  */
 export const ADMIN_ROUTES: Routes = [
   {
+    path: 'login',
+    loadComponent: () => import('./admin-login/admin-login').then((m) => m.AdminLogin),
+    title: 'title.admin'
+  },
+  {
     path: '',
     loadComponent: () => import('./admin-shell').then((m) => m.AdminShell),
+    canActivate: [authGuard],
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'pages' },
 

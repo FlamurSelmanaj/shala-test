@@ -15,8 +15,9 @@
     <div class="admin-bar-right">
       <span class="status" [class.on]="apiOnline()">
         <span class="dot"></span>
-        {{ apiOnline() ? 'json-server connected (:3001)' : 'json-server offline — run: npm run api' }}
+        {{ apiOnline() ? 'Backend connected' : 'Backend offline' }}
       </span>
+      <button type="button" class="back" (click)="logout()">Log out</button>
       <a class="back" routerLink="/">← Back to site</a>
     </div>
   </header>
@@ -28,10 +29,7 @@
   </nav>
 
   @if (!apiOnline()) {
-    <p class="msg err">
-      Content is read-only. Start the mock API with <code>npm run api</code> in
-      <code>frontend/</code>, then reload.
-    </p>
+    <p class="msg err">Content is read-only — the backend is unreachable. Reload once it's back.</p>
   }
 
   <div class="admin-main">

@@ -1,6 +1,8 @@
-import { Injectable, computed, signal } from '@angular/core';
+import { Injectable, computed, inject, signal } from '@angular/core';
 
+import { AuthService } from '../auth/auth.service';
 import { type Lang } from '../i18n/lang';
+import { API_BASE } from './api-base';
 import {
   type Category,
   type LocalDb,
@@ -10,9 +12,7 @@ import {
   type Translations
 } from './localdb.model';
 
-/** json-server base — run `npm run api` (serves public/localdb.json on :3001). */
-const API_BASE = 'http://localhost:3001';
-/** Bundled copy, used when json-server isn't running so the built site still works. */
+/** Bundled copy, used when the backend isn't reachable so the built site still works. */
 const LOCALDB_FALLBACK_URL = 'localdb.json';
 
 const EMPTY_CONTENT: LocalDbContent = {
@@ -44,15 +44,16 @@ const EMPTY_DB: LocalDb = {
  * `app.config.ts`) and exposes it as signals.
  *
  * Scope of what the admin dashboard can change:
- *  - **categories** / **products** — full CRUD (json-server collections).
+ *  - **categories** / **products** — full CRUD, requires an admin session.
  *  - **pages** — edit only (hero fields + section body text); no create/delete.
  * Every mutation re-pulls `/db` so the live site reflects it immediately.
  */
 @Injectable({ providedIn: 'root' })
 export class ContentService {
+  private readonly auth = inject(AuthService);
   private readonly db = signal<LocalDb>(EMPTY_DB);
 
-  /** True once json-server answered — the admin dashboard needs it for writes. */
+  /** True once the backend answered — the admin dashboard needs it for writes. */
   readonly apiOnline = signal(false);
 
   async load(): Promise<void> {
@@ -193,9 +194,14 @@ export class ContentService {
     path: string,
     body?: unknown
   ): Promise<void> {
+    const token = this.auth.token();
+    const headers: Record<string, string> = {};
+    if (body !== undefined) headers['Content-Type'] = 'application/json';
+    if (token) headers['Authorization'] = `Bearer ${token}`;
+
     const response = await fetch(`${API_BASE}${path}`, {
       method,
-      headers: body === undefined ? undefined : { 'Content-Type': 'application/json' },
+      headers,
       body: body === undefined ? undefined : JSON.stringify(body)
     });
     if (!response.ok) {
