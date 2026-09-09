@@ -4,7 +4,7 @@
     <h2 id="catalog-title">{{ t('news.title') }}</h2>
 
     @for (group of groups(); track group.category.id) {
-      <div class="catalog-group">
+      <div class="catalog-group" [id]="'category-' + group.category.slug">
         <h3>
           <img [src]="group.category.icon" alt="" referrerpolicy="no-referrer" />
           {{ text(group.category.name) }}
